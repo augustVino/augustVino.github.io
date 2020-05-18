@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Web 图片优化方案之 webp | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/86.f4a52367.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Image</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Image/8.1.html" class="active sidebar-link">Web 图片优化方案之 webp</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Image/8.1.html#兼容性" class="sidebar-link">兼容性</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Image/8.1.html#使用-webp-converter-转化为-webp" class="sidebar-link">使用 WebP Converter 转化为 webp</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Image/8.1.html#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Image/8.1.html#使用" class="sidebar-link">使用</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Image/8.1.html#拓展" class="sidebar-link">拓展</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>业余·折腾</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="web-图片优化方案之-webp"><a href="#web-图片优化方案之-webp" class="header-anchor">#</a> Web 图片优化方案之 webp</h1> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>详细介绍请看<a href="https://developers.google.com/speed/webp/" target="_blank" rel="noopener noreferrer">官网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <p>webp是一种新的图像格式，使用WebP，网站管理员和Web开发人员可以创建更小，更丰富的图像，从而使Web更快。<strong>与PNG相比，WebP无损图像的尺寸要小26％。在同等的SSIM质量指标下，WebP有损图像比同类JPEG图像 小25-34％。</strong></p> <h2 id="兼容性"><a href="#兼容性" class="header-anchor">#</a> 兼容性</h2> <div class="img-box"><img src="/img/image8.1-1.webp" alt="image8.1-1.png"> <!----></div> <h2 id="使用-webp-converter-转化为-webp"><a href="#使用-webp-converter-转化为-webp" class="header-anchor">#</a> 使用 WebP Converter 转化为 webp</h2> <p>网上好多的工具，都可以把 png/jpg 转化为 webp。但是每种工具都各有优缺点，有的不能批量转，如果项目中图片太多，那得专门给转化图片估个工时；有的工具可以批量转，但是速度不敢恭维、并且不支持 gif 格式的转化。这里记录一下我个人的图片转化之路，使用Google<a href="https://developers.google.com/speed/webp/" target="_blank" rel="noopener noreferrer">Webp官网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>推荐的转化工具，这里记录的是Mac安装的方式，其他系统的请看<a href="https://developers.google.com/speed/webp/docs/compiling#unix" target="_blank" rel="noopener noreferrer">官方文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <h3 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h3> <p>从<a href="https://storage.googleapis.com/downloads.webmproject.org/releases/webp/index.html" target="_blank" rel="noopener noreferrer">资料库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，下载相应系统的软件包。这里下载的是<strong>libwebp-1.0.3-mac-10.14.tar.gz</strong>。</p> <ol><li><p>解压<strong>libwebp-1.0.3-mac-10.14.tar.gz</strong>，生成<strong>libwebp-1.0.3-mac-10.14</strong>文件夹。包含内容如下：
+<div class="img-box"><img src="/img/image8.1-2.webp" alt="image8.1-2.webp"> <!----></div></p></li> <li><p>为方便使用，将bin文件夹中的命令都加到系统alias中，否则每次使用都得把相应命令文件拖到终端。
+设置系统 alias 执行命令行：</p></li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">vi</span> ~/.zshrc
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-32198">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vi ~/.zshrc
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-32198" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-44043">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vi ~/.zshrc
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-44043" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在打开的编辑器中底部新增如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">alias</span> <span class="token assign-left variable">cwebp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">dwebp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">gif2webp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;</span>
+
+<span class="token comment"># 每次重启终端都会执行一下.bash_profile</span>
+<span class="token builtin class-name">source</span> ~/.bash_profile
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-92603">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="alias cwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;
+alias dwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;
+alias gif2webp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;
+
+# 每次重启终端都会执行一下.bash_profile
+source ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-92603" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-64487">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="alias cwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;
+alias dwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;
+alias gif2webp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;
+
+# 每次重启终端都会执行一下.bash_profile
+source ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-64487" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>使得设置生效：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">source</span> ~/.zshrc
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-19966">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="source ~/.zshrc
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-19966" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-19859">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="source ~/.zshrc
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-19859" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ol start="3"><li>让设置永久生效，新建或打开 ~/.bash_profile。</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">vim</span> ~/.bash_profile
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-13780">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vim ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-13780" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-64445">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vim ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-64445" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在打开的编辑器中新增如下：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">alias</span> <span class="token assign-left variable">cwebp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">dwebp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">gif2webp</span><span class="token operator">=</span><span class="token string">&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-2776">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="alias cwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;
+alias dwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;
+alias gif2webp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-2776" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-3034">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="alias cwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/cwebp&quot;
+alias dwebp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/dwebp&quot;
+alias gif2webp=&quot;/Users/Vino/Downloads/Compressed/libwebp-1.0.3-mac-10.14/bin/gif2webp&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-3034" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>大功告成 👏</p> <h3 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h3> <h4 id="png、jpg转换为webp"><a href="#png、jpg转换为webp" class="header-anchor">#</a> png、jpg转换为webp</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># cwebp -h 查看帮助</span>
+cwebp <span class="token punctuation">[</span>options<span class="token punctuation">]</span> -q quality input.png -o output.webp
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-92158">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# cwebp -h 查看帮助
+cwebp [options] -q quality input.png -o output.webp
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-92158" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-41692">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# cwebp -h 查看帮助
+cwebp [options] -q quality input.png -o output.webp
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-41692" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># -lossless是无损压缩</span>
+cwebp -lossless old/annualReport_title.png -o a.webp
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-62871">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# -lossless是无损压缩
+cwebp -lossless old/annualReport_title.png -o a.webp
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-62871" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-1623">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# -lossless是无损压缩
+cwebp -lossless old/annualReport_title.png -o a.webp
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-1623" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="webp转换为png，pam，ppm或pgm图像"><a href="#webp转换为png，pam，ppm或pgm图像" class="header-anchor">#</a> webp转换为PNG，PAM，PPM或PGM图像</h4> <div class="language-bash extra-class"><pre class="language-bash"><code>dwebp in_file <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o out_file<span class="token punctuation">]</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-3216">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="dwebp in_file [options] [-o out_file]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-3216" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-83923">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="dwebp in_file [options] [-o out_file]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-83923" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="gif转换为webp"><a href="#gif转换为webp" class="header-anchor">#</a> gif转换为webp</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># gif2webp -h 查看帮助</span>
+gif2webp <span class="token punctuation">[</span>options<span class="token punctuation">]</span> input_file.gif -o output_file.webp
+
+gif2webp -q <span class="token number">70</span> picture.gif -o picture.webp
+gif2webp -lossy -m <span class="token number">3</span> picture.gif -o picture_lossy.webp
+gif2webp -lossy -f <span class="token number">50</span> picture.gif -o picture.webp
+gif2webp -min_size -q <span class="token number">30</span> -o picture.webp -- ---picture.gif
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-15695">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# gif2webp -h 查看帮助
+gif2webp [options] input_file.gif -o output_file.webp
+
+gif2webp -q 70 picture.gif -o picture.webp
+gif2webp -lossy -m 3 picture.gif -o picture_lossy.webp
+gif2webp -lossy -f 50 picture.gif -o picture.webp
+gif2webp -min_size -q 30 -o picture.webp -- ---picture.gif
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-15695" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710626-54999">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# gif2webp -h 查看帮助
+gif2webp [options] input_file.gif -o output_file.webp
+
+gif2webp -q 70 picture.gif -o picture.webp
+gif2webp -lossy -m 3 picture.gif -o picture_lossy.webp
+gif2webp -lossy -f 50 picture.gif -o picture.webp
+gif2webp -min_size -q 30 -o picture.webp -- ---picture.gif
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710626-54999" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="拓展"><a href="#拓展" class="header-anchor">#</a> 拓展</h3> <p>上边虽然成功的安装了工具包，并且配置了系统的alias，但是仅限于在终端使用，并且每次只能转换单个文件。假如我一个项目中的图片都需要转换呢？那就需要自己编写个脚本了（这里疯狂的吐槽一下Google，为啥Webp发展的这么慢、到现在都没有个官方的转换工具。。）。</p> <p>附：脚本代码（外行搬砖。。写的不好请指正）</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 此处是因为shell脚本文件中不能使用系统中设置的alias</span>
+<span class="token comment"># 需要引入系统设置，然后才能使用</span>
+<span class="token builtin class-name">source</span> ~/.bash_profile
+
+<span class="token comment">#读取用户输入的输入路径（要转换的图片文件夹或图片文件）</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input file or directory(请输入要转换的文件或文件夹路径) :&quot;</span> inputPath
+
+<span class="token comment">#读取用户输入的输出路径（转换成功后的图片文件夹或图片文件）</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input output directory(请输入转换后储存的路径) :&quot;</span> outputPath
+
+<span class="token comment">#读取用户输入的转换质量</span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input Conversion quality(请输入转换质量) :&quot;</span> qualityNum
+
+<span class="token keyword">function</span> <span class="token function-name function">convertFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment"># 获取参数：输入路径、输出路径、转换质量</span>
+    <span class="token assign-left variable">inDirectory</span><span class="token operator">=</span><span class="token variable">$1</span><span class="token punctuation">;</span>
+    <span class="token assign-left variable">outDirectory</span><span class="token operator">=</span><span class="token variable">$2</span><span class="token punctuation">;</span>
+    <span class="token assign-left variable">quality</span><span class="token operator">=</span><span class="token variable">$3</span><span class="token punctuation">;</span>
+
+    <span class="token assign-left variable">fileIncludeSuffix</span><span class="token operator">=</span><span class="token variable">${inDirectory<span class="token operator">##</span>*<span class="token operator">/</span>}</span>
+    <span class="token comment">#删除变量 b 右侧第一个出现.的所有字符，并复制给 c</span>
+	<span class="token assign-left variable">fileName</span><span class="token operator">=</span><span class="token variable">${fileIncludeSuffix<span class="token operator">%</span>.*}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token string">&quot;<span class="token variable">$inDirectory</span>&quot;</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">fi</span>
+
+    <span class="token assign-left variable">output</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">$outDirectory</span>&quot;</span>&quot;/<span class="token string">&quot;&quot;</span><span class="token variable">$fileName</span><span class="token string">&quot;&quot;</span>.webp<span class="token string">&quot;;
+    echo &quot;</span>output:<span class="token string">&quot;<span class="token variable">$output</span>;
+    
+    if [[ -f &quot;</span><span class="token variable">$output</span><span class="token string">&quot; ]]; then
+        return 2;
+    fi
+    
+    if [[ <span class="token variable">$quality</span> ]]; then
+     
+        if [[ <span class="token variable">$fileIncludeSuffix</span> == *\.gif ]]; then
+            gif2webp &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; -o &quot;</span><span class="token variable">$output</span><span class="token string">&quot; -q &quot;</span><span class="token variable">$quality</span><span class="token string">&quot; -lossy -m 6;
+        else
+            # -quiet,don't print anything
+            # -progress,report encoding progress
+            # -lossless,有的JPG反而更大！
+            # safename=&quot;</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $input <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s# #<span class="token entity" title="\\">\\</span> #g'</span><span class="token variable">)</span></span><span class="token string">&quot;
+            # 作为参数的时候，带上双引号，这样可以传递有空格的参数！
+            cwebp -q &quot;</span><span class="token variable">$quality</span><span class="token string">&quot; -quiet -metadata &quot;</span>all<span class="token string">&quot; -mt &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; -o &quot;</span><span class="token variable">$output</span><span class="token string">&quot;;
+        fi
+
+    else
+        cwebp -quiet -metadata &quot;</span>all<span class="token string">&quot; -mt &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; -o &quot;</span><span class="token variable">$output</span><span class="token string">&quot;;
+    fi
+}
+# 指定路径的图片转化为webp格式，使用前判断是否是文件！
+function convertDirectory(){
+    # 获取参数：输入路径、输出路径、转换质量
+    inDirectory=<span class="token variable">$1</span>;
+    outDirectory=<span class="token variable">$2</span>;
+    quality=<span class="token variable">$3</span>;
+
+    # 如果是单个文件的话，执行convertFile
+    if [[ -f &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; ]]; then
+        convertFile &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; &quot;</span><span class="token variable">$outDirectory</span><span class="token string">&quot; &quot;</span><span class="token variable">$quality</span><span class="token string">&quot;;
+    elif [[ -d &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot; ]]; then
+        echo &quot;</span>convert directory:<span class="token string">&quot;&quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot;&quot;</span><span class="token builtin class-name">.</span><span class="token string">&quot;
+        fileList=&quot;</span><span class="token variable">$inDirectory</span>/*<span class="token string">&quot;; 
+
+        for file in <span class="token variable">$fileList</span>
+        do
+            if [[ <span class="token variable">${file<span class="token operator">##</span>*.}</span> -ne &quot;</span>webp<span class="token string">&quot; ]]; then
+                continue;
+            fi
+            convertDirectory &quot;</span><span class="token variable">$file</span><span class="token string">&quot; <span class="token variable">$outDirectory</span> <span class="token variable">$quality</span>;
+        done
+    else
+        echo &quot;</span><span class="token variable">$inDirectory</span><span class="token string">&quot;&quot;</span> not exist<span class="token punctuation">..</span>.<span class="token string">&quot;
+    fi
+}
+
+# 如果没有输入文件夹路径，则自动设置为当前目录下边的img文件夹
+if [[ ! &quot;</span><span class="token variable">$inputPath</span><span class="token string">&quot; ]]; then
+    inputPath=&quot;</span><span class="token environment constant">$PWD</span>/img<span class="token string">&quot;;
+fi
+
+if [[ ! &quot;</span><span class="token variable">$outputPath</span><span class="token string">&quot; ]]; then
+    outputPath=&quot;</span><span class="token environment constant">$PWD</span>/img<span class="token string">&quot;;
+fi
+
+if [[ ! &quot;</span><span class="token variable">$qualityNum</span><span class="token string">&quot; ]]; then
+    qualityNum=100;
+fi
+
+# echo <span class="token variable">$inputPath</span>
+# echo <span class="token variable">$outputPath</span>
+# echo <span class="token variable">$qualityNum</span>
+
+# 调用convertDirectory并传参
+convertDirectory &quot;</span><span class="token variable">$inputPath</span><span class="token string">&quot; &quot;</span><span class="token variable">$outputPath</span><span class="token string">&quot; &quot;</span><span class="token variable">$qualityNum</span>&quot;<span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710627-29510">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 此处是因为shell脚本文件中不能使用系统中设置的alias
+# 需要引入系统设置，然后才能使用
+source ~/.bash_profile
+
+#读取用户输入的输入路径（要转换的图片文件夹或图片文件）
+read -p &quot;Please input file or directory(请输入要转换的文件或文件夹路径) :&quot; inputPath
+
+#读取用户输入的输出路径（转换成功后的图片文件夹或图片文件）
+read -p &quot;Please input output directory(请输入转换后储存的路径) :&quot; outputPath
+
+#读取用户输入的转换质量
+read -p &quot;Please input Conversion quality(请输入转换质量) :&quot; qualityNum
+
+function convertFile(){
+    # 获取参数：输入路径、输出路径、转换质量
+    inDirectory=$1;
+    outDirectory=$2;
+    quality=$3;
+
+    fileIncludeSuffix=${inDirectory##*/}
+    #删除变量 b 右侧第一个出现.的所有字符，并复制给 c
+	fileName=${fileIncludeSuffix%.*}
+
+    if [[ ! &quot;$inDirectory&quot; ]]; then
+        return 1;
+    fi
+
+    output=&quot;$outDirectory&quot;&quot;/&quot;&quot;$fileName&quot;&quot;.webp&quot;;
+    echo &quot;output:&quot;$output;
+    
+    if [[ -f &quot;$output&quot; ]]; then
+        return 2;
+    fi
+    
+    if [[ $quality ]]; then
+     
+        if [[ $fileIncludeSuffix == *\.gif ]]; then
+            gif2webp &quot;$inDirectory&quot; -o &quot;$output&quot; -q &quot;$quality&quot; -lossy -m 6;
+        else
+            # -quiet,don't print anything
+            # -progress,report encoding progress
+            # -lossless,有的JPG反而更大！
+            # safename=&quot;$(echo $input | sed 's# #\\ #g')&quot;
+            # 作为参数的时候，带上双引号，这样可以传递有空格的参数！
+            cwebp -q &quot;$quality&quot; -quiet -metadata &quot;all&quot; -mt &quot;$inDirectory&quot; -o &quot;$output&quot;;
+        fi
+
+    else
+        cwebp -quiet -metadata &quot;all&quot; -mt &quot;$inDirectory&quot; -o &quot;$output&quot;;
+    fi
+}
+# 指定路径的图片转化为webp格式，使用前判断是否是文件！
+function convertDirectory(){
+    # 获取参数：输入路径、输出路径、转换质量
+    inDirectory=$1;
+    outDirectory=$2;
+    quality=$3;
+
+    # 如果是单个文件的话，执行convertFile
+    if [[ -f &quot;$inDirectory&quot; ]]; then
+        convertFile &quot;$inDirectory&quot; &quot;$outDirectory&quot; &quot;$quality&quot;;
+    elif [[ -d &quot;$inDirectory&quot; ]]; then
+        echo &quot;convert directory:&quot;&quot;$inDirectory&quot;&quot;.&quot;
+        fileList=&quot;$inDirectory/*&quot;; 
+
+        for file in $fileList
+        do
+            if [[ ${file##*.} -ne &quot;webp&quot; ]]; then
+                continue;
+            fi
+            convertDirectory &quot;$file&quot; $outDirectory $quality;
+        done
+    else
+        echo &quot;$inDirectory&quot;&quot; not exist...&quot;
+    fi
+}
+
+# 如果没有输入文件夹路径，则自动设置为当前目录下边的img文件夹
+if [[ ! &quot;$inputPath&quot; ]]; then
+    inputPath=&quot;$PWD/img&quot;;
+fi
+
+if [[ ! &quot;$outputPath&quot; ]]; then
+    outputPath=&quot;$PWD/img&quot;;
+fi
+
+if [[ ! &quot;$qualityNum&quot; ]]; then
+    qualityNum=100;
+fi
+
+# echo $inputPath
+# echo $outputPath
+# echo $qualityNum
+
+# 调用convertDirectory并传参
+convertDirectory &quot;$inputPath&quot; &quot;$outputPath&quot; &quot;$qualityNum&quot;;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710627-29510" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710627-89868">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 此处是因为shell脚本文件中不能使用系统中设置的alias
+# 需要引入系统设置，然后才能使用
+source ~/.bash_profile
+
+#读取用户输入的输入路径（要转换的图片文件夹或图片文件）
+read -p &quot;Please input file or directory(请输入要转换的文件或文件夹路径) :&quot; inputPath
+
+#读取用户输入的输出路径（转换成功后的图片文件夹或图片文件）
+read -p &quot;Please input output directory(请输入转换后储存的路径) :&quot; outputPath
+
+#读取用户输入的转换质量
+read -p &quot;Please input Conversion quality(请输入转换质量) :&quot; qualityNum
+
+function convertFile(){
+    # 获取参数：输入路径、输出路径、转换质量
+    inDirectory=$1;
+    outDirectory=$2;
+    quality=$3;
+
+    fileIncludeSuffix=${inDirectory##*/}
+    #删除变量 b 右侧第一个出现.的所有字符，并复制给 c
+	fileName=${fileIncludeSuffix%.*}
+
+    if [[ ! &quot;$inDirectory&quot; ]]; then
+        return 1;
+    fi
+
+    output=&quot;$outDirectory&quot;&quot;/&quot;&quot;$fileName&quot;&quot;.webp&quot;;
+    echo &quot;output:&quot;$output;
+    
+    if [[ -f &quot;$output&quot; ]]; then
+        return 2;
+    fi
+    
+    if [[ $quality ]]; then
+     
+        if [[ $fileIncludeSuffix == *\.gif ]]; then
+            gif2webp &quot;$inDirectory&quot; -o &quot;$output&quot; -q &quot;$quality&quot; -lossy -m 6;
+        else
+            # -quiet,don't print anything
+            # -progress,report encoding progress
+            # -lossless,有的JPG反而更大！
+            # safename=&quot;$(echo $input | sed 's# #\\ #g')&quot;
+            # 作为参数的时候，带上双引号，这样可以传递有空格的参数！
+            cwebp -q &quot;$quality&quot; -quiet -metadata &quot;all&quot; -mt &quot;$inDirectory&quot; -o &quot;$output&quot;;
+        fi
+
+    else
+        cwebp -quiet -metadata &quot;all&quot; -mt &quot;$inDirectory&quot; -o &quot;$output&quot;;
+    fi
+}
+# 指定路径的图片转化为webp格式，使用前判断是否是文件！
+function convertDirectory(){
+    # 获取参数：输入路径、输出路径、转换质量
+    inDirectory=$1;
+    outDirectory=$2;
+    quality=$3;
+
+    # 如果是单个文件的话，执行convertFile
+    if [[ -f &quot;$inDirectory&quot; ]]; then
+        convertFile &quot;$inDirectory&quot; &quot;$outDirectory&quot; &quot;$quality&quot;;
+    elif [[ -d &quot;$inDirectory&quot; ]]; then
+        echo &quot;convert directory:&quot;&quot;$inDirectory&quot;&quot;.&quot;
+        fileList=&quot;$inDirectory/*&quot;; 
+
+        for file in $fileList
+        do
+            if [[ ${file##*.} -ne &quot;webp&quot; ]]; then
+                continue;
+            fi
+            convertDirectory &quot;$file&quot; $outDirectory $quality;
+        done
+    else
+        echo &quot;$inDirectory&quot;&quot; not exist...&quot;
+    fi
+}
+
+# 如果没有输入文件夹路径，则自动设置为当前目录下边的img文件夹
+if [[ ! &quot;$inputPath&quot; ]]; then
+    inputPath=&quot;$PWD/img&quot;;
+fi
+
+if [[ ! &quot;$outputPath&quot; ]]; then
+    outputPath=&quot;$PWD/img&quot;;
+fi
+
+if [[ ! &quot;$qualityNum&quot; ]]; then
+    qualityNum=100;
+fi
+
+# echo $inputPath
+# echo $outputPath
+# echo $qualityNum
+
+# 调用convertDirectory并传参
+convertDirectory &quot;$inputPath&quot; &quot;$outputPath&quot; &quot;$qualityNum&quot;;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710627-89868" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>使用脚本：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 在脚本目录打开终端,根据提示输入相关信息</span>
+./convert.sh
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710638-54673">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 在脚本目录打开终端,根据提示输入相关信息
+./convert.sh
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710638-54673" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775710638-2313">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 在脚本目录打开终端,根据提示输入相关信息
+./convert.sh
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775710638-2313" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/CSS/3.9.html" class="prev">
+        动画
+      </a></span> <span class="next"><a href="/FrontEnd/Vue/4.1.html">
+        vue源码刨析：Object.defineProperty 对数组监听
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/86.f4a52367.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

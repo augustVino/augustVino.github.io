@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>[译] Throttle 和 Debounce 在 React 中的应用 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/56.107a1be5.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/37.c1852146.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第1期：this全面解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第2期：原型 Prototype</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第4期：节流防抖</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/4.1.html" class="sidebar-link">深入浅出节流函数 throttle</a></li><li><a href="/Blog/4.2.html" class="sidebar-link">深入浅出防抖函数 debounce</a></li><li><a href="/Blog/4.3.html" class="active sidebar-link">[译] Throttle 和 Debounce 在 React 中的应用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.3.html#引言" class="sidebar-link">引言</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#从一个例子开始" class="sidebar-link">从一个例子开始</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.3.html#例子-1" class="sidebar-link">例子 1</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#例子-2" class="sidebar-link">例子 2</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#节流-throttle" class="sidebar-link">节流 Throttle</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-underscore" class="sidebar-link">使用 underscore</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-lodash" class="sidebar-link">使用 lodash</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-rxjs" class="sidebar-link">使用 RxJS</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用自定义实现" class="sidebar-link">使用自定义实现</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#防抖-debounce" class="sidebar-link">防抖 Debounce</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-underscore-2" class="sidebar-link">使用 underscore</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-lodash-2" class="sidebar-link">使用 lodash</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#使用-rxjs-2" class="sidebar-link">使用 RxJS</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#重要领域：游戏" class="sidebar-link">重要领域：游戏</a></li><li class="sidebar-sub-header"><a href="/Blog/4.3.html#结论" class="sidebar-link">结论</a></li></ul></li><li><a href="/Blog/4.4.html" class="sidebar-link">深入篇阿里 P6 必会 Lodash 防抖节流函数实现原理</a></li><li><a href="/Blog/4.5.html" class="sidebar-link">浅出篇 7 个角度吃透 Lodash 防抖节流原理</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第6期：深浅拷贝原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第7期：调用堆栈</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="译-throttle-和-debounce-在-react-中的应用"><a href="#译-throttle-和-debounce-在-react-中的应用" class="header-anchor">#</a> [译] Throttle 和 Debounce 在 React 中的应用</h1> <blockquote><p>原文 <a href="https://blog.bitsrc.io/improve-your-react-app-performance-by-using-throttling-and-debouncing-101afbe9055" target="_blank" rel="noopener noreferrer">Improve Your React App Performance by Using Throttling and Debouncing<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <h2 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h2> <p>使用 React 构建应用程序时，我们总是会遇到一些限制问题，比如大量的调用、异步网络请求和 DOM 更新等，我们可以使用 React 提供的功能来检查这些。</p> <ul><li><code>shouldComponentUpdate(...)</code> 生命周期钩子</li> <li><code>React.PureComponent</code></li> <li><code>React.memo</code></li> <li>Windowing and Virtualization</li> <li>Memoization</li> <li>Hydration</li> <li>Hooks (<code>useState</code>, <code>useMemo</code>, <code>useContext</code>, <code>useReducer</code>, 等)
+在这篇文章中，我们将研究如何在不使用 React 提供的功能下来改进 React 应用程序性能，我们将使用一种不仅仅适用于 React 的技术：节流（<strong>Throttle</strong>）和防抖（<strong>Debounce</strong>）。</li></ul> <h2 id="从一个例子开始"><a href="#从一个例子开始" class="header-anchor">#</a> 从一个例子开始</h2> <h3 id="例子-1"><a href="#例子-1" class="header-anchor">#</a> 例子 1</h3> <p>下面这个例子可以很好的解释节流和防抖带给我们的好处，假设我们有一个 <code>autocomp</code> 组件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'./autocomp.css'</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688351-2190">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import React from 'react';
+import './autocomp.css';
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688351-2190" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688351-23509">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="import React from 'react';
+import './autocomp.css';
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688351-23509" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688370-50681">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state= {
+            results: []
+        }
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688370-50681" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688370-49340">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state= {
+            results: []
+        }
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688370-49340" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/users</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> result<span class="token punctuation">.</span>users <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688370-61605">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        fetch(`/api/users`)
+            .then(res =&gt; res.json())
+            .then(result =&gt; this.setState({ results: result.users }))
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688370-61605" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688370-37362">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        fetch(`/api/users`)
+            .then(res =&gt; res.json())
+            .then(result =&gt; this.setState({ results: result.users }))
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688370-37362" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>item<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> autocomp<span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688382-76910">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+            &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInput} /&gt;
+            &lt;div&gt;
+                {results.map(item=&gt;{item})}
+            &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+export default autocomp;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688382-76910" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688382-94717">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+            &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInput} /&gt;
+            &lt;div&gt;
+                {results.map(item=&gt;{item})}
+            &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+export default autocomp;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688382-94717" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在我们的 <code>autocomp</code> 组件中，一旦我们在输入框中输入一个单词，它就会请求 <code>api/users</code> 获取要显示的用户列表。 在每个字母输入后，触发异步网络请求，并且成功后通过 <code>this.setState</code> 更新DOM。</p> <p>现在，想象一下输入 <code>fidudusola</code> 尝试搜索结果 <code>fidudusolanke</code>，将有许多名称与 <code>fidudusola</code> 一起出现。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">1.</span>  f
+<span class="token number">2.</span>  fi
+<span class="token number">3.</span>  fid
+<span class="token number">4.</span>  fidu
+<span class="token number">5.</span>  fidud
+<span class="token number">6.</span>  fidudu
+<span class="token number">7.</span>  fidudus
+<span class="token number">8.</span>  fiduduso
+<span class="token number">9.</span>  fidudusol
+<span class="token number">10.</span> fidudusola
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688382-63393">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1.  f
+2.  fi
+3.  fid
+4.  fidu
+5.  fidud
+6.  fidudu
+7.  fidudus
+8.  fiduduso
+9.  fidudusol
+10. fidudusola
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688382-63393" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688382-52934">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1.  f
+2.  fi
+3.  fid
+4.  fidu
+5.  fidud
+6.  fidudu
+7.  fidudus
+8.  fiduduso
+9.  fidudusol
+10. fidudusola
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688382-52934" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这个名字有 10 个字母，所以我们将有 10 次 API 请求和 10 次 DOM 更新，这只是一个用户而已!! 输入完成后最终看到我们预期的名字 <code>fidudusolanke</code> 和其他结果一起出现。</p> <p>即使 <code>autocomp</code> 可以在没有网络请求的情况下完成（例如，内存中有一个本地“数据库”），仍然需要为输入的每个字符/单词进行昂贵的 DOM 更新。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token string">'nnamdi'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token string">'fidudusola'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token string">'fashola'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        name<span class="token operator">:</span> <span class="token string">'fidudusolanke'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// ... up to 10,000 records</span>
+<span class="token punctuation">]</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-28782">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="const data = [
+    {
+        name: 'nnamdi'
+    },
+    {
+        name: 'fidudusola'
+    },
+    {
+        name: 'fashola'
+    },
+    {
+        name: 'fidudusolanke'
+    },
+    // ... up to 10,000 records
+]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-28782" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-86451">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="const data = [
+    {
+        name: 'nnamdi'
+    },
+    {
+        name: 'fidudusola'
+    },
+    {
+        name: 'fashola'
+    },
+    {
+        name: 'fidudusolanke'
+    },
+    // ... up to 10,000 records
+]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-86451" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-41400">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state= {
+            results: []
+        }
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-41400" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-19875">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state= {
+            results: []
+        }
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-19875" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-67349">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-67349" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-81783">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-81783" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-78156">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInput} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-78156" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688383-32158">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInput} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688383-32158" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="例子-2"><a href="#例子-2" class="header-anchor">#</a> 例子 2</h3> <p>另一个例子是使用 <code>resize</code> 和 <code>scroll</code> 等事件。大多数情况下，网站每秒滚动 1000 次，想象一下在 <code>scroll</code> 事件中添加一个事件处理。</p> <div class="language-js extra-class"><pre class="language-js"><code>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Scrolled !!!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-59350">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="document.body.addEventListener('scroll', ()=&gt; {
+    console.log('Scrolled !!!')
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-59350" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-18417">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="document.body.addEventListener('scroll', ()=&gt; {
+    console.log('Scrolled !!!')
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-18417" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>你会发现这个函数每秒被执行 1000 次！如果这个事件处理函数执行大量计算或大量 DOM 操作，将面临最坏的情况。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">longOp</span><span class="token punctuation">(</span><span class="token parameter">ms</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> now <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> end <span class="token operator">=</span> now <span class="token operator">+</span> ms
+    <span class="token keyword">while</span><span class="token punctuation">(</span>now <span class="token operator">&lt;</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        now <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-17340">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function longOp(ms) {
+    var now = Date.now()
+    var end = now + ms
+    while(now &lt; end) {
+        now = Date.now()
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-17340" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-84658">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function longOp(ms) {
+    var now = Date.now()
+    var end = now + ms
+    while(now &lt; end) {
+        now = Date.now()
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-84658" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// simulating a heavy operation</span>
+    <span class="token function">longOp</span><span class="token punctuation">(</span><span class="token number">9000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Scrolled !!!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-64092">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="document.body.addEventListener('scroll', ()=&gt; {
+    // simulating a heavy operation
+    longOp(9000)
+    console.log('Scrolled !!!')
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-64092" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-77506">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="document.body.addEventListener('scroll', ()=&gt; {
+    // simulating a heavy operation
+    longOp(9000)
+    console.log('Scrolled !!!')
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-77506" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>我们有一个需要 9 秒才能完成的操作，最后输出 <code>Scrolled</code> !!!，假设我们滚动 5000 像素会有 200 多个事件被触发。 因此，需要 9 秒才能完成一次的事件，大约需要 9 * 200 = 1800s 来运行全部的 200 个事件。 因此，全部完成需要 30 分钟（半小时）。</p> <p>所以肯定会发现一个滞后且无响应的浏览器，因此编写的事件处理函数最好在较短的时间内执行完成。</p> <p>我们发现这会在我们的应用程序中产生巨大的性能瓶颈，我们不需要在输入的每个字母上执行 API 请求和 DOM 更新，我们需要等到用户停止输入或者输入一段时间之后，等到用户停止滚动或者滚动一段时间之后，再去执行事件处理函数。</p> <p>所有这些确保我们的应用程序有良好性能，让我们看看如何使用节流和防抖来避免这种性能瓶颈。</p> <h2 id="节流-throttle"><a href="#节流-throttle" class="header-anchor">#</a> 节流 Throttle</h2> <blockquote><p>节流强制一个函数在一段时间内可以调用的最大次数，例如每 100 毫秒最多执行一次函数。</p></blockquote> <p>节流是指在指定的时间内执行一次给定的函数。这限制了函数被调用的次数，所以重复的函数调用不会重置任何数据。</p> <p>假设我们通常以 1000 次 / 20 秒的速度调用函数。 如果我们使用节流将它限制为每 500 毫秒执行一次，我们会看到函数在 20 秒内将执行 40 次。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">20</span> secs <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span><span class="token number">000</span>ms
+<span class="token number">20</span><span class="token punctuation">,</span><span class="token number">000</span>ms <span class="token operator">/</span> <span class="token number">500</span>ms <span class="token operator">=</span> <span class="token number">40</span> times
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-62608">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1000 * 20 secs = 20,000ms
+20,000ms / 500ms = 40 times
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-62608" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-37621">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1000 * 20 secs = 20,000ms
+20,000ms / 500ms = 40 times
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-37621" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这是从 1000 次到 40 次的极大优化。</p> <p>下面将介绍在 <code>React</code> 中使用节流的例子，将分别使用 <code>underscore</code> 、 <code>lodash</code> 、<code>RxJS</code> 以及自定义实现。</p> <h3 id="使用-underscore"><a href="#使用-underscore" class="header-anchor">#</a> 使用 underscore</h3> <p>我们将使用 <code>underscore</code> 提供的节流函数处理我们的 <code>autocomp</code> 组件。</p> <p>先安装依赖。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i underscore
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-55025">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i underscore
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-55025" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-58506">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i underscore
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-58506" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>然后在组件中导入它：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> _ <span class="token keyword">from</span> underscore<span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-68072">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import * as _ from underscore;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-68072" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688384-10343">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import * as _ from underscore;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688384-10343" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688385-5769">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = _.throttle(this.handleInput, 1000)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688385-5769" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688385-37259">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = _.throttle(this.handleInput, 1000)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688385-37259" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688385-71335">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688385-71335" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688385-12290">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688385-12290" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688387-19822">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688387-19822" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688387-99496">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688387-99496" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>节流函数接收两个参数，分别是需要被限制的函数和时间差，返回一个节流处理后的函数。 在我们的例子中，<code>handleInput</code> 方法被传递给 <code>throttle</code> 函数，时间差为 1000ms。</p> <p>现在，假设我们以每 200ms 1 个字母的正常速度输入 fidudusola，输入完成需要10 * 200ms =（2000ms）2s，这时 <code>handleInput</code> 方法将只调用 2（2000ms / 1000ms = 2）次而不是最初的 10 次。</p> <h3 id="使用-lodash"><a href="#使用-lodash" class="header-anchor">#</a> 使用 lodash</h3> <p><code>lodash</code> 也提供了一个 <code>throttle</code> 函数，我们可以在 JS 程序中使用它。</p> <p>首先，我们需要安装依赖。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i lodash
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688407-23116">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i lodash
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688407-23116" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688407-79009">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i lodash
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688407-79009" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>使用 <code>lodash</code>，我们的 <code>autocomp</code> 将是这样的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> throttle <span class="token punctuation">}</span> <span class="token keyword">from</span> lodash<span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688407-17169">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { throttle } from lodash;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688407-17169" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688407-36661">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { throttle } from lodash;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688407-36661" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled <span class="token operator">=</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688413-69630">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = throttle(this.handleInput, 100)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688413-69630" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688413-40506">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = throttle(this.handleInput, 100)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688413-40506" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688414-92189">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688414-92189" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688414-72349">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688414-72349" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688414-70414">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688414-70414" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688414-3930">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688414-3930" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>和 <code>underscore</code> 一样的效果，没有其他区别。</p> <h3 id="使用-rxjs"><a href="#使用-rxjs" class="header-anchor">#</a> 使用 RxJS</h3> <p>JS 中的 <code>Reactive Extensions</code> 提供了一个节流运算符，我们可以使用它来实现功能。</p> <p>首先，我们安装 <code>rxjs</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i rxjs
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-53785">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i rxjs
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-53785" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-19723">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm i rxjs
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-19723" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>我们从 <code>rxjs</code> 库导入 <code>throttle</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> BehaviorSubject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> throttle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs/operators'</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-31952">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { BehaviorSubject } from 'rxjs';
+import { throttle } from 'rxjs/operators';
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-31952" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-90185">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { BehaviorSubject } from 'rxjs';
+import { throttle } from 'rxjs/operators';
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-90185" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BehaviorSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-39157">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+        this.inputStream = new BehaviorSubject()
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-39157" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-59976">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+        this.inputStream = new BehaviorSubject()
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-59976" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream
+            <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+                <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// algorithm to search through the `data` array</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-25445">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    componentDidMount() {
+        this.inputStream
+            .pipe(
+                throttle(1000)
+            )
+            .subscribe(v =&gt; {
+                const filteredRes = data.filter((item)=&gt; {
+                    // algorithm to search through the `data` array
+                })
+                this.setState({ results: filteredRes })
+        })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-25445" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-8958">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    componentDidMount() {
+        this.inputStream
+            .pipe(
+                throttle(1000)
+            )
+            .subscribe(v =&gt; {
+                const filteredRes = data.filter((item)=&gt; {
+                    // algorithm to search through the `data` array
+                })
+                this.setState({ results: filteredRes })
+        })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-8958" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> result <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-47449">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={e =&gt; this.inputStream.next(e.target.value)} /&gt;
+                &lt;div&gt;
+                    {results.map(result =&gt; { result })}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-47449" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688415-94969">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={e =&gt; this.inputStream.next(e.target.value)} /&gt;
+                &lt;div&gt;
+                    {results.map(result =&gt; { result })}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688415-94969" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>我们从 <code>rxjs</code> 中导入了 <code>throttle</code> 和 <code>BehaviorSubject</code>，初始化了一个 <code>BehaviorSubject</code> 实例保存在 <code>inputStream</code> 属性，在 <code>componentDidMount</code> 中，我们将 <code>inputStream</code> 流传递给节流操作符，传入 1000，表示 RxJS 节流控制为 1000ms，节流操作返回的流被订阅以获得流值。</p> <p>因为在组件加载时订阅了 <code>inputStream</code>，所以我们开始输入时，输入的内容就被发送到 <code>inputStream</code> 流中。 刚开始时，由于 <code>throttle</code> 操作符 1000ms 内不会发送内容，在这之后发送最新值， 发送之后就开始计算得到结果。</p> <p>如果我们以 200ms 1 个字母的速度输入 <code>fidudusola</code> ，该组件将重新渲染 2000ms / 1000ms = 2次。</p> <h3 id="使用自定义实现"><a href="#使用自定义实现" class="header-anchor">#</a> 使用自定义实现</h3> <p>我们实现自己的节流函数，方便更好的理解节流如何工作。</p> <p>我们知道在一个节流控制的函数中，它会根据指定的时间间隔调用，我们将使用 setTimeout 函数实现这一点。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> ms</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> timeout
+    <span class="token keyword">function</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">function</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        timeout <span class="token operator">==</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token operator">:</span> <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>fn <span class="token operator">!==</span> <span class="token keyword">undefined</span> <span class="token operator">&amp;&amp;</span> ms <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        timeout <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>exec<span class="token punctuation">,</span> ms<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'callback function and the timeout must be supplied'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// API to clear the timeout</span>
+    throttle<span class="token punctuation">.</span><span class="token function-variable function">clearTimeout</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-70564">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function throttle(fn, ms) {
+    let timeout
+    function exec() {
+        fn.apply()
+    }
+    function clear() {
+        timeout == undefined ? null : clearTimeout(timeout)
+    }
+    if(fn !== undefined &amp;&amp; ms !== undefined) {
+        timeout = setTimeout(exec, ms)
+    } else {
+        console.error('callback function and the timeout must be supplied')
+    }
+    // API to clear the timeout
+    throttle.clearTimeout = function() {
+        clear();
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-70564" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-47022">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function throttle(fn, ms) {
+    let timeout
+    function exec() {
+        fn.apply()
+    }
+    function clear() {
+        timeout == undefined ? null : clearTimeout(timeout)
+    }
+    if(fn !== undefined &amp;&amp; ms !== undefined) {
+        timeout = setTimeout(exec, ms)
+    } else {
+        console.error('callback function and the timeout must be supplied')
+    }
+    // API to clear the timeout
+    throttle.clearTimeout = function() {
+        clear();
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-47022" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>注：原文自定义实现的节流函数有问题，节流函数的详细实现和解析可以查看我的另一篇文章，<a href="/Blog/4.1">点击查看</a></p> <p>我的实现如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// fn 是需要执行的函数</span>
+<span class="token comment">// wait 是时间间隔</span>
+<span class="token keyword">const</span> <span class="token function-variable function">throttle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> wait <span class="token operator">=</span> <span class="token number">50</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 上一次执行 fn 的时间</span>
+  <span class="token keyword">let</span> previous <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token comment">// 将 throttle 处理结果当作函数返回</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 获取当前时间，转换成时间戳，单位毫秒</span>
+    <span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将当前时间和上一次执行函数的时间进行对比</span>
+    <span class="token comment">// 大于等待时间就把 previous 设置为当前时间并执行函数 fn</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>now <span class="token operator">-</span> previous <span class="token operator">&gt;</span> wait<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      previous <span class="token operator">=</span> now
+      <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-4407">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// fn 是需要执行的函数
+// wait 是时间间隔
+const throttle = (fn, wait = 50) =&gt; {
+  // 上一次执行 fn 的时间
+  let previous = 0
+  // 将 throttle 处理结果当作函数返回
+  return function(...args) {
+    // 获取当前时间，转换成时间戳，单位毫秒
+    let now = +new Date()
+    // 将当前时间和上一次执行函数的时间进行对比
+    // 大于等待时间就把 previous 设置为当前时间并执行函数 fn
+    if (now - previous &gt; wait) {
+      previous = now
+      fn.apply(this, args)
+    }
+  }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-4407" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-90158">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// fn 是需要执行的函数
+// wait 是时间间隔
+const throttle = (fn, wait = 50) =&gt; {
+  // 上一次执行 fn 的时间
+  let previous = 0
+  // 将 throttle 处理结果当作函数返回
+  return function(...args) {
+    // 获取当前时间，转换成时间戳，单位毫秒
+    let now = +new Date()
+    // 将当前时间和上一次执行函数的时间进行对比
+    // 大于等待时间就把 previous 设置为当前时间并执行函数 fn
+    if (now - previous &gt; wait) {
+      previous = now
+      fn.apply(this, args)
+    }
+  }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-90158" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>上面的实现非常简单，在 React 项目中使用方式如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled <span class="token operator">=</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-52621">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = throttle(this.handleInput, 100)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-52621" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688416-27468">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = throttle(this.handleInput, 100)
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688416-27468" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-73765">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-73765" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-42373">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-42373" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code>    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-3119">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-3119" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-23222">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-23222" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="防抖-debounce"><a href="#防抖-debounce" class="header-anchor">#</a> 防抖 Debounce</h2> <blockquote><p>防抖会强制自上次调用后经过一定时间才会再次调用函数，例如只有在没有被调用的情况下经过一段时间之后（例如100毫秒）才执行该函数。</p></blockquote> <p>在防抖时，它忽略对函数的所有调用，直到函数停止调用一段时间之后才会再次执行。</p> <p>下面将介绍在项目中使用 debounce 的例子。</p> <h3 id="使用-underscore-2"><a href="#使用-underscore-2" class="header-anchor">#</a> 使用 underscore</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> _ <span class="token keyword">from</span> <span class="token string">'underscore'</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-97891">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import * as _ from 'underscore';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = _.debounce(this.handleInput, 100)
+    }
+    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-97891" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688417-67677">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import * as _ from 'underscore';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = _.debounce(this.handleInput, 100)
+    }
+    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688417-67677" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="使用-lodash-2"><a href="#使用-lodash-2" class="header-anchor">#</a> 使用 lodash</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> debounce <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lodash'</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInput<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token parameter">evt</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> value <span class="token operator">=</span> evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+        <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// algorithm to search through the `data` array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleInputThrottled<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>result<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688418-84222">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { debounce } from 'lodash';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = debounce(this.handleInput, 100)
+    }
+    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688418-84222" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688418-54067">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { debounce } from 'lodash';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+       this.handleInputThrottled = debounce(this.handleInput, 100)
+    }
+    handleInput = evt =&gt; {
+        const value = evt.target.value
+        const filteredRes = data.filter((item)=&gt; {
+            // algorithm to search through the `data` array
+        })
+        this.setState({ results: filteredRes })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={this.handleInputThrottled} /&gt;
+                &lt;div&gt;
+                    {results.map(result=&gt;{result})}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688418-54067" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="使用-rxjs-2"><a href="#使用-rxjs-2" class="header-anchor">#</a> 使用 RxJS</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> BehaviorSubject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> debounce <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs/operators'</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">autocomp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            results<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BehaviorSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream
+            <span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+                <span class="token function">debounce</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> filteredRes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// algorithm to search through the `data` array</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> results<span class="token operator">:</span> filteredRes <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">'autocomp_wrapper'</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>input placeholder<span class="token operator">=</span><span class="token string">&quot;Enter your search..&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>inputStream<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+                    <span class="token punctuation">{</span>results<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">result</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> result <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688419-68178">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { BehaviorSubject } from 'rxjs';
+import { debounce } from 'rxjs/operators';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+        this.inputStream = new BehaviorSubject()
+    }
+    componentDidMount() {
+        this.inputStream
+            .pipe(
+                debounce(100)
+            )
+            .subscribe(v =&gt; {
+                const filteredRes = data.filter((item)=&gt; {
+                    // algorithm to search through the `data` array
+                })
+                this.setState({ results: filteredRes })
+        })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={e =&gt; this.inputStream.next(e.target.value)} /&gt;
+                &lt;div&gt;
+                    {results.map(result =&gt; { result })}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688419-68178" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688419-15716">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// ...
+import { BehaviorSubject } from 'rxjs';
+import { debounce } from 'rxjs/operators';
+class autocomp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            results: []
+        }
+        this.inputStream = new BehaviorSubject()
+    }
+    componentDidMount() {
+        this.inputStream
+            .pipe(
+                debounce(100)
+            )
+            .subscribe(v =&gt; {
+                const filteredRes = data.filter((item)=&gt; {
+                    // algorithm to search through the `data` array
+                })
+                this.setState({ results: filteredRes })
+        })
+    }
+    render() {
+        let { results } = this.state;
+        return (
+            &lt;div className='autocomp_wrapper'&gt;
+                &lt;input placeholder=&quot;Enter your search..&quot; onChange={e =&gt; this.inputStream.next(e.target.value)} /&gt;
+                &lt;div&gt;
+                    {results.map(result =&gt; { result })}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688419-15716" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="重要领域：游戏"><a href="#重要领域：游戏" class="header-anchor">#</a> 重要领域：游戏</h2> <p>有很多情况需要使用节流和防抖，其中最需要的领域是游戏。游戏中最常用的动作是在电脑键盘或者游戏手柄中按键，玩家可能经常按同一个键多次（每 20 秒 40 次，即每秒 2 次）例如射击、加速这样的动作，但无论玩家按下射击键的次数有多少，它只会发射一次（比如说每秒）。 所以使用节流控制为 1 秒，这样第二次按下按钮将被忽略。</p> <h2 id="结论"><a href="#结论" class="header-anchor">#</a> 结论</h2> <p>我们看到了节流和防抖如何提高 React 应用程序的性能，以及重复调用会影响性能，因为组件及其子树将不必要地重新渲染，所以应该避免在 React 应用中重复调用方法。在小型程序中不会引起注意，但在大型程序中效果会很明显。</p> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Blog/4.2.html" class="prev">
+        深入浅出防抖函数 debounce
+      </a></span> <span class="next"><a href="/Blog/4.4.html">
+        深入篇阿里 P6 必会 Lodash 防抖节流函数实现原理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/56.107a1be5.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

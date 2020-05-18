@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mac 新系统搭建前端环境 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/120.c419da80.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/37.c1852146.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Image</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>业余·折腾</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Others/5.1.html" class="sidebar-link">VuePress 搭建个人博客</a></li><li><a href="/FrontEnd/Others/5.2.html" class="sidebar-link">前后端分离模式</a></li><li><a href="/FrontEnd/Others/5.3.html" class="sidebar-link">web 性能优化实践</a></li><li><a href="/FrontEnd/Others/5.4.html" class="sidebar-link">Chrome 拓展插件开发实践</a></li><li><a href="/FrontEnd/Others/5.5.html" class="sidebar-link">Google Cloud - IP 失效更换 IP 方法</a></li><li><a href="/FrontEnd/Others/5.6.html" class="sidebar-link">Google Cloud - Mac 使用 iterm2 自动 ssh 登录远程服务器</a></li><li><a href="/FrontEnd/Others/5.7.html" class="sidebar-link">Google Cloud - 一键脚本搭建 SS/搭建 SSR 服务并开启 BBR 加速</a></li><li><a href="/FrontEnd/Others/5.8.html" class="sidebar-link">解决 Github 下载速度太慢</a></li><li><a href="/FrontEnd/Others/5.9.html" class="active sidebar-link">Mac 新系统搭建前端环境</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#下载常用软件" class="sidebar-link">下载常用软件</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-node" class="sidebar-link">安装 node</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-homebrew" class="sidebar-link">安装 Homebrew</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-iterm2" class="sidebar-link">安装 iTerm2</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#配置-iterm2" class="sidebar-link">配置 iTerm2</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-vscode" class="sidebar-link">安装 VsCode</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#配置-vscode" class="sidebar-link">配置 VsCode</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-nginx" class="sidebar-link">安装 nginx</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.9.html#安装-whistle" class="sidebar-link">安装 whistle</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="mac-新系统搭建前端环境"><a href="#mac-新系统搭建前端环境" class="header-anchor">#</a> Mac 新系统搭建前端环境</h1> <p>每次换新电脑都会重新配置一次开发环境，需要搜索各种官网，为了更加的方便，这里总结一下。</p> <h2 id="下载常用软件"><a href="#下载常用软件" class="header-anchor">#</a> 下载常用软件</h2> <div class="language-md extra-class"><pre class="language-md"><code>QQ 微信 钉钉 
+印象笔记 
+Xcode
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701003-72438">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="QQ 微信 钉钉 
+印象笔记 
+Xcode
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701003-72438" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701003-25111">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="QQ 微信 钉钉 
+印象笔记 
+Xcode
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701003-25111" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-node"><a href="#安装-node" class="header-anchor">#</a> 安装 node</h2> <div class="language-md extra-class"><pre class="language-md"><code>官网： https://nodejs.org/zh-cn/
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-66401">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="官网： https://nodejs.org/zh-cn/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-66401" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-56181">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="官网： https://nodejs.org/zh-cn/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-56181" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-homebrew"><a href="#安装-homebrew" class="header-anchor">#</a> 安装 Homebrew</h2> <p>我们一般用官网提供的统一安装方法，执行如下命令即可：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>/usr/bin/ruby -e <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="token variable">)</span></span>&quot;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-88029">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-88029" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-961">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-961" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>但是，国内大家都懂得，网速很慢，而且会出现：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>error: RPC failed<span class="token punctuation">;</span> <span class="token function">curl</span> <span class="token number">56</span> LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno <span class="token number">54</span>
+fatal: The remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-64910">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54
+fatal: The remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-64910" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-24140">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="error: RPC failed; curl 56 LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 54
+fatal: The remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-24140" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><strong>因此，解决问题：</strong></p> <ol><li>先试下在浏览器访问地址：https://raw.githubusercontent.com/Homebrew/install/master/install ，不过一般出现这种情况，你在浏览器肯定是不能浏览到此地址的内容的。</li></ol> <p>这里把内容贴出来：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/usr/bin/ruby</span>
+
+STDERR.print <span class="token operator">&lt;&lt;</span><span class="token string">EOS
+Warning: The Ruby Homebrew installer is now deprecated and has been rewritten in
+Bash. Please migrate to the following command:
+  /bin/bash -c &quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="token variable">)</span></span>&quot;
+
+EOS</span>
+
+Kernel.exec <span class="token string">&quot;/bin/bash&quot;</span>, <span class="token string">&quot;-c&quot;</span>, <span class="token string">'/bin/bash -c &quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="token variable">)</span></span>&quot;'</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-99513">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/ruby
+
+STDERR.print &lt;&lt;EOS
+Warning: The Ruby Homebrew installer is now deprecated and has been rewritten in
+Bash. Please migrate to the following command:
+  /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+
+EOS
+
+Kernel.exec &quot;/bin/bash&quot;, &quot;-c&quot;, '/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;'
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-99513" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701004-55224">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/ruby
+
+STDERR.print &lt;&lt;EOS
+Warning: The Ruby Homebrew installer is now deprecated and has been rewritten in
+Bash. Please migrate to the following command:
+  /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;
+
+EOS
+
+Kernel.exec &quot;/bin/bash&quot;, &quot;-c&quot;, '/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;'
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701004-55224" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在电脑中新建文件brew_install，把内容复制进去，保存。</p> <p>把brew_install文件里面的地址换成国内源。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#BREW_REPO = &quot;https://github.com/Homebrew/brew&quot;.freeze</span>
+BREW_REPO <span class="token operator">=</span> <span class="token string">&quot;git://mirrors.ustc.edu.cn/brew.git&quot;</span>.freeze
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-52458">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#BREW_REPO = &quot;https://github.com/Homebrew/brew&quot;.freeze
+BREW_REPO = &quot;git://mirrors.ustc.edu.cn/brew.git&quot;.freeze
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-52458" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-96469">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#BREW_REPO = &quot;https://github.com/Homebrew/brew&quot;.freeze
+BREW_REPO = &quot;git://mirrors.ustc.edu.cn/brew.git&quot;.freeze
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-96469" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>执行命令进行安装</p> <div class="language-bash extra-class"><pre class="language-bash"><code>/usr/bin/ruby ~/brew_install
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-89615">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="/usr/bin/ruby ~/brew_install
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-89615" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-1756">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="/usr/bin/ruby ~/brew_install
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-1756" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ol start="2"><li>关于第1步和大多数是一样的。但在安装到</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token operator">==</span><span class="token operator">&gt;</span> Tapping homebrew/core
+Cloning into <span class="token string">'/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core'</span><span class="token punctuation">..</span>.
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-20447">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="==&gt; Tapping homebrew/core
+Cloning into '/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core'...
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-20447" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-23341">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="==&gt; Tapping homebrew/core
+Cloning into '/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core'...
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-23341" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>就会出现问题。没关系，<strong>在出现问题前直接关掉命令窗口Terminal</strong>，然后进入下面的 Taps 目录，clone homebrew-core</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /usr/local/Homebrew/Library/Taps/homebrew
+
+<span class="token function">git</span> clone https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-76886">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd /usr/local/Homebrew/Library/Taps/homebrew
+
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-76886" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-96178">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd /usr/local/Homebrew/Library/Taps/homebrew
+
+git clone https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-96178" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>3.替换homebrew源</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>&quot;</span>
+<span class="token function">git</span> remote set-url origin git://mirrors.ustc.edu.cn/brew.git
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-70548">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd &quot;$(brew --repo)&quot;
+git remote set-url origin git://mirrors.ustc.edu.cn/brew.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-70548" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-42219">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd &quot;$(brew --repo)&quot;
+git remote set-url origin git://mirrors.ustc.edu.cn/brew.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-42219" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>替换homebrew-core源</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>/Library/Taps/homebrew/homebrew-core&quot;</span>
+<span class="token function">git</span> remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-41506">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-41506" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-26642">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-26642" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>brew更新</p> <div class="language-bash extra-class"><pre class="language-bash"><code>brew update
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-39262">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="brew update
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-39262" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-54839">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="brew update
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-54839" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>设置 bintray镜像</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles'</span> <span class="token operator">&gt;&gt;</span> ~/.bash_profile
+<span class="token builtin class-name">source</span> ~/.bash_profile
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-30055">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-30055" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701005-13873">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' &gt;&gt; ~/.bash_profile
+source ~/.bash_profile
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701005-13873" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-iterm2"><a href="#安装-iterm2" class="header-anchor">#</a> 安装 iTerm2</h2> <div class="language-md extra-class"><pre class="language-md"><code>https://www.iterm2.com/
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701011-6348">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://www.iterm2.com/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701011-6348" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701011-81789">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://www.iterm2.com/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701011-81789" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="配置-iterm2"><a href="#配置-iterm2" class="header-anchor">#</a> 配置 iTerm2</h3> <h4 id="美化"><a href="#美化" class="header-anchor">#</a> 美化</h4> <div class="language-md extra-class"><pre class="language-md"><code>https://blog.csdn.net/gangyin5071/article/details/79601132
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701012-85083">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://blog.csdn.net/gangyin5071/article/details/79601132
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701012-85083" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701012-50541">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://blog.csdn.net/gangyin5071/article/details/79601132
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701012-50541" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h4> <p><strong><code>sudo vim ~/.zshrc</code></strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token assign-left variable">ZSH_DISABLE_COMPFIX</span><span class="token operator">=</span>true
+<span class="token comment"># If you come from bash you might have to change your $PATH.</span>
+<span class="token comment"># export PATH=$HOME/bin:/usr/local/bin:$PATH</span>
+
+<span class="token comment"># Path to your oh-my-zsh installation.</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">ZSH</span><span class="token operator">=</span><span class="token string">&quot;/Users/vino/.oh-my-zsh&quot;</span>
+
+<span class="token comment"># Set name of the theme to load --- if set to &quot;random&quot;, it will</span>
+<span class="token comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span>
+<span class="token comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span>
+<span class="token comment"># See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</span>
+<span class="token assign-left variable">ZSH_THEME</span><span class="token operator">=</span><span class="token string">&quot;ys&quot;</span>
+
+<span class="token comment"># Set list of themes to pick from when loading at random</span>
+<span class="token comment"># Setting this variable when ZSH_THEME=random will cause zsh to load</span>
+<span class="token comment"># a theme from this variable instead of looking in ~/.oh-my-zsh/themes/</span>
+<span class="token comment"># If set to an empty array, this variable will have no effect.</span>
+<span class="token comment"># ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )</span>
+
+<span class="token comment"># Uncomment the following line to use case-sensitive completion.</span>
+<span class="token comment"># CASE_SENSITIVE=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to use hyphen-insensitive completion.</span>
+<span class="token comment"># Case-sensitive completion must be off. _ and - will be interchangeable.</span>
+<span class="token comment"># HYPHEN_INSENSITIVE=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to disable bi-weekly auto-update checks.</span>
+<span class="token comment"># DISABLE_AUTO_UPDATE=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to automatically update without prompting.</span>
+<span class="token comment"># DISABLE_UPDATE_PROMPT=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to change how often to auto-update (in days).</span>
+<span class="token comment"># export UPDATE_ZSH_DAYS=13</span>
+
+<span class="token comment"># Uncomment the following line if pasting URLs and other text is messed up.</span>
+<span class="token comment"># DISABLE_MAGIC_FUNCTIONS=true</span>
+
+<span class="token comment"># Uncomment the following line to disable colors in ls.</span>
+<span class="token comment"># DISABLE_LS_COLORS=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to disable auto-setting terminal title.</span>
+<span class="token comment"># DISABLE_AUTO_TITLE=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to enable command auto-correction.</span>
+<span class="token comment"># ENABLE_CORRECTION=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line to display red dots whilst waiting for completion.</span>
+<span class="token comment"># COMPLETION_WAITING_DOTS=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line if you want to disable marking untracked files</span>
+<span class="token comment"># under VCS as dirty. This makes repository status check for large repositories</span>
+<span class="token comment"># much, much faster.</span>
+<span class="token comment"># DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;</span>
+
+<span class="token comment"># Uncomment the following line if you want to change the command execution time</span>
+<span class="token comment"># stamp shown in the history command output.</span>
+<span class="token comment"># You can set one of the optional three formats:</span>
+<span class="token comment"># &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;</span>
+<span class="token comment"># or set a custom format using the strftime function format specifications,</span>
+<span class="token comment"># see 'man strftime' for details.</span>
+<span class="token comment"># HIST_STAMPS=&quot;mm/dd/yyyy&quot;</span>
+
+<span class="token comment"># Would you like to use another custom folder than $ZSH/custom?</span>
+<span class="token comment"># ZSH_CUSTOM=/path/to/new-custom-folder</span>
+
+<span class="token comment"># Which plugins would you like to load?</span>
+<span class="token comment"># Standard plugins can be found in ~/.oh-my-zsh/plugins/*</span>
+<span class="token comment"># Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span>
+<span class="token comment"># Example format: plugins=(rails git textmate ruby lighthouse)</span>
+<span class="token comment"># Add wisely, as too many plugins slow down shell startup.</span>
+<span class="token assign-left variable">plugins</span><span class="token operator">=</span><span class="token punctuation">(</span>zsh-autosuggestions <span class="token function">git</span><span class="token punctuation">)</span>
+
+<span class="token builtin class-name">source</span> <span class="token variable">$ZSH</span>/oh-my-zsh.sh
+
+<span class="token comment"># User configuration</span>
+
+<span class="token comment"># export MANPATH=&quot;/usr/local/man:$MANPATH&quot;</span>
+
+<span class="token comment"># You may need to manually set your language environment</span>
+<span class="token comment"># export LANG=en_US.UTF-8</span>
+
+<span class="token comment"># Preferred editor for local and remote sessions</span>
+<span class="token comment"># if [[ -n $SSH_CONNECTION ]]; then</span>
+<span class="token comment">#   export EDITOR='vim'</span>
+<span class="token comment"># else</span>
+<span class="token comment">#   export EDITOR='mvim'</span>
+<span class="token comment"># fi</span>
+
+<span class="token comment"># Compilation flags</span>
+<span class="token comment"># export ARCHFLAGS=&quot;-arch x86_64&quot;</span>
+
+<span class="token comment"># Set personal aliases, overriding those provided by oh-my-zsh libs,</span>
+<span class="token comment"># plugins, and themes. Aliases can be placed here, though oh-my-zsh</span>
+<span class="token comment"># users are encouraged to define aliases within the ZSH_CUSTOM folder.</span>
+<span class="token comment"># For a full list of active aliases, run `alias`.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Example aliases</span>
+<span class="token comment"># alias zshconfig=&quot;mate ~/.zshrc&quot;</span>
+<span class="token comment"># alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">cdp</span><span class="token operator">=</span><span class="token string">&quot;cd ~/Documents/projects&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">cds</span><span class="token operator">=</span><span class="token string">&quot;cd ~/Documents/study&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">cdg</span><span class="token operator">=</span><span class="token string">&quot;cd ~/Documents/GitHub&quot;</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">cdnginx</span><span class="token operator">=</span><span class="token string">'cd /usr/local/etc/nginx'</span>
+
+<span class="token comment"># source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span>
+<span class="token builtin class-name">source</span> /Users/vino/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701012-81111">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="ZSH_DISABLE_COMPFIX=true
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=&quot;/Users/vino/.oh-my-zsh&quot;
+
+# Set name of the theme to load --- if set to &quot;random&quot;, it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=&quot;ys&quot;
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE=&quot;true&quot;
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT=&quot;true&quot;
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS=&quot;true&quot;
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE=&quot;true&quot;
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION=&quot;true&quot;
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS=&quot;true&quot;
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS=&quot;mm/dd/yyyy&quot;
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(zsh-autosuggestions git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH=&quot;/usr/local/man:$MANPATH&quot;
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS=&quot;-arch x86_64&quot;
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig=&quot;mate ~/.zshrc&quot;
+# alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;
+alias cdp=&quot;cd ~/Documents/projects&quot;
+alias cds=&quot;cd ~/Documents/study&quot;
+alias cdg=&quot;cd ~/Documents/GitHub&quot;
+alias cdnginx='cd /usr/local/etc/nginx'
+
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/vino/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701012-81111" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701012-65889">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="ZSH_DISABLE_COMPFIX=true
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=&quot;/Users/vino/.oh-my-zsh&quot;
+
+# Set name of the theme to load --- if set to &quot;random&quot;, it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME=&quot;ys&quot;
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( &quot;robbyrussell&quot; &quot;agnoster&quot; )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE=&quot;true&quot;
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE=&quot;true&quot;
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT=&quot;true&quot;
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS=&quot;true&quot;
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE=&quot;true&quot;
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION=&quot;true&quot;
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS=&quot;true&quot;
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# &quot;mm/dd/yyyy&quot;|&quot;dd.mm.yyyy&quot;|&quot;yyyy-mm-dd&quot;
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS=&quot;mm/dd/yyyy&quot;
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(zsh-autosuggestions git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH=&quot;/usr/local/man:$MANPATH&quot;
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS=&quot;-arch x86_64&quot;
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig=&quot;mate ~/.zshrc&quot;
+# alias ohmyzsh=&quot;mate ~/.oh-my-zsh&quot;
+alias cdp=&quot;cd ~/Documents/projects&quot;
+alias cds=&quot;cd ~/Documents/study&quot;
+alias cdg=&quot;cd ~/Documents/GitHub&quot;
+alias cdnginx='cd /usr/local/etc/nginx'
+
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/vino/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701012-65889" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-vscode"><a href="#安装-vscode" class="header-anchor">#</a> 安装 VsCode</h2> <div class="language-md extra-class"><pre class="language-md"><code>https://code.visualstudio.com/
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701014-64520">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://code.visualstudio.com/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701014-64520" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701014-66456">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://code.visualstudio.com/
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701014-66456" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="配置-vscode"><a href="#配置-vscode" class="header-anchor">#</a> 配置 VsCode</h3> <h4 id="安装常用插件"><a href="#安装常用插件" class="header-anchor">#</a> 安装常用插件</h4> <div class="language-md extra-class"><pre class="language-md"><code><span class="token list punctuation">1.</span> Auto Rename Tag
+<span class="token list punctuation">2.</span> Beautify
+<span class="token list punctuation">3.</span> Bracket Pair Colorizer
+<span class="token list punctuation">4.</span> Chinese(Simplified) Language Pack for Visual Studio Code
+<span class="token list punctuation">5.</span> Code Runner
+<span class="token list punctuation">6.</span> cssrem
+<span class="token list punctuation">7.</span> Debugger for Chrome
+<span class="token list punctuation">8.</span> ES7 React/Redux/GraphQL/React-Native snippets
+<span class="token list punctuation">9.</span> HTML Snippets
+<span class="token list punctuation">10.</span> JavaScript(ES6) code snippets
+<span class="token list punctuation">11.</span> jQuery Code Snippets
+<span class="token list punctuation">12.</span> Live Server
+<span class="token list punctuation">13.</span> Monokai Pro
+<span class="token list punctuation">14.</span> npm Intellisense
+<span class="token list punctuation">15.</span> open in browser
+<span class="token list punctuation">16.</span> Path Intellisense
+<span class="token list punctuation">17.</span> Polacode
+<span class="token list punctuation">18.</span> Reactjs code snippets
+<span class="token list punctuation">19.</span> TODO Highlight
+<span class="token list punctuation">20.</span> Vetur
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-83085">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1. Auto Rename Tag
+2. Beautify
+3. Bracket Pair Colorizer
+4. Chinese(Simplified) Language Pack for Visual Studio Code
+5. Code Runner
+6. cssrem
+7. Debugger for Chrome
+8. ES7 React/Redux/GraphQL/React-Native snippets
+9. HTML Snippets
+10. JavaScript(ES6) code snippets
+11. jQuery Code Snippets
+12. Live Server
+13. Monokai Pro
+14. npm Intellisense
+15. open in browser
+16. Path Intellisense
+17. Polacode
+18. Reactjs code snippets
+19. TODO Highlight
+20. Vetur
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-83085" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-9219">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="1. Auto Rename Tag
+2. Beautify
+3. Bracket Pair Colorizer
+4. Chinese(Simplified) Language Pack for Visual Studio Code
+5. Code Runner
+6. cssrem
+7. Debugger for Chrome
+8. ES7 React/Redux/GraphQL/React-Native snippets
+9. HTML Snippets
+10. JavaScript(ES6) code snippets
+11. jQuery Code Snippets
+12. Live Server
+13. Monokai Pro
+14. npm Intellisense
+15. open in browser
+16. Path Intellisense
+17. Polacode
+18. Reactjs code snippets
+19. TODO Highlight
+20. Vetur
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-9219" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="配置主题"><a href="#配置主题" class="header-anchor">#</a> 配置主题</h4> <ol><li>主题</li></ol> <div class="language-md extra-class"><pre class="language-md"><code>设置 --&gt; 颜色主题 --&gt; Monokai Pro
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-17619">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="设置 --&gt; 颜色主题 --&gt; Monokai Pro
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-17619" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-50405">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="设置 --&gt; 颜色主题 --&gt; Monokai Pro
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-50405" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ol start="2"><li>图标</li></ol> <div class="language-md extra-class"><pre class="language-md"><code>设置 --&gt; 文件图标主题 --&gt; Monokai Pro Icons
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-36178">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="设置 --&gt; 文件图标主题 --&gt; Monokai Pro Icons
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-36178" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-65781">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="设置 --&gt; 文件图标主题 --&gt; Monokai Pro Icons
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-65781" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>注意 <code>Monokai Pro</code> 主题是收费的，如果不购买的话，后续每次打开 <code>VsCode</code> 的时候，都会弹窗提示购买。这里附上网友共享的一个许可证秘钥：</p> <ol><li>打开 <code>VSCode</code> 的命令面板，Windows快捷键 <code>ctrl+shift+p</code>；MAC 快捷键<code>Command⌘+shift+p</code></li> <li>输入<code>Monokai Pro: enter license</code>，enter！</li> <li>输入 <code>email</code> 地址为 <strong><code>id@chinapyg.com</code></strong>，enter！</li> <li>输入 <strong><code>lincese key</code></strong> ，enter！</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>d055c-36b72-151ce-350f4-a8f69
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-72116">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="d055c-36b72-151ce-350f4-a8f69
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-72116" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-50295">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="d055c-36b72-151ce-350f4-a8f69
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-50295" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="下载安装编辑器字体"><a href="#下载安装编辑器字体" class="header-anchor">#</a> 下载安装编辑器字体</h4> <div class="language-bash extra-class"><pre class="language-bash"><code>https://github.com/augustVino/Font.git
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-55623">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://github.com/augustVino/Font.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-55623" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-7138">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="https://github.com/augustVino/Font.git
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-7138" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里需要安装两种字体，由于 <code>Operator Mono</code> 需要建立在 <code>Fira Code</code> 字体的环境基础上，所以要先安装 <code>Fira Code</code> 字体，然后安装 <code>Operator Mono</code>。</p> <blockquote><p>下面是在 <code>Mac</code> 上如何安装字体的图文，若需要在 <code>windows</code> 上安装，请自行查看字体安装的方式。</p></blockquote> <ol><li>按住 <code>cmd + space</code>，搜索“<strong>字体册</strong>”，然后打开：</li> <li>点击 <code>+</code> 号，在弹窗中选中字体所在的文件夹，然后确定即可.</li></ol> <h4 id="修改配置项"><a href="#修改配置项" class="header-anchor">#</a> 修改配置项</h4> <p>修改后，重启编辑器。</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;editor.fontSize&quot;</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;cssrem.rootFontSize&quot;</span><span class="token operator">:</span> <span class="token number">37.5</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;workbench.colorTheme&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Monokai Pro&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;workbench.iconTheme&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Monokai Pro Icons&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.autoClosingBrackets&quot;</span><span class="token operator">:</span> <span class="token string">&quot;always&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.autoClosingQuotes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;always&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.fontLigatures&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.fontFamily&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Operator Mono, Menlo, Monaco, 'Courier New', monospace&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.tabSize&quot;</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;editor.wordWrap&quot;</span><span class="token operator">:</span> <span class="token string">&quot;on&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;[javascript]&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;editor.defaultFormatter&quot;</span><span class="token operator">:</span> <span class="token string">&quot;HookyQR.beautify&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;[html]&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;editor.defaultFormatter&quot;</span><span class="token operator">:</span> <span class="token string">&quot;HookyQR.beautify&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;[json]&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;editor.defaultFormatter&quot;</span><span class="token operator">:</span> <span class="token string">&quot;HookyQR.beautify&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;[jsonc]&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;editor.defaultFormatter&quot;</span><span class="token operator">:</span> <span class="token string">&quot;HookyQR.beautify&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;javascript.implicitProjectConfig.experimentalDecorators&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-30682">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    &quot;editor.fontSize&quot;: 20,
+    &quot;cssrem.rootFontSize&quot;: 37.5,
+    &quot;workbench.colorTheme&quot;: &quot;Monokai Pro&quot;,
+    &quot;workbench.iconTheme&quot;: &quot;Monokai Pro Icons&quot;,
+    &quot;editor.autoClosingBrackets&quot;: &quot;always&quot;,
+    &quot;editor.autoClosingQuotes&quot;: &quot;always&quot;,
+    &quot;editor.fontLigatures&quot;: true,
+    &quot;editor.fontFamily&quot;: &quot;Operator Mono, Menlo, Monaco, 'Courier New', monospace&quot;,
+    &quot;editor.tabSize&quot;: 4,
+    &quot;editor.wordWrap&quot;: &quot;on&quot;,
+    &quot;[javascript]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[html]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[json]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[jsonc]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;javascript.implicitProjectConfig.experimentalDecorators&quot;: true
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-30682" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701015-18738">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    &quot;editor.fontSize&quot;: 20,
+    &quot;cssrem.rootFontSize&quot;: 37.5,
+    &quot;workbench.colorTheme&quot;: &quot;Monokai Pro&quot;,
+    &quot;workbench.iconTheme&quot;: &quot;Monokai Pro Icons&quot;,
+    &quot;editor.autoClosingBrackets&quot;: &quot;always&quot;,
+    &quot;editor.autoClosingQuotes&quot;: &quot;always&quot;,
+    &quot;editor.fontLigatures&quot;: true,
+    &quot;editor.fontFamily&quot;: &quot;Operator Mono, Menlo, Monaco, 'Courier New', monospace&quot;,
+    &quot;editor.tabSize&quot;: 4,
+    &quot;editor.wordWrap&quot;: &quot;on&quot;,
+    &quot;[javascript]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[html]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[json]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;[jsonc]&quot;: {
+        &quot;editor.defaultFormatter&quot;: &quot;HookyQR.beautify&quot;
+    },
+    &quot;javascript.implicitProjectConfig.experimentalDecorators&quot;: true
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701015-18738" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-nginx"><a href="#安装-nginx" class="header-anchor">#</a> 安装 nginx</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>brew <span class="token function">install</span> nginx
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701016-92108">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="brew install nginx
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701016-92108" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701016-59283">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="brew install nginx
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701016-59283" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="安装-whistle"><a href="#安装-whistle" class="header-anchor">#</a> 安装 whistle</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g whistle
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701018-34330">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm install -g whistle
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701018-34330" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701018-86893">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm install -g whistle
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701018-86893" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/Others/5.8.html" class="prev">
+        解决 Github 下载速度太慢
+      </a></span> <span class="next"><a href="/FrontEnd/Pay/6.1.html">
+        H5 页面唤起微信支付并签约
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/120.c419da80.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

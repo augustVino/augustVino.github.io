@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>浅出篇 7 个角度吃透 Lodash 防抖节流原理 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/58.7bb19fe1.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第1期：this全面解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第2期：原型 Prototype</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第4期：节流防抖</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/4.1.html" class="sidebar-link">深入浅出节流函数 throttle</a></li><li><a href="/Blog/4.2.html" class="sidebar-link">深入浅出防抖函数 debounce</a></li><li><a href="/Blog/4.3.html" class="sidebar-link">[译] Throttle 和 Debounce 在 React 中的应用</a></li><li><a href="/Blog/4.4.html" class="sidebar-link">深入篇阿里 P6 必会 Lodash 防抖节流函数实现原理</a></li><li><a href="/Blog/4.5.html" class="active sidebar-link">浅出篇 7 个角度吃透 Lodash 防抖节流原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.5.html#引言" class="sidebar-link">引言</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#节流函数-throttle" class="sidebar-link">节流函数 Throttle</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-1" class="sidebar-link">角度 1</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-2" class="sidebar-link">角度 2</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-3" class="sidebar-link">角度 3</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#防抖函数-debounce" class="sidebar-link">防抖函数 Debounce</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-4" class="sidebar-link">角度 4</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-5" class="sidebar-link">角度 5</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-6" class="sidebar-link">角度 6</a></li><li class="sidebar-sub-header"><a href="/Blog/4.5.html#角度-7" class="sidebar-link">角度 7</a></li></ul></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第6期：深浅拷贝原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第7期：调用堆栈</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="浅出篇-7-个角度吃透-lodash-防抖节流原理"><a href="#浅出篇-7-个角度吃透-lodash-防抖节流原理" class="header-anchor">#</a> 浅出篇 7 个角度吃透 Lodash 防抖节流原理</h1> <h2 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h2> <p>上一节我们学习了 Lodash 中防抖和节流函数是如何实现的，并对源码浅析一二，今天这篇文章会通过七个小例子为切入点，换种方式继续解读源码。</p> <h2 id="节流函数-throttle"><a href="#节流函数-throttle" class="header-anchor">#</a> 节流函数 Throttle</h2> <p>我们先来看一张图，这张图充分说明了 <code>Throttle</code>（节流）和 <code>Debounce</code>（防抖）的区别，以及在不同配置下产生的不同效果，其中 <code>mousemove</code> 事件每 50 ms 触发一次，即下图中的每一小隔是 50 ms。今天这篇文章就从下面这张图开始介绍。</p> <div class="img-box"><img src="/img/4.5-1.webp" alt="4.5-1"> <!----></div> <h3 id="角度-1"><a href="#角度-1" class="header-anchor">#</a> 角度 1</h3> <p><code>lodash.throttle(fn, 200, {leading: true, trailing: true})</code></p> <h4 id="mousemove-第一次触发"><a href="#mousemove-第一次触发" class="header-anchor">#</a> mousemove 第一次触发</h4> <p>先来看下 throttle 源码</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> wait<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 首尾调用默认为 true</span>
+  <span class="token keyword">let</span> leading <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token keyword">let</span> trailing <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> func <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Expected a function'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// options 是否是对象</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    leading <span class="token operator">=</span> <span class="token string">'leading'</span> <span class="token keyword">in</span> options <span class="token operator">?</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>leading <span class="token operator">:</span> leading
+    trailing <span class="token operator">=</span> <span class="token string">'trailing'</span> <span class="token keyword">in</span> options <span class="token operator">?</span> <span class="token operator">!</span><span class="token operator">!</span>options<span class="token punctuation">.</span>trailing <span class="token operator">:</span> trailing
+  <span class="token punctuation">}</span>
+  <span class="token comment">// maxWait 为 wait 的防抖函数</span>
+  <span class="token keyword">return</span> <span class="token function">debounce</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> wait<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    leading<span class="token punctuation">,</span>
+    trailing<span class="token punctuation">,</span>
+    <span class="token string">'maxWait'</span><span class="token operator">:</span> wait<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-73423">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function throttle(func, wait, options) {
+  // 首尾调用默认为 true
+  let leading = true
+  let trailing = true
+
+  if (typeof func !== 'function') {
+    throw new TypeError('Expected a function')
+  }
+  // options 是否是对象
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading
+    trailing = 'trailing' in options ? !!options.trailing : trailing
+  }
+  // maxWait 为 wait 的防抖函数
+  return debounce(func, wait, {
+    leading,
+    trailing,
+    'maxWait': wait,
+  })
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-73423" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-57122">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function throttle(func, wait, options) {
+  // 首尾调用默认为 true
+  let leading = true
+  let trailing = true
+
+  if (typeof func !== 'function') {
+    throw new TypeError('Expected a function')
+  }
+  // options 是否是对象
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading
+    trailing = 'trailing' in options ? !!options.trailing : trailing
+  }
+  // maxWait 为 wait 的防抖函数
+  return debounce(func, wait, {
+    leading,
+    trailing,
+    'maxWait': wait,
+  })
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-57122" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>所以 <code>throttle(fn, 200, {leading: true, trailing: true})</code> 返回内容是 <code>debounce(fn, 200, {leading: true, trailing: true, maxWait: 200})</code>，多了 <code>maxWait: 200</code> 这部分。</p> <p>先打个预防针，后面即将开始比较难的部分，看下 <code>debounce</code> 入口函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 入口函数，返回此函数</span>
+<span class="token keyword">function</span> <span class="token function">debounced</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 获取当前时间</span>
+  <span class="token keyword">const</span> time <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 判断此时是否应该执行 func 函数</span>
+  <span class="token keyword">const</span> isInvoking <span class="token operator">=</span> <span class="token function">shouldInvoke</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+
+  <span class="token comment">// 赋值给闭包，用于其他函数调用</span>
+  lastArgs <span class="token operator">=</span> args
+  lastThis <span class="token operator">=</span> <span class="token keyword">this</span>
+  lastCallTime <span class="token operator">=</span> time
+
+  <span class="token comment">// 执行</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>isInvoking<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 无 timerId 的情况有两种：</span>
+    <span class="token comment">// 1、首次调用 </span>
+    <span class="token comment">// 2、trailingEdge 执行过函数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>timerId <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">leadingEdge</span><span class="token punctuation">(</span>lastCallTime<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 如果设置了最大等待时间，则立即执行 func</span>
+    <span class="token comment">// 1、开启定时器，到时间后触发 trailingEdge 这个函数。</span>
+    <span class="token comment">// 2、执行 func，并返回结果</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>maxing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 循环定时器中处理调用</span>
+      timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>lastCallTime<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 一种特殊情况，trailing 设置为 true 时，前一个 wait 的 trailingEdge 已经执行了函数</span>
+  <span class="token comment">// 此时函数被调用时 shouldInvoke 返回 false，所以要开启定时器</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>timerId <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 不需要执行时，返回结果</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-3764">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 入口函数，返回此函数
+function debounced(...args) {
+  // 获取当前时间
+  const time = Date.now()
+  // 判断此时是否应该执行 func 函数
+  const isInvoking = shouldInvoke(time)
+
+  // 赋值给闭包，用于其他函数调用
+  lastArgs = args
+  lastThis = this
+  lastCallTime = time
+
+  // 执行
+  if (isInvoking) {
+    // 无 timerId 的情况有两种：
+    // 1、首次调用 
+    // 2、trailingEdge 执行过函数
+    if (timerId === undefined) {
+      return leadingEdge(lastCallTime)
+    }
+    
+    // 如果设置了最大等待时间，则立即执行 func
+    // 1、开启定时器，到时间后触发 trailingEdge 这个函数。
+    // 2、执行 func，并返回结果
+    if (maxing) {
+      // 循环定时器中处理调用
+      timerId = startTimer(timerExpired, wait)
+      return invokeFunc(lastCallTime)
+    }
+  }
+  // 一种特殊情况，trailing 设置为 true 时，前一个 wait 的 trailingEdge 已经执行了函数
+  // 此时函数被调用时 shouldInvoke 返回 false，所以要开启定时器
+  if (timerId === undefined) {
+    timerId = startTimer(timerExpired, wait)
+  }
+  // 不需要执行时，返回结果
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-3764" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-30334">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 入口函数，返回此函数
+function debounced(...args) {
+  // 获取当前时间
+  const time = Date.now()
+  // 判断此时是否应该执行 func 函数
+  const isInvoking = shouldInvoke(time)
+
+  // 赋值给闭包，用于其他函数调用
+  lastArgs = args
+  lastThis = this
+  lastCallTime = time
+
+  // 执行
+  if (isInvoking) {
+    // 无 timerId 的情况有两种：
+    // 1、首次调用 
+    // 2、trailingEdge 执行过函数
+    if (timerId === undefined) {
+      return leadingEdge(lastCallTime)
+    }
+    
+    // 如果设置了最大等待时间，则立即执行 func
+    // 1、开启定时器，到时间后触发 trailingEdge 这个函数。
+    // 2、执行 func，并返回结果
+    if (maxing) {
+      // 循环定时器中处理调用
+      timerId = startTimer(timerExpired, wait)
+      return invokeFunc(lastCallTime)
+    }
+  }
+  // 一种特殊情况，trailing 设置为 true 时，前一个 wait 的 trailingEdge 已经执行了函数
+  // 此时函数被调用时 shouldInvoke 返回 false，所以要开启定时器
+  if (timerId === undefined) {
+    timerId = startTimer(timerExpired, wait)
+  }
+  // 不需要执行时，返回结果
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-30334" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>对于 <code>debounce(fn, 200, {leading: true, trailing: true, maxWait: 200})</code> 来说，会经历如下过程。</p> <ul><li>1、<code>shouldInvoke(time)</code> 中，因为满足条件 <code>lastCallTime === undefined</code>，所以返回 <code>true</code></li> <li>2、<code>lastCallTime = time</code>，所以 <code>lastCallTime</code> 等于当前时间，假设为 0</li> <li>3、<code>timerId === undefined</code> 满足，执行 <code>leadingEdge(lastCallTime)</code> 方法</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行连续事件刚开始的那次回调</span>
+<span class="token keyword">function</span> <span class="token function">leadingEdge</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1、设置上一次执行 func 的时间</span>
+  lastInvokeTime <span class="token operator">=</span> time
+  <span class="token comment">// 2、开启定时器，为了事件结束后的那次回调</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+  <span class="token comment">// 3、如果配置了 leading 执行传入函数 func</span>
+  <span class="token comment">// leading 来源自 !!options.leading</span>
+  <span class="token keyword">return</span> leading <span class="token operator">?</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span> <span class="token operator">:</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-30340">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-30340" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-30287">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-30287" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>4、在 <code>leadingEdge(time)</code> 中，设置 <code>lastInvokeTime</code> 为当前时间即 0，开启 200 毫秒定时器，执行 <code>invokeFunc(time)</code> 并返回</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行 Func 函数</span>
+<span class="token keyword">function</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 获取上一次执行 debounced 的参数</span>
+  <span class="token keyword">const</span> args <span class="token operator">=</span> lastArgs
+  <span class="token comment">// 获取上一次的 this</span>
+  <span class="token keyword">const</span> thisArg <span class="token operator">=</span> lastThis
+
+  <span class="token comment">// 重置</span>
+  lastArgs <span class="token operator">=</span> lastThis <span class="token operator">=</span> <span class="token keyword">undefined</span>
+  lastInvokeTime <span class="token operator">=</span> time
+  result <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>thisArg<span class="token punctuation">,</span> args<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-3889">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行 Func 函数
+function invokeFunc(time) {
+  // 获取上一次执行 debounced 的参数
+  const args = lastArgs
+  // 获取上一次的 this
+  const thisArg = lastThis
+
+  // 重置
+  lastArgs = lastThis = undefined
+  lastInvokeTime = time
+  result = func.apply(thisArg, args)
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-3889" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715957-96587">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行 Func 函数
+function invokeFunc(time) {
+  // 获取上一次执行 debounced 的参数
+  const args = lastArgs
+  // 获取上一次的 this
+  const thisArg = lastThis
+
+  // 重置
+  lastArgs = lastThis = undefined
+  lastInvokeTime = time
+  result = func.apply(thisArg, args)
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715957-96587" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>5、在 <code>invokeFunc(time)</code> 中，执行 <code>func.apply(thisArg, args)</code>，即 fn 函数第一次执行，并把结果赋值给 result，便于后续触发时直接返回。同时重置 <code>lastInvokeTime</code> 为当前时间即 0，清空 <code>lastArgs</code> 和 <code>lastThis</code>。</li> <li>6、第一次触发已经完成，注意此时 <code>lastCallTime</code> 和 <code>lastInvokeTime</code> 都为 0，200 毫秒的定时器还在运行中。</li></ul> <h4 id="mousemove-第二次触发"><a href="#mousemove-第二次触发" class="header-anchor">#</a> mousemove 第二次触发</h4> <p>50 毫秒后第二次触发到来，此时当前时间 <code>time</code> 为 50，<code>wait</code> 为 200， <code>maxWait</code> 为 200，<code>maxing</code> 为 true，<code>lastCallTime</code> 和 <code>lastInvokeTime</code> 都为 0，<code>timerId</code> 定时器存在，我们来看下执行步骤。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">shouldInvoke</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 当前时间距离上一次调用 debounce 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastCall <span class="token operator">=</span> time <span class="token operator">-</span> lastCallTime
+  <span class="token comment">// 当前时间距离上一次执行 func 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastInvoke <span class="token operator">=</span> time <span class="token operator">-</span> lastInvokeTime
+
+  <span class="token comment">// 下述 4 种情况返回 true</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span> lastCallTime <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&gt;=</span> wait<span class="token punctuation">)</span> <span class="token operator">||</span>
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>maxing <span class="token operator">&amp;&amp;</span> timeSinceLastInvoke <span class="token operator">&gt;=</span> maxWait<span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-74568">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-74568" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-36120">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-36120" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>1、<code>shouldInvoke(time)</code> 中，<code>timeSinceLastCall</code> 为 50，<code>timeSinceLastInvoke</code> 为 50，4 种条件都不满足，返回 false。</li> <li>2、此时 <code>isInvoking</code> 为 false，同时 <code>timerId === undefined</code> 不满足，直接返回第一次触发时的 <code>result</code></li> <li>3、第二次触发完成，并不会执行 fn，只会返回上次执行的结果 <code>result</code></li> <li>4、第三次和第四次触发时，效果一样，就不再重复了。</li></ul> <h4 id="mousemove-第五次触发"><a href="#mousemove-第五次触发" class="header-anchor">#</a> mousemove 第五次触发</h4> <p>距第一次触发 200 毫秒后第五次触发到来，此时当前时间 <code>time</code> 为 200，<code>wait</code> 为 200， <code>maxWait</code> 为 200，<code>maxing</code> 为 true，<code>lastCallTime</code> 为 150， <code>lastInvokeTime</code> 为 0，timerId 定时器存在，我们来看下执行步骤。</p> <ul><li>1、<code>shouldInvoke(time)</code> 中，<code>timeSinceLastInvoke</code> 为 200，满足<code>(maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait)</code>，所以返回 <code>true</code></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// debounced 方法中执行到这部分</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>maxing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 循环定时器中处理调用</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>lastCallTime<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-8237">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// debounced 方法中执行到这部分
+if (maxing) {
+  // 循环定时器中处理调用
+  timerId = startTimer(timerExpired, wait)
+  return invokeFunc(lastCallTime)
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-8237" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-28415">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// debounced 方法中执行到这部分
+if (maxing) {
+  // 循环定时器中处理调用
+  timerId = startTimer(timerExpired, wait)
+  return invokeFunc(lastCallTime)
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-28415" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>2、满足 <code>maxing</code> 条件，重新开启 200 毫秒的定时器，并执行 <code>invokeFunc(lastCallTime)</code> 函数</li> <li>3、<code>invokeFunc(time)</code> 中，重置 <code>lastInvokeTime</code> 为当前时间即 200，清空 <code>lastArgs</code> 和 <code>lastThis</code></li> <li>4、第六、七、八次触发时，同第二次触发效果一致，就不再重复了。</li></ul> <h4 id="mousemove-停止触发"><a href="#mousemove-停止触发" class="header-anchor">#</a> mousemove 停止触发</h4> <p>假设第八次触发之后就停止了滚动，在第八次触发时 <code>time</code> 为 350，所以如果有第九次触发，那么此时是应该执行fn 的，但是此时 <code>mousemove</code> 已经停止了触发，那么还会执行 fn 吗？答案是依旧执行，因为最开始设置了 <code>{trailing: true}</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 开启定时器</span>
+<span class="token keyword">function</span> <span class="token function">startTimer</span><span class="token punctuation">(</span><span class="token parameter">pendingFunc<span class="token punctuation">,</span> wait</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 没传 wait 时调用 window.requestAnimationFrame()</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>useRAF<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 若想在浏览器下次重绘之前继续更新下一帧动画</span>
+    <span class="token comment">// 那么回调函数自身必须再次调用 window.requestAnimationFrame()</span>
+    root<span class="token punctuation">.</span><span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>timerId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> root<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>pendingFunc<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 不使用 RAF 时开启定时器</span>
+  <span class="token keyword">return</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>pendingFunc<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-58508">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 开启定时器
+function startTimer(pendingFunc, wait) {
+  // 没传 wait 时调用 window.requestAnimationFrame()
+  if (useRAF) {
+    // 若想在浏览器下次重绘之前继续更新下一帧动画
+    // 那么回调函数自身必须再次调用 window.requestAnimationFrame()
+    root.cancelAnimationFrame(timerId);
+    return root.requestAnimationFrame(pendingFunc)
+  }
+  // 不使用 RAF 时开启定时器
+  return setTimeout(pendingFunc, wait)
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-58508" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-69764">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 开启定时器
+function startTimer(pendingFunc, wait) {
+  // 没传 wait 时调用 window.requestAnimationFrame()
+  if (useRAF) {
+    // 若想在浏览器下次重绘之前继续更新下一帧动画
+    // 那么回调函数自身必须再次调用 window.requestAnimationFrame()
+    root.cancelAnimationFrame(timerId);
+    return root.requestAnimationFrame(pendingFunc)
+  }
+  // 不使用 RAF 时开启定时器
+  return setTimeout(pendingFunc, wait)
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-69764" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在第五次触发时开启了 200 毫秒的定时器，所以在时间 <code>time</code> 到 400 时会执行 <code>pendingFunc</code>，此时的 <code>pendingFunc</code> 就是 <code>timerExpired</code> 函数，来看下具体的代码。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 定时器回调函数，表示定时结束后的操作</span>
+<span class="token keyword">function</span> <span class="token function">timerExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> time <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 1、是否需要执行</span>
+  <span class="token comment">// 执行事件结束后的那次回调，否则重启定时器</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">shouldInvoke</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">trailingEdge</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> <span class="token function">remainingWait</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-20781">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 定时器回调函数，表示定时结束后的操作
+function timerExpired() {
+  const time = Date.now()
+  // 1、是否需要执行
+  // 执行事件结束后的那次回调，否则重启定时器
+  if (shouldInvoke(time)) {
+    return trailingEdge(time)
+  }
+  // 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发
+  timerId = startTimer(timerExpired, remainingWait(time))
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-20781" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715958-13491">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 定时器回调函数，表示定时结束后的操作
+function timerExpired() {
+  const time = Date.now()
+  // 1、是否需要执行
+  // 执行事件结束后的那次回调，否则重启定时器
+  if (shouldInvoke(time)) {
+    return trailingEdge(time)
+  }
+  // 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发
+  timerId = startTimer(timerExpired, remainingWait(time))
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715958-13491" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>此时在 <code>shouldInvoke(time)</code> 中，<code>time</code> 为 400，<code>lastInvokeTime</code> 为 200，<code>timeSinceLastInvoke</code> 为 200，满足 <code>(maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait)</code>，所以返回 <code>true</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行连续事件结束后的那次回调</span>
+<span class="token keyword">function</span> <span class="token function">trailingEdge</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 清空定时器</span>
+  timerId <span class="token operator">=</span> <span class="token keyword">undefined</span>
+
+  <span class="token comment">// trailing 和 lastArgs 两者同时存在时执行</span>
+  <span class="token comment">// trailing 来源自 'trailing' in options ? !!options.trailing : trailing</span>
+  <span class="token comment">// lastArgs 标记位的作用，意味着 debounce 至少执行过一次</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>trailing <span class="token operator">&amp;&amp;</span> lastArgs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 清空参数</span>
+  lastArgs <span class="token operator">=</span> lastThis <span class="token operator">=</span> <span class="token keyword">undefined</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-71834">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件结束后的那次回调
+function trailingEdge(time) {
+  // 清空定时器
+  timerId = undefined
+
+  // trailing 和 lastArgs 两者同时存在时执行
+  // trailing 来源自 'trailing' in options ? !!options.trailing : trailing
+  // lastArgs 标记位的作用，意味着 debounce 至少执行过一次
+  if (trailing &amp;&amp; lastArgs) {
+    return invokeFunc(time)
+  }
+  // 清空参数
+  lastArgs = lastThis = undefined
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-71834" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-30665">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件结束后的那次回调
+function trailingEdge(time) {
+  // 清空定时器
+  timerId = undefined
+
+  // trailing 和 lastArgs 两者同时存在时执行
+  // trailing 来源自 'trailing' in options ? !!options.trailing : trailing
+  // lastArgs 标记位的作用，意味着 debounce 至少执行过一次
+  if (trailing &amp;&amp; lastArgs) {
+    return invokeFunc(time)
+  }
+  // 清空参数
+  lastArgs = lastThis = undefined
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-30665" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>之后执行 <code>trailingEdge(time)</code>，在这个函数中判断 <code>trailing</code> 和 <code>lastArgs</code> ，此时这两个条件都是 <code>true</code>，所以会执行 <code>invokeFunc(time)</code>，最终执行函数 fn。</p> <p>这里需要说明以下两点</p> <ul><li>如果设置了 <code>{trailing: false}</code>，那么最后一次是不会执行的。对于 <code>throttle</code> 和 <code>debounce</code> 来说，默认值是 true，所以如果没有特意指定 <code>trailing</code>，那么最后一次是一定会执行的。</li> <li>对于 <code>lastArgs</code> 来说，执行 <code>debounced</code> 时会赋值，即每次触发都会重新赋值一次，那什么时候清空呢，在 <code>invokeFunc(time)</code> 中执行 fn 函数时重置为 <code>undefined</code>，所以如果 <code>debounced</code> 只触发了一次，即使设置了 <code>{trailing: true}</code> 那也不会再执行 fn 函数，这个就解答了上篇文章留下的第一道思考题。</li></ul> <h3 id="角度-2"><a href="#角度-2" class="header-anchor">#</a> 角度 2</h3> <p><code>lodash.throttle(fn, 200, {leading: true, trailing: false})</code></p> <p>在「角度 1 之 <code>mousemove</code> 停止触发」这部分中说到，如果不设置 <code>trailing</code> 和设置 <code>{trailing: true}</code> 效果是一样的，事件回调结束后都会再执行一次传入函数 fn，但是如果设置了<code>{trailing: false}</code>，那么事件回调结束后是不会再执行 fn 的。</p> <p>此时的配置对比角度 1 来说，区别在于设置了<code>{trailing: false}</code>，所以实际效果对比 1 来说，就是最后不会额外再执行一次，效果见第一张图。</p> <h3 id="角度-3"><a href="#角度-3" class="header-anchor">#</a> 角度 3</h3> <p><code>lodash.throttle(fn, 200, {leading: false, trailing: true})</code></p> <p>此时的配置和角度 1 相比，区别在于设置了 <code>{leading: false}</code>，所以直接看 <code>leadingEdge(time)</code> 方法就可以了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行连续事件刚开始的那次回调</span>
+<span class="token keyword">function</span> <span class="token function">leadingEdge</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1、设置上一次执行 func 的时间</span>
+  lastInvokeTime <span class="token operator">=</span> time
+  <span class="token comment">// 2、开启定时器，为了事件结束后的那次回调</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+  <span class="token comment">// 3、如果配置了 leading 执行传入函数 func</span>
+  <span class="token comment">// leading 来源自 !!options.leading</span>
+  <span class="token keyword">return</span> leading <span class="token operator">?</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span> <span class="token operator">:</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-86318">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-86318" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-20773">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-20773" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在这里，会开启 200 毫秒的定时器，同时因为 <code>leading</code> 为 false，所以并不会执行 <code>invokeFunc(time)</code> ，只会返回 <code>result</code>，此时的 <code>result</code> 值是 <code>undefined</code>。</p> <p>这里开启一个定时器的目的是为了事件结束后的那次回调，即如果设置了 <code>{trailing: true}</code> 那么最后一次回调将执行传入函数 fn，哪怕 <code>debounced</code> 函数只触发一次。</p> <p>这里指定了 <code>{leading: false}</code>，那么 <code>leading</code> 的初始值是什么呢？在 <code>debounce</code> 中是 false，在 <code>throttle</code> 中是 true。所以在 <code>throttle</code> 中不需要刚开始就触发时，必须指定 <code>{leading: false}</code>，在 debounce 中就不需要了，默认不触发。</p> <h2 id="防抖函数-debounce"><a href="#防抖函数-debounce" class="header-anchor">#</a> 防抖函数 Debounce</h2> <h3 id="角度-4"><a href="#角度-4" class="header-anchor">#</a> 角度 4</h3> <p><code>lodash.debounce(fn, 200, {leading: false, trailing: true})</code></p> <p>此时相比较 <code>throttle</code> 来说，缺少了 <code>maxWait</code> 值，所以具体触发过程中的判断就不一样了，来详细看一遍。</p> <ul><li>1、在入口函数 <code>debounced</code> 中，执行 <code>shouldInvoke(time)</code>，前面讨论过因为第一次触发所以会返回 true，之后执行 <code>leadingEdge(lastCallTime)</code>。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行连续事件刚开始的那次回调</span>
+<span class="token keyword">function</span> <span class="token function">leadingEdge</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1、设置上一次执行 func 的时间</span>
+  lastInvokeTime <span class="token operator">=</span> time
+  <span class="token comment">// 2、开启定时器，为了事件结束后的那次回调</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> wait<span class="token punctuation">)</span>
+  <span class="token comment">// 3、如果配置了 leading 执行传入函数 func</span>
+  <span class="token comment">// leading 来源自 !!options.leading</span>
+  <span class="token keyword">return</span> leading <span class="token operator">?</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span> <span class="token operator">:</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-26210">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-26210" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-13638">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件刚开始的那次回调
+function leadingEdge(time) {
+  // 1、设置上一次执行 func 的时间
+  lastInvokeTime = time
+  // 2、开启定时器，为了事件结束后的那次回调
+  timerId = startTimer(timerExpired, wait)
+  // 3、如果配置了 leading 执行传入函数 func
+  // leading 来源自 !!options.leading
+  return leading ? invokeFunc(time) : result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-13638" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>2、在 <code>leadingEdge</code> 中，因为 <code>leading</code> 为 false，所以并不执行 fn，只开启 200 毫秒的定时器，并返回 <code>undefined</code>。此时 <code>lastInvokeTime</code> 为当前时间，假设为 0。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 判断此时是否应该执行 func 函数</span>
+<span class="token keyword">function</span> <span class="token function">shouldInvoke</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 当前时间距离上一次调用 debounce 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastCall <span class="token operator">=</span> time <span class="token operator">-</span> lastCallTime
+  <span class="token comment">// 当前时间距离上一次执行 func 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastInvoke <span class="token operator">=</span> time <span class="token operator">-</span> lastInvokeTime
+
+  <span class="token comment">// 下述 4 种情况返回 true</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span> lastCallTime <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&gt;=</span> wait<span class="token punctuation">)</span> <span class="token operator">||</span>
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>maxing <span class="token operator">&amp;&amp;</span> timeSinceLastInvoke <span class="token operator">&gt;=</span> maxWait<span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-56091">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 判断此时是否应该执行 func 函数
+function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-56091" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-83482">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 判断此时是否应该执行 func 函数
+function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-83482" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>3、之后每次触发时，<code>timeSinceLastCall</code> 总是为 50 毫秒，<code>maxing</code> 为 false，所以 <code>shouldInvoke(time)</code> 总是返回 false，并不会执行传入函数 fn，只返回 <code>result</code>，即为 <code>undefined</code>。</li> <li>4、到现在为止，fn 一次还没有执行，200 毫秒后，定时器回调函数触发，执行 <code>timerExpired</code> 函数</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 定时器回调函数，表示定时结束后的操作</span>
+<span class="token keyword">function</span> <span class="token function">timerExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> time <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token comment">// 1、是否需要执行</span>
+  <span class="token comment">// 执行事件结束后的那次回调，否则重启定时器</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">shouldInvoke</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">trailingEdge</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发</span>
+  timerId <span class="token operator">=</span> <span class="token function">startTimer</span><span class="token punctuation">(</span>timerExpired<span class="token punctuation">,</span> <span class="token function">remainingWait</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-83611">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 定时器回调函数，表示定时结束后的操作
+function timerExpired() {
+  const time = Date.now()
+  // 1、是否需要执行
+  // 执行事件结束后的那次回调，否则重启定时器
+  if (shouldInvoke(time)) {
+    return trailingEdge(time)
+  }
+  // 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发
+  timerId = startTimer(timerExpired, remainingWait(time))
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-83611" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715959-65123">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 定时器回调函数，表示定时结束后的操作
+function timerExpired() {
+  const time = Date.now()
+  // 1、是否需要执行
+  // 执行事件结束后的那次回调，否则重启定时器
+  if (shouldInvoke(time)) {
+    return trailingEdge(time)
+  }
+  // 2、否则 计算剩余等待时间，重启定时器，保证下一次时延的末尾触发
+  timerId = startTimer(timerExpired, remainingWait(time))
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715959-65123" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>5、此时存在两种情况，第一种是 <code>mousemove</code> 事件一直在触发，根据前面介绍 <code>shouldInvoke(time)</code> 会返回 false，之后就将计算剩余等待时间，重启定时器。时间计算公式为 <code>wait - (time - lastCallTime)</code>，即 200 - 50，所以只要 <code>shouldInvoke(time)</code> 返回 false，就每隔 150 毫秒后执行一次 <code>timerExpired()</code>。</li> <li>6、第二种情况是 <code>mousemove</code> 事件不再触发，因为 <code>timerExpired()</code> 在循环执行，所以肯定会存在一种情况满足 <code>timeSinceLastCall &gt;= wait</code>，即 <code>shouldInvoke(time)</code> 返回 true，终结 <code>timerExpired()</code>的循环，并执行 <code>trailingEdge(time)</code>。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 执行连续事件结束后的那次回调</span>
+<span class="token keyword">function</span> <span class="token function">trailingEdge</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 清空定时器</span>
+  timerId <span class="token operator">=</span> <span class="token keyword">undefined</span>
+
+  <span class="token comment">// trailing 和 lastArgs 两者同时存在时执行</span>
+  <span class="token comment">// trailing 来源自 'trailing' in options ? !!options.trailing : trailing</span>
+  <span class="token comment">// lastArgs 标记位的作用，意味着 debounce 至少执行过一次</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>trailing <span class="token operator">&amp;&amp;</span> lastArgs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">invokeFunc</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 清空参数</span>
+  lastArgs <span class="token operator">=</span> lastThis <span class="token operator">=</span> <span class="token keyword">undefined</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-97851">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件结束后的那次回调
+function trailingEdge(time) {
+  // 清空定时器
+  timerId = undefined
+
+  // trailing 和 lastArgs 两者同时存在时执行
+  // trailing 来源自 'trailing' in options ? !!options.trailing : trailing
+  // lastArgs 标记位的作用，意味着 debounce 至少执行过一次
+  if (trailing &amp;&amp; lastArgs) {
+    return invokeFunc(time)
+  }
+  // 清空参数
+  lastArgs = lastThis = undefined
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-97851" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-39952">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 执行连续事件结束后的那次回调
+function trailingEdge(time) {
+  // 清空定时器
+  timerId = undefined
+
+  // trailing 和 lastArgs 两者同时存在时执行
+  // trailing 来源自 'trailing' in options ? !!options.trailing : trailing
+  // lastArgs 标记位的作用，意味着 debounce 至少执行过一次
+  if (trailing &amp;&amp; lastArgs) {
+    return invokeFunc(time)
+  }
+  // 清空参数
+  lastArgs = lastThis = undefined
+  return result
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-39952" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>7、在 <code>trailingEdge</code> 中 <code>trailing</code> 和 <code>lastArgs</code> 都是 true，所以会执行 <code>invokeFunc(time)</code>，即执行传入函数 fn。</li> <li>8、所以整个过程中只在最后执行一次传入函数 fn，效果同上面第一张图所示。</li></ul> <h3 id="角度-5"><a href="#角度-5" class="header-anchor">#</a> 角度 5</h3> <p><code>lodash.debounce(fn, 200, {leading: true, trailing: false})</code></p> <p>此时相比角度 4 来说，差异在于 <code>{leading: true, trailing: false}</code>，但是 <code>wait</code> 和 <code>maxWait</code> 都和角度 4 一致，所以只存在下面 2 种区别，效果同上面第一张图所示。</p> <ul><li>区别 1：<code>leadingEdge</code> 中会执行传入函数 fn</li> <li>区别 2：<code>trailingEdge</code> 中不再执行传入函数 fn</li></ul> <h3 id="角度-6"><a href="#角度-6" class="header-anchor">#</a> 角度 6</h3> <p><code>lodash.debounce(fn, 200, {leading: true, trailing: true})</code></p> <p>此时相比角度 4 来说，差异仅仅在于设置了 <code>{leading: true}</code>，所以只存在一个区别，那就是在 <code>leadingEdge</code> 中会执行传入函数 fn，当然在 <code>trailingEdge</code> 中依旧执行传入函数 fn，所以会出现在 <code>mousemove</code> 事件触发过程中首尾都会执行的情况，效果同上面第一张图所示。</p> <p>当然一种情况除外，那就是 <code>mousemove</code> 事件永远只触发一次的情况，关键在于 <code>lastArgs</code> 变量。</p> <p>对于 <code>lastArgs</code> 变量来说，在入口函数 <code>debounced</code> 中赋值，即每次触发都会重新赋值一次，那什么时候清空呢，在 <code>invokeFunc(time)</code> 中重置为 undefined，所以如果 <code>debounced</code> 只触发了一次，而且在 <code>{leading: true}</code> 时执行过一次 fn，那么即使设置了 <code>{trailing: true}</code> 也不会再执行传入函数 fn。</p> <h3 id="角度-7"><a href="#角度-7" class="header-anchor">#</a> 角度 7</h3> <p><code>lodash.debounce(fn, 200, {leading: false, trailing: true, maxWait: 400})</code></p> <p>此时 <code>wait</code> 为 200，<code>maxWait</code> 为 400，<code>maxing</code> 为 true，我们来看下执行过程。</p> <ul><li>1、第一次触发时，因为 <code>{leading: false}</code>，所以肯定不会执行 fn，此时开启了一个 200 毫秒的定时器。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 判断此时是否应该执行 func 函数</span>
+<span class="token keyword">function</span> <span class="token function">shouldInvoke</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 当前时间距离上一次调用 debounce 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastCall <span class="token operator">=</span> time <span class="token operator">-</span> lastCallTime
+  <span class="token comment">// 当前时间距离上一次执行 func 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastInvoke <span class="token operator">=</span> time <span class="token operator">-</span> lastInvokeTime
+
+  <span class="token comment">// 下述 4 种情况返回 true</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span> lastCallTime <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&gt;=</span> wait<span class="token punctuation">)</span> <span class="token operator">||</span>
+          <span class="token punctuation">(</span>timeSinceLastCall <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> 
+          <span class="token punctuation">(</span>maxing <span class="token operator">&amp;&amp;</span> timeSinceLastInvoke <span class="token operator">&gt;=</span> maxWait<span class="token punctuation">)</span> <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-80362">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 判断此时是否应该执行 func 函数
+function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-80362" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-63861">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 判断此时是否应该执行 func 函数
+function shouldInvoke(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+
+  // 下述 4 种情况返回 true
+  return ( lastCallTime === undefined || 
+          (timeSinceLastCall &gt;= wait) ||
+          (timeSinceLastCall &lt; 0) || 
+          (maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait) )
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-63861" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>2、之后每隔 50 毫秒触发一次，每次都会执行 <code>shouldInvoke(time)</code> 函数，只有在第 400 毫秒时，才会满足 <code>maxing &amp;&amp; timeSinceLastInvoke &gt;= maxWait</code>，返回 true。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 计算仍需等待的时间</span>
+<span class="token keyword">function</span> <span class="token function">remainingWait</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 当前时间距离上一次调用 debounce 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastCall <span class="token operator">=</span> time <span class="token operator">-</span> lastCallTime
+  <span class="token comment">// 当前时间距离上一次执行 func 的时间差</span>
+  <span class="token keyword">const</span> timeSinceLastInvoke <span class="token operator">=</span> time <span class="token operator">-</span> lastInvokeTime
+  <span class="token comment">// 剩余等待时间</span>
+  <span class="token keyword">const</span> timeWaiting <span class="token operator">=</span> wait <span class="token operator">-</span> timeSinceLastCall
+
+  <span class="token comment">// 是否设置了最大等待时间</span>
+	<span class="token comment">// 是（节流）：返回「剩余等待时间」和「距上次执行 func 的剩余等待时间」中的最小值</span>
+	<span class="token comment">// 否：返回剩余等待时间</span>
+  <span class="token keyword">return</span> maxing
+    <span class="token operator">?</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>timeWaiting<span class="token punctuation">,</span> maxWait <span class="token operator">-</span> timeSinceLastInvoke<span class="token punctuation">)</span>
+  	<span class="token operator">:</span> timeWaiting
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-25092">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 计算仍需等待的时间
+function remainingWait(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+  // 剩余等待时间
+  const timeWaiting = wait - timeSinceLastCall
+
+  // 是否设置了最大等待时间
+	// 是（节流）：返回「剩余等待时间」和「距上次执行 func 的剩余等待时间」中的最小值
+	// 否：返回剩余等待时间
+  return maxing
+    ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke)
+  	: timeWaiting
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-25092" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715960-25685">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 计算仍需等待的时间
+function remainingWait(time) {
+  // 当前时间距离上一次调用 debounce 的时间差
+  const timeSinceLastCall = time - lastCallTime
+  // 当前时间距离上一次执行 func 的时间差
+  const timeSinceLastInvoke = time - lastInvokeTime
+  // 剩余等待时间
+  const timeWaiting = wait - timeSinceLastCall
+
+  // 是否设置了最大等待时间
+	// 是（节流）：返回「剩余等待时间」和「距上次执行 func 的剩余等待时间」中的最小值
+	// 否：返回剩余等待时间
+  return maxing
+    ? Math.min(timeWaiting, maxWait - timeSinceLastInvoke)
+  	: timeWaiting
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715960-25685" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>3、但是在这之前的第 200 毫秒，定时器触发回调函数，执行 <code>timerExpired</code>，因为此时 <code>shouldInvoke(time)</code> 返回 false，所以会重新计算剩余等待时间并重启计时器，其中 <code>timeWaiting</code> 是 150 毫秒，<code>maxWait - timeSinceLastInvoke</code> 是 200 毫秒，所以计算结果是150 毫秒。</li> <li>4、150 毫秒之后，即自开始之后的第 350 毫秒时，会重新计算时间，其中 <code>timeWaiting</code> 依旧是 150 毫秒，<code>maxWait - timeSinceLastInvoke</code> 是 50 毫秒，所以重新开启 50 毫秒的定时器，即在第 400 毫秒时触发。</li> <li>5、此时会发现定时器触发的时间是第 400 毫秒，<code>shouldInvoke(time)</code> 中返回 true 的时间也是在第 400 毫秒，为什么要这样呢？这样会冲突吗？首先定时器剩余时间判断和 <code>shouldInvoke(time)</code> 判断中，只要有一处满足执行 fn 条件，就会立马执行，同时 <code>lastInvokeTime</code> 值也会发生改变，所以另一处判断就不会生效了。另外本身定时器是不精准的，所以通过 <code>Math.min(timeWaiting, maxWait - timeSinceLastInvoke)</code> 取最小值的方式来减少误差。</li> <li>6、于此同时，需要在 <code>debounced</code> 入口函数添加这么一句 <code>if (timerId === undefined) {timerId = startTimer(timerExpired, wait)}</code>，避免 <code>trailingEdge</code> 执行后定时器被清空。</li> <li>7、最终效果和节流是一样的，只是时间间隔变大了而已，具体效果同第一张图所示。</li></ul> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Blog/4.4.html" class="prev">
+        深入篇阿里 P6 必会 Lodash 防抖节流函数实现原理
+      </a></span> <span class="next"><a href="/Blog/5.1.html">
+        深入浅出图解作用域链和闭包
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/58.7bb19fe1.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

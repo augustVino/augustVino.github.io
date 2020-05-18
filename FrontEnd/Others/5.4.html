@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Chrome 拓展插件开发实践 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/115.1aec54a4.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Image</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>业余·折腾</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Others/5.1.html" class="sidebar-link">VuePress 搭建个人博客</a></li><li><a href="/FrontEnd/Others/5.2.html" class="sidebar-link">前后端分离模式</a></li><li><a href="/FrontEnd/Others/5.3.html" class="sidebar-link">web 性能优化实践</a></li><li><a href="/FrontEnd/Others/5.4.html" class="active sidebar-link">Chrome 拓展插件开发实践</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#manifest-json" class="sidebar-link">manifest.json</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#content-scripts" class="sidebar-link">content-scripts</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#background" class="sidebar-link">background</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#event-pages" class="sidebar-link">event-pages</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#popup" class="sidebar-link">popup</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#injected-script" class="sidebar-link">injected-script</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#五种类型的js" class="sidebar-link">五种类型的JS</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#权限对比" class="sidebar-link">权限对比</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.4.html#消息通信" class="sidebar-link">消息通信</a></li></ul></li></ul></li><li><a href="/FrontEnd/Others/5.5.html" class="sidebar-link">Google Cloud - IP 失效更换 IP 方法</a></li><li><a href="/FrontEnd/Others/5.6.html" class="sidebar-link">Google Cloud - Mac 使用 iterm2 自动 ssh 登录远程服务器</a></li><li><a href="/FrontEnd/Others/5.7.html" class="sidebar-link">Google Cloud - 一键脚本搭建 SS/搭建 SSR 服务并开启 BBR 加速</a></li><li><a href="/FrontEnd/Others/5.8.html" class="sidebar-link">解决 Github 下载速度太慢</a></li><li><a href="/FrontEnd/Others/5.9.html" class="sidebar-link">Mac 新系统搭建前端环境</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="chrome-拓展插件开发实践"><a href="#chrome-拓展插件开发实践" class="header-anchor">#</a> Chrome 拓展插件开发实践</h1> <div class="img-box"><img src="/img/other5.4-1.webp" alt="other5.4-1"> <!----></div> <blockquote><p>部分知识点参考于<a href="https://www.jianshu.com/p/f88174f8fe2c" target="_blank" rel="noopener noreferrer">前辈经验<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，个人学习及相关demo见<a href="https://github.com/augustVino/chrome-extensions" target="_blank" rel="noopener noreferrer">GitHub链接<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p></blockquote> <h2 id="manifest-json"><a href="#manifest-json" class="header-anchor">#</a> <code>manifest.json</code></h2> <p><code>manifest.json</code>文件用来配置所有和插件相关的配置，必须放在根目录。其中，<code>manifest_version</code>、<code>name</code>、<code>version</code>3个是必不可少的，<code>description</code>和<code>icons</code>是推荐的。相关配置说明如下：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token comment">//必选</span>
+    <span class="token comment">/*
+        指定您的应用包要求的清单文件格式的版本。从 Chrome 18 开始，开发人员应该指定 2
+    */</span>
+    <span class="token property">&quot;manifest_version&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;demo&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">//推荐</span>
+    <span class="token comment">/*
+        清单文件-默认语言 指定_locales中的子目录，包含该应用默认字符串。
+        对于含有 _locales 目录的应用来说这一属性是必需的，
+        在没有 _locales 目录的应用中该属性不能存在
+    */</span>
+    <span class="token comment">// 默认语言</span>
+    <span class="token property">&quot;default_locale&quot;</span><span class="token operator">:</span> <span class="token string">&quot;zh_CN&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/*
+        插件描述 这个描述在安装应用之后可以看见
+    */</span>
+    <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;简单的Chrome扩展demo&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/*一个或多个代表应用、应用或主题背景的图标*/</span>
+    <span class="token comment">// 图标，一般偷懒全部用一个尺寸的也没问题</span>
+    <span class="token property">&quot;icons&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;16&quot;</span><span class="token operator">:</span> <span class="token string">&quot;img/icon.png&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;48&quot;</span><span class="token operator">:</span> <span class="token string">&quot;img/icon.png&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;128&quot;</span><span class="token operator">:</span> <span class="token string">&quot;img/icon.png&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token comment">/*
+        后台网页
+        1.应用通常需要有一个长时间运行的脚本来管理一些任务或状态，而后台网页就是为这一目的而设立。
+        通常情况下，后台页面不需要任何 HTML 标记，这种情况下后台页面可以单独使用 JavaScript文件实现。
+        后台页面将由应用系统生成，包含 scripts 属性中列出的每一个文件。
+
+        2.page：如果您需要在您的后台页面中指定 HTML，您可以改用 page 属性：
+
+        3.persistent：应用和应用通常需要长时间运行的脚本来管理某些任务或状态，这就是事件页面的作用。
+        事件页面只在需要时加载，当事件页面不活动时就会卸载，以便释放内存和其他系统资源。
+        如何得到事件页面 就是设置一个</span><span class="token string">&quot;persistent&quot;</span>键，如果没有设置，你将得到一个普通的后台页面。
+    */
+    <span class="token property">&quot;background&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// 2种指定方式，如果指定JS，那么会自动生成一个背景页</span>
+        <span class="token property">&quot;page&quot;</span><span class="token operator">:</span> <span class="token string">&quot;background.html&quot;</span>
+        <span class="token comment">//</span><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;js/background.js&quot;</span><span class="token punctuation">]</span>
+        <span class="token comment">// </span><span class="token property">&quot;persistent&quot;</span><span class="token operator">:</span><span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/*
+        选择某一个（或者无）
+        browser_action（浏览器按钮）
+        page_action（页面按钮）
+        browser_action、page_action、app必须三选一
+    */</span>
+    <span class="token property">&quot;browser_action&quot;</span><span class="token operator">:</span> 
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;default_icon&quot;</span><span class="token operator">:</span> <span class="token string">&quot;img/icon.png&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 图标悬停时的标题，可选</span>
+        <span class="token property">&quot;default_title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;这是一个示例Chrome插件&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 如果有 popup 的页面, 则用户点击图标就会渲染此 HTML 页面</span>
+        <span class="token property">&quot;default_popup&quot;</span><span class="token operator">:</span> <span class="token string">&quot;popup.html&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 如果并不是对每个网站页面都需要使用插件, 可以使用 page_action(页面按钮） 而不是 browser_action（浏览器按钮）</span>
+    <span class="token comment">// browser_action 应用更加广泛</span>
+    <span class="token comment">// 如果 page_action 并不应用在当前页面, 会显示灰色</span>
+    <span class="token comment">/*</span><span class="token property">&quot;page_action&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;default_icon&quot;</span><span class="token operator">:</span> <span class="token string">&quot;img/icon.png&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;default_title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;我是pageAction&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;default_popup&quot;</span><span class="token operator">:</span> <span class="token string">&quot;popup.html&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>*/
+
+    <span class="token comment">//可选</span>
+    <span class="token property">&quot;author&quot;</span><span class="token operator">:</span><span class="token string">&quot;开发者&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;automation&quot;</span><span class="token operator">:</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/*
+        内容脚本:其实就是向你想要的网页中插入一个脚本代码，执行你想要做的事情
+        内容脚本是在网页的上下文中运行的 JavaScript 文件，
+        它们可以通过标准的文档对象模型（DOM）来获取浏览器访问的网页详情，或者作出更改。
+        
+        1.run_at 可选。
+        控制 js 中的 JavaScript 文件何时插入，
+        可以为 </span><span class="token string">&quot;document_start&quot;</span>、
+        <span class="token string">&quot;document_end&quot;</span> 或 <span class="token string">&quot;document_idle&quot;</span>，默认为 <span class="token string">&quot;document_idle&quot;</span>。 
+
+
+        <span class="token number">1.1</span>如果是 <span class="token string">&quot;document_start&quot;</span>，这些文件将在 css 中指定的文件之后，但是在所有其他 DOM 构造或脚本运行之前插入。 
+
+        <span class="token number">1.2</span>.如果是 <span class="token string">&quot;document_end&quot;</span>，文件将在 DOM 完成之后立即插入，但是在加载子资源（如图像与框架）之前插入。 
+
+        <span class="token number">1.3</span>.如果是 <span class="token string">&quot;document_idle&quot;</span>，浏览器将在 <span class="token string">&quot;document_end&quot;</span> 和刚发生 window.onload 事件这两个时刻之间选择合适的时候插入，
+        具体的插入时间取决于文档的复杂程度以及加载文档所花的时间，并且浏览器会尽可能地为加快页面加载速度而优化。 
+        
+        <span class="token number">2.</span>all_frames 可选。
+        控制内容脚本运行在匹配页面的所有框架中还是仅在顶层框架中。 默认为 <span class="token boolean">false</span>，意味着仅在顶层框架中运行
+        
+        content_scripts还有一些其他不是很常用的属性
+    */
+    <span class="token property">&quot;content_scripts&quot;</span><span class="token operator">:</span> 
+    <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//</span><span class="token property">&quot;matches&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;http://*/*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;https://*/*&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">// </span><span class="token string">&quot;&lt;all_urls&gt;&quot;</span> 表示匹配所有地址
+            <span class="token property">&quot;matches&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;&lt;all_urls&gt;&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">// 多个JS按顺序注入</span>
+            <span class="token property">&quot;js&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;js/jquery-1.8.3.js&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;js/content-script.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">// JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式</span>
+            <span class="token property">&quot;css&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;css/custom.css&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">// 代码注入的时间，可选值： </span><span class="token string">&quot;document_start&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;document_end&quot;</span><span class="token punctuation">,</span> or <span class="token string">&quot;document_idle&quot;</span>，最后一个表示页面空闲时，默认document_idle
+            <span class="token property">&quot;run_at&quot;</span><span class="token operator">:</span> <span class="token string">&quot;document_start&quot;</span><span class="token punctuation">,</span>
+            <span class="token comment">//该匹配所有的页面框架</span>
+            <span class="token property">&quot;all_frames&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span> 
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 这里仅仅是为了演示content-script可以配置多个规则</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">&quot;matches&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;*://*/*.png&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*://*/*.jpg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*://*/*.gif&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*://*/*.bmp&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">//可以针对不同的规则插入不同的内容</span>
+            <span class="token property">&quot;js&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;js/show-image-content-size.js&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/*
+        权限申请  
+        扩展或app将使用的一组权限。每个权限是一列已知字符串列表中的一个，
+        如geolocatioin或者一个匹配模式，来指定可以访问的一个或者多个主机。
+        权限可以帮助限定危险，如果你的扩展或者app被攻击。
+        一些权限在安装之前，会告知用户
+    */</span>
+    <span class="token property">&quot;permissions&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">[</span>
+        <span class="token string">&quot;contextMenus&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 右键菜单</span>
+        <span class="token string">&quot;tabs&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 标签</span>
+        <span class="token string">&quot;bookmarks&quot;</span><span class="token punctuation">,</span> <span class="token comment">//使用chrome.bookmarks模块来创建、组织和管理书签</span>
+        <span class="token string">&quot;notifications&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 通知</span>
+        <span class="token string">&quot;webRequest&quot;</span><span class="token punctuation">,</span> <span class="token comment">// web请求</span>
+        <span class="token string">&quot;webRequestBlocking&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;unlimitedStorage&quot;</span><span class="token punctuation">,</span> <span class="token comment">//提供了一个无限的HTML5配额来存储客户端数据,如数据库和本地存储文件。没有这个权限,扩展仅限于5 MB的本地存储</span>
+        <span class="token string">&quot;history&quot;</span> <span class="token comment">//历史记录的使用权限  chrome.history </span>
+        <span class="token string">&quot;storage&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 插件本地存储</span>
+        <span class="token string">&quot;cookies&quot;</span><span class="token punctuation">,</span><span class="token comment">//Required if the extension uses the chrome.cookies module.</span>
+        <span class="token string">&quot;http://*/*&quot;</span><span class="token punctuation">,</span> <span class="token comment">// 可以通过executeScript或者insertCSS访问的网站</span>
+        <span class="token string">&quot;https://*/*&quot;</span> <span class="token comment">// 可以通过executeScript或者insertCSS访问的网站</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的</span>
+    <span class="token property">&quot;web_accessible_resources&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;images/*.png&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;style/double-rainbow.css&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;script/double-rainbow.js&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;script/main.js&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;templates/*&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/**
+        如果不是通过 chrome web store 自动更新插件
+
+        我们希望扩展能自动升级，理由和让chrome自动升级一样：修改程序bug和安全漏洞 ，增加新功能，提升性能，改善体验。
+        一个扩展的manifest文件里面必须指定一个</span><span class="token string">&quot;update_url&quot;</span>来执行升级检测。
+
+        扩展可以托管在Chrome Web Store，也可以发布到极速浏览器应用开放平台上。
+        如果托管在Chrome Web Store则update_url应该是：http<span class="token operator">:</span><span class="token comment">//clients2.google.com/service/update2/crx    </span>
+    **/
+    <span class="token property">&quot;update_url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://clients2.google.com/service/update2/crx&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 插件主页，这个很重要，不要浪费了这个免费广告位</span>
+    <span class="token property">&quot;homepage_url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://www.baidu.com&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/**
+        开发时为扩展指定的唯一标识值。
+        注意：通常您并不需要直接使用这个值，而是在您的代码中使用相对路径或者chrome.extension.getURL()得到的绝对路径。
+        这个值并不是开发时显式指定的，而是Chrome在安装.crx时辅助生成的。(开发时可以通过上传扩展或者手工打包生成crx文件)。 
+        安装完crx，在Chrome的用户数据目录下的Default/Extensions/&lt;extensionId&gt;/&lt;versionString&gt;/manifest.json文件中，您可以看到这个扩展的key
+    **/</span>
+    <span class="token property">&quot;key&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+
+    <span class="token property">&quot;commands&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// commands API 用来添加快捷键</span>
+        <span class="token comment">// 需要在 background page 上添加监听器绑定 handler</span>
+        <span class="token property">&quot;toggle-feature-foo&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;suggested_key&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">&quot;default&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Ctrl+Shift+Y&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;mac&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Command+Shift+Y&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Toggle feature foo&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;global&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token comment">// 当 chrome 没有 focus 时也可以生效的快捷键</span>
+            <span class="token comment">// 仅限 Ctrl+Shift+[0..9]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;_execute_browser_action&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;suggested_key&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">&quot;windows&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Ctrl+Shift+Y&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;mac&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Command+Shift+Y&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;chromeos&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Ctrl+Shift+U&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;linux&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Ctrl+Shift+J&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;_execute_page_action&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;suggested_key&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">&quot;default&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Ctrl+Shift+E&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;windows&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Alt+Shift+P&quot;</span><span class="token punctuation">,</span>
+                <span class="token property">&quot;mac&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Alt+Shift+P&quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        ...
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 插件名字简写</span>
+    <span class="token property">&quot;short_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Short Name&quot;</span><span class="token punctuation">,</span> 
+    <span class="token comment">// 覆盖浏览器默认页面</span>
+    <span class="token property">&quot;chrome_url_overrides&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// 覆盖浏览器默认的新标签页</span>
+        <span class="token property">&quot;newtab&quot;</span><span class="token operator">:</span> <span class="token string">&quot;newtab.html&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// Chrome40以前的插件配置页写法</span>
+    <span class="token property">&quot;options_page&quot;</span><span class="token operator">:</span> <span class="token string">&quot;options.html&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// Chrome40以后的插件配置页写法，如果2个都写，新版Chrome只认后面这一个</span>
+    <span class="token property">&quot;options_ui&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;page&quot;</span><span class="token operator">:</span> <span class="token string">&quot;options.html&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 添加一些默认的样式，推荐使用</span>
+        <span class="token property">&quot;chrome_style&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字</span>
+    <span class="token property">&quot;omnibox&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">&quot;keyword&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;go&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token comment">// devtools页面入口，注意只能指向一个HTML文件，不能是JS文件</span>
+    <span class="token property">&quot;devtools_page&quot;</span><span class="token operator">:</span> <span class="token string">&quot;devtools.html&quot;</span><span class="token punctuation">,</span>
+
+    ......
+    <span class="token comment">//还有很多其他的配置</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701044-97661">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    //必选
+    /*
+        指定您的应用包要求的清单文件格式的版本。从 Chrome 18 开始，开发人员应该指定 2
+    */
+    &quot;manifest_version&quot;: 2,
+    &quot;name&quot;: &quot;demo&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+
+    //推荐
+    /*
+        清单文件-默认语言 指定_locales中的子目录，包含该应用默认字符串。
+        对于含有 _locales 目录的应用来说这一属性是必需的，
+        在没有 _locales 目录的应用中该属性不能存在
+    */
+    // 默认语言
+    &quot;default_locale&quot;: &quot;zh_CN&quot;,
+
+    /*
+        插件描述 这个描述在安装应用之后可以看见
+    */
+    &quot;description&quot;: &quot;简单的Chrome扩展demo&quot;,
+
+    /*一个或多个代表应用、应用或主题背景的图标*/
+    // 图标，一般偷懒全部用一个尺寸的也没问题
+    &quot;icons&quot;:
+    {
+        &quot;16&quot;: &quot;img/icon.png&quot;,
+        &quot;48&quot;: &quot;img/icon.png&quot;,
+        &quot;128&quot;: &quot;img/icon.png&quot;
+    },
+    
+    /*
+        后台网页
+        1.应用通常需要有一个长时间运行的脚本来管理一些任务或状态，而后台网页就是为这一目的而设立。
+        通常情况下，后台页面不需要任何 HTML 标记，这种情况下后台页面可以单独使用 JavaScript文件实现。
+        后台页面将由应用系统生成，包含 scripts 属性中列出的每一个文件。
+
+        2.page：如果您需要在您的后台页面中指定 HTML，您可以改用 page 属性：
+
+        3.persistent：应用和应用通常需要长时间运行的脚本来管理某些任务或状态，这就是事件页面的作用。
+        事件页面只在需要时加载，当事件页面不活动时就会卸载，以便释放内存和其他系统资源。
+        如何得到事件页面 就是设置一个&quot;persistent&quot;键，如果没有设置，你将得到一个普通的后台页面。
+    */
+    &quot;background&quot;:
+    {
+        // 2种指定方式，如果指定JS，那么会自动生成一个背景页
+        &quot;page&quot;: &quot;background.html&quot;
+        //&quot;scripts&quot;: [&quot;js/background.js&quot;]
+        // &quot;persistent&quot;:false
+    },
+
+    /*
+        选择某一个（或者无）
+        browser_action（浏览器按钮）
+        page_action（页面按钮）
+        browser_action、page_action、app必须三选一
+    */
+    &quot;browser_action&quot;: 
+    {
+        &quot;default_icon&quot;: &quot;img/icon.png&quot;,
+        // 图标悬停时的标题，可选
+        &quot;default_title&quot;: &quot;这是一个示例Chrome插件&quot;,
+        // 如果有 popup 的页面, 则用户点击图标就会渲染此 HTML 页面
+        &quot;default_popup&quot;: &quot;popup.html&quot;
+    },
+
+    // 如果并不是对每个网站页面都需要使用插件, 可以使用 page_action(页面按钮） 而不是 browser_action（浏览器按钮）
+    // browser_action 应用更加广泛
+    // 如果 page_action 并不应用在当前页面, 会显示灰色
+    /*&quot;page_action&quot;:
+    {
+        &quot;default_icon&quot;: &quot;img/icon.png&quot;,
+        &quot;default_title&quot;: &quot;我是pageAction&quot;,
+        &quot;default_popup&quot;: &quot;popup.html&quot;
+    },*/
+
+    //可选
+    &quot;author&quot;:&quot;开发者&quot;,
+    &quot;automation&quot;:&quot;&quot;,
+
+    /*
+        内容脚本:其实就是向你想要的网页中插入一个脚本代码，执行你想要做的事情
+        内容脚本是在网页的上下文中运行的 JavaScript 文件，
+        它们可以通过标准的文档对象模型（DOM）来获取浏览器访问的网页详情，或者作出更改。
+        
+        1.run_at 可选。
+        控制 js 中的 JavaScript 文件何时插入，
+        可以为 &quot;document_start&quot;、
+        &quot;document_end&quot; 或 &quot;document_idle&quot;，默认为 &quot;document_idle&quot;。 
+
+
+        1.1如果是 &quot;document_start&quot;，这些文件将在 css 中指定的文件之后，但是在所有其他 DOM 构造或脚本运行之前插入。 
+
+        1.2.如果是 &quot;document_end&quot;，文件将在 DOM 完成之后立即插入，但是在加载子资源（如图像与框架）之前插入。 
+
+        1.3.如果是 &quot;document_idle&quot;，浏览器将在 &quot;document_end&quot; 和刚发生 window.onload 事件这两个时刻之间选择合适的时候插入，
+        具体的插入时间取决于文档的复杂程度以及加载文档所花的时间，并且浏览器会尽可能地为加快页面加载速度而优化。 
+        
+        2.all_frames 可选。
+        控制内容脚本运行在匹配页面的所有框架中还是仅在顶层框架中。 默认为 false，意味着仅在顶层框架中运行
+        
+        content_scripts还有一些其他不是很常用的属性
+    */
+    &quot;content_scripts&quot;: 
+    [
+        {
+            //&quot;matches&quot;: [&quot;http://*/*&quot;, &quot;https://*/*&quot;],
+            // &quot;&lt;all_urls&gt;&quot; 表示匹配所有地址
+            &quot;matches&quot;: [&quot;&lt;all_urls&gt;&quot;],
+            // 多个JS按顺序注入
+            &quot;js&quot;: [&quot;js/jquery-1.8.3.js&quot;, &quot;js/content-script.js&quot;],
+            // JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式
+            &quot;css&quot;: [&quot;css/custom.css&quot;],
+            // 代码注入的时间，可选值： &quot;document_start&quot;, &quot;document_end&quot;, or &quot;document_idle&quot;，最后一个表示页面空闲时，默认document_idle
+            &quot;run_at&quot;: &quot;document_start&quot;,
+            //该匹配所有的页面框架
+            &quot;all_frames&quot;: true 
+        },
+        // 这里仅仅是为了演示content-script可以配置多个规则
+        {
+            &quot;matches&quot;: [&quot;*://*/*.png&quot;, &quot;*://*/*.jpg&quot;, &quot;*://*/*.gif&quot;, &quot;*://*/*.bmp&quot;],
+            //可以针对不同的规则插入不同的内容
+            &quot;js&quot;: [&quot;js/show-image-content-size.js&quot;]
+        }
+    ],
+
+    /*
+        权限申请  
+        扩展或app将使用的一组权限。每个权限是一列已知字符串列表中的一个，
+        如geolocatioin或者一个匹配模式，来指定可以访问的一个或者多个主机。
+        权限可以帮助限定危险，如果你的扩展或者app被攻击。
+        一些权限在安装之前，会告知用户
+    */
+    &quot;permissions&quot;:
+    [
+        &quot;contextMenus&quot;, // 右键菜单
+        &quot;tabs&quot;, // 标签
+        &quot;bookmarks&quot;, //使用chrome.bookmarks模块来创建、组织和管理书签
+        &quot;notifications&quot;, // 通知
+        &quot;webRequest&quot;, // web请求
+        &quot;webRequestBlocking&quot;,
+        &quot;unlimitedStorage&quot;, //提供了一个无限的HTML5配额来存储客户端数据,如数据库和本地存储文件。没有这个权限,扩展仅限于5 MB的本地存储
+        &quot;history&quot; //历史记录的使用权限  chrome.history 
+        &quot;storage&quot;, // 插件本地存储
+        &quot;cookies&quot;,//Required if the extension uses the chrome.cookies module.
+        &quot;http://*/*&quot;, // 可以通过executeScript或者insertCSS访问的网站
+        &quot;https://*/*&quot; // 可以通过executeScript或者insertCSS访问的网站
+    ],
+
+    // 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的
+    &quot;web_accessible_resources&quot;: [
+        &quot;images/*.png&quot;,
+        &quot;style/double-rainbow.css&quot;,
+        &quot;script/double-rainbow.js&quot;,
+        &quot;script/main.js&quot;,
+        &quot;templates/*&quot;
+    ],
+
+    /**
+        如果不是通过 chrome web store 自动更新插件
+
+        我们希望扩展能自动升级，理由和让chrome自动升级一样：修改程序bug和安全漏洞 ，增加新功能，提升性能，改善体验。
+        一个扩展的manifest文件里面必须指定一个&quot;update_url&quot;来执行升级检测。
+
+        扩展可以托管在Chrome Web Store，也可以发布到极速浏览器应用开放平台上。
+        如果托管在Chrome Web Store则update_url应该是：http://clients2.google.com/service/update2/crx    
+    **/
+    &quot;update_url&quot;: &quot;https://clients2.google.com/service/update2/crx&quot;,
+
+    // 插件主页，这个很重要，不要浪费了这个免费广告位
+    &quot;homepage_url&quot;: &quot;https://www.baidu.com&quot;,
+
+    /**
+        开发时为扩展指定的唯一标识值。
+        注意：通常您并不需要直接使用这个值，而是在您的代码中使用相对路径或者chrome.extension.getURL()得到的绝对路径。
+        这个值并不是开发时显式指定的，而是Chrome在安装.crx时辅助生成的。(开发时可以通过上传扩展或者手工打包生成crx文件)。 
+        安装完crx，在Chrome的用户数据目录下的Default/Extensions/&lt;extensionId&gt;/&lt;versionString&gt;/manifest.json文件中，您可以看到这个扩展的key
+    **/
+    &quot;key&quot;: &quot;&quot;,
+
+    &quot;commands&quot;: {
+        // commands API 用来添加快捷键
+        // 需要在 background page 上添加监听器绑定 handler
+        &quot;toggle-feature-foo&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;default&quot;: &quot;Ctrl+Shift+Y&quot;,
+                &quot;mac&quot;: &quot;Command+Shift+Y&quot;
+            },
+            &quot;description&quot;: &quot;Toggle feature foo&quot;,
+            &quot;global&quot;: true
+            // 当 chrome 没有 focus 时也可以生效的快捷键
+            // 仅限 Ctrl+Shift+[0..9]
+        },
+        &quot;_execute_browser_action&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;windows&quot;: &quot;Ctrl+Shift+Y&quot;,
+                &quot;mac&quot;: &quot;Command+Shift+Y&quot;,
+                &quot;chromeos&quot;: &quot;Ctrl+Shift+U&quot;,
+                &quot;linux&quot;: &quot;Ctrl+Shift+J&quot;
+            }
+        },
+        &quot;_execute_page_action&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;default&quot;: &quot;Ctrl+Shift+E&quot;,
+                &quot;windows&quot;: &quot;Alt+Shift+P&quot;,
+                &quot;mac&quot;: &quot;Alt+Shift+P&quot;
+            }
+        },
+        ...
+    },
+
+    // 插件名字简写
+    &quot;short_name&quot;: &quot;Short Name&quot;, 
+    // 覆盖浏览器默认页面
+    &quot;chrome_url_overrides&quot;:
+    {
+        // 覆盖浏览器默认的新标签页
+        &quot;newtab&quot;: &quot;newtab.html&quot;
+    },
+    // Chrome40以前的插件配置页写法
+    &quot;options_page&quot;: &quot;options.html&quot;,
+    // Chrome40以后的插件配置页写法，如果2个都写，新版Chrome只认后面这一个
+    &quot;options_ui&quot;:
+    {
+        &quot;page&quot;: &quot;options.html&quot;,
+        // 添加一些默认的样式，推荐使用
+        &quot;chrome_style&quot;: true
+    },
+    // 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
+    &quot;omnibox&quot;: { &quot;keyword&quot; : &quot;go&quot; },
+    
+    // devtools页面入口，注意只能指向一个HTML文件，不能是JS文件
+    &quot;devtools_page&quot;: &quot;devtools.html&quot;,
+
+    ......
+    //还有很多其他的配置
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701044-97661" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701044-2142">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    //必选
+    /*
+        指定您的应用包要求的清单文件格式的版本。从 Chrome 18 开始，开发人员应该指定 2
+    */
+    &quot;manifest_version&quot;: 2,
+    &quot;name&quot;: &quot;demo&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+
+    //推荐
+    /*
+        清单文件-默认语言 指定_locales中的子目录，包含该应用默认字符串。
+        对于含有 _locales 目录的应用来说这一属性是必需的，
+        在没有 _locales 目录的应用中该属性不能存在
+    */
+    // 默认语言
+    &quot;default_locale&quot;: &quot;zh_CN&quot;,
+
+    /*
+        插件描述 这个描述在安装应用之后可以看见
+    */
+    &quot;description&quot;: &quot;简单的Chrome扩展demo&quot;,
+
+    /*一个或多个代表应用、应用或主题背景的图标*/
+    // 图标，一般偷懒全部用一个尺寸的也没问题
+    &quot;icons&quot;:
+    {
+        &quot;16&quot;: &quot;img/icon.png&quot;,
+        &quot;48&quot;: &quot;img/icon.png&quot;,
+        &quot;128&quot;: &quot;img/icon.png&quot;
+    },
+    
+    /*
+        后台网页
+        1.应用通常需要有一个长时间运行的脚本来管理一些任务或状态，而后台网页就是为这一目的而设立。
+        通常情况下，后台页面不需要任何 HTML 标记，这种情况下后台页面可以单独使用 JavaScript文件实现。
+        后台页面将由应用系统生成，包含 scripts 属性中列出的每一个文件。
+
+        2.page：如果您需要在您的后台页面中指定 HTML，您可以改用 page 属性：
+
+        3.persistent：应用和应用通常需要长时间运行的脚本来管理某些任务或状态，这就是事件页面的作用。
+        事件页面只在需要时加载，当事件页面不活动时就会卸载，以便释放内存和其他系统资源。
+        如何得到事件页面 就是设置一个&quot;persistent&quot;键，如果没有设置，你将得到一个普通的后台页面。
+    */
+    &quot;background&quot;:
+    {
+        // 2种指定方式，如果指定JS，那么会自动生成一个背景页
+        &quot;page&quot;: &quot;background.html&quot;
+        //&quot;scripts&quot;: [&quot;js/background.js&quot;]
+        // &quot;persistent&quot;:false
+    },
+
+    /*
+        选择某一个（或者无）
+        browser_action（浏览器按钮）
+        page_action（页面按钮）
+        browser_action、page_action、app必须三选一
+    */
+    &quot;browser_action&quot;: 
+    {
+        &quot;default_icon&quot;: &quot;img/icon.png&quot;,
+        // 图标悬停时的标题，可选
+        &quot;default_title&quot;: &quot;这是一个示例Chrome插件&quot;,
+        // 如果有 popup 的页面, 则用户点击图标就会渲染此 HTML 页面
+        &quot;default_popup&quot;: &quot;popup.html&quot;
+    },
+
+    // 如果并不是对每个网站页面都需要使用插件, 可以使用 page_action(页面按钮） 而不是 browser_action（浏览器按钮）
+    // browser_action 应用更加广泛
+    // 如果 page_action 并不应用在当前页面, 会显示灰色
+    /*&quot;page_action&quot;:
+    {
+        &quot;default_icon&quot;: &quot;img/icon.png&quot;,
+        &quot;default_title&quot;: &quot;我是pageAction&quot;,
+        &quot;default_popup&quot;: &quot;popup.html&quot;
+    },*/
+
+    //可选
+    &quot;author&quot;:&quot;开发者&quot;,
+    &quot;automation&quot;:&quot;&quot;,
+
+    /*
+        内容脚本:其实就是向你想要的网页中插入一个脚本代码，执行你想要做的事情
+        内容脚本是在网页的上下文中运行的 JavaScript 文件，
+        它们可以通过标准的文档对象模型（DOM）来获取浏览器访问的网页详情，或者作出更改。
+        
+        1.run_at 可选。
+        控制 js 中的 JavaScript 文件何时插入，
+        可以为 &quot;document_start&quot;、
+        &quot;document_end&quot; 或 &quot;document_idle&quot;，默认为 &quot;document_idle&quot;。 
+
+
+        1.1如果是 &quot;document_start&quot;，这些文件将在 css 中指定的文件之后，但是在所有其他 DOM 构造或脚本运行之前插入。 
+
+        1.2.如果是 &quot;document_end&quot;，文件将在 DOM 完成之后立即插入，但是在加载子资源（如图像与框架）之前插入。 
+
+        1.3.如果是 &quot;document_idle&quot;，浏览器将在 &quot;document_end&quot; 和刚发生 window.onload 事件这两个时刻之间选择合适的时候插入，
+        具体的插入时间取决于文档的复杂程度以及加载文档所花的时间，并且浏览器会尽可能地为加快页面加载速度而优化。 
+        
+        2.all_frames 可选。
+        控制内容脚本运行在匹配页面的所有框架中还是仅在顶层框架中。 默认为 false，意味着仅在顶层框架中运行
+        
+        content_scripts还有一些其他不是很常用的属性
+    */
+    &quot;content_scripts&quot;: 
+    [
+        {
+            //&quot;matches&quot;: [&quot;http://*/*&quot;, &quot;https://*/*&quot;],
+            // &quot;&lt;all_urls&gt;&quot; 表示匹配所有地址
+            &quot;matches&quot;: [&quot;&lt;all_urls&gt;&quot;],
+            // 多个JS按顺序注入
+            &quot;js&quot;: [&quot;js/jquery-1.8.3.js&quot;, &quot;js/content-script.js&quot;],
+            // JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式
+            &quot;css&quot;: [&quot;css/custom.css&quot;],
+            // 代码注入的时间，可选值： &quot;document_start&quot;, &quot;document_end&quot;, or &quot;document_idle&quot;，最后一个表示页面空闲时，默认document_idle
+            &quot;run_at&quot;: &quot;document_start&quot;,
+            //该匹配所有的页面框架
+            &quot;all_frames&quot;: true 
+        },
+        // 这里仅仅是为了演示content-script可以配置多个规则
+        {
+            &quot;matches&quot;: [&quot;*://*/*.png&quot;, &quot;*://*/*.jpg&quot;, &quot;*://*/*.gif&quot;, &quot;*://*/*.bmp&quot;],
+            //可以针对不同的规则插入不同的内容
+            &quot;js&quot;: [&quot;js/show-image-content-size.js&quot;]
+        }
+    ],
+
+    /*
+        权限申请  
+        扩展或app将使用的一组权限。每个权限是一列已知字符串列表中的一个，
+        如geolocatioin或者一个匹配模式，来指定可以访问的一个或者多个主机。
+        权限可以帮助限定危险，如果你的扩展或者app被攻击。
+        一些权限在安装之前，会告知用户
+    */
+    &quot;permissions&quot;:
+    [
+        &quot;contextMenus&quot;, // 右键菜单
+        &quot;tabs&quot;, // 标签
+        &quot;bookmarks&quot;, //使用chrome.bookmarks模块来创建、组织和管理书签
+        &quot;notifications&quot;, // 通知
+        &quot;webRequest&quot;, // web请求
+        &quot;webRequestBlocking&quot;,
+        &quot;unlimitedStorage&quot;, //提供了一个无限的HTML5配额来存储客户端数据,如数据库和本地存储文件。没有这个权限,扩展仅限于5 MB的本地存储
+        &quot;history&quot; //历史记录的使用权限  chrome.history 
+        &quot;storage&quot;, // 插件本地存储
+        &quot;cookies&quot;,//Required if the extension uses the chrome.cookies module.
+        &quot;http://*/*&quot;, // 可以通过executeScript或者insertCSS访问的网站
+        &quot;https://*/*&quot; // 可以通过executeScript或者insertCSS访问的网站
+    ],
+
+    // 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的
+    &quot;web_accessible_resources&quot;: [
+        &quot;images/*.png&quot;,
+        &quot;style/double-rainbow.css&quot;,
+        &quot;script/double-rainbow.js&quot;,
+        &quot;script/main.js&quot;,
+        &quot;templates/*&quot;
+    ],
+
+    /**
+        如果不是通过 chrome web store 自动更新插件
+
+        我们希望扩展能自动升级，理由和让chrome自动升级一样：修改程序bug和安全漏洞 ，增加新功能，提升性能，改善体验。
+        一个扩展的manifest文件里面必须指定一个&quot;update_url&quot;来执行升级检测。
+
+        扩展可以托管在Chrome Web Store，也可以发布到极速浏览器应用开放平台上。
+        如果托管在Chrome Web Store则update_url应该是：http://clients2.google.com/service/update2/crx    
+    **/
+    &quot;update_url&quot;: &quot;https://clients2.google.com/service/update2/crx&quot;,
+
+    // 插件主页，这个很重要，不要浪费了这个免费广告位
+    &quot;homepage_url&quot;: &quot;https://www.baidu.com&quot;,
+
+    /**
+        开发时为扩展指定的唯一标识值。
+        注意：通常您并不需要直接使用这个值，而是在您的代码中使用相对路径或者chrome.extension.getURL()得到的绝对路径。
+        这个值并不是开发时显式指定的，而是Chrome在安装.crx时辅助生成的。(开发时可以通过上传扩展或者手工打包生成crx文件)。 
+        安装完crx，在Chrome的用户数据目录下的Default/Extensions/&lt;extensionId&gt;/&lt;versionString&gt;/manifest.json文件中，您可以看到这个扩展的key
+    **/
+    &quot;key&quot;: &quot;&quot;,
+
+    &quot;commands&quot;: {
+        // commands API 用来添加快捷键
+        // 需要在 background page 上添加监听器绑定 handler
+        &quot;toggle-feature-foo&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;default&quot;: &quot;Ctrl+Shift+Y&quot;,
+                &quot;mac&quot;: &quot;Command+Shift+Y&quot;
+            },
+            &quot;description&quot;: &quot;Toggle feature foo&quot;,
+            &quot;global&quot;: true
+            // 当 chrome 没有 focus 时也可以生效的快捷键
+            // 仅限 Ctrl+Shift+[0..9]
+        },
+        &quot;_execute_browser_action&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;windows&quot;: &quot;Ctrl+Shift+Y&quot;,
+                &quot;mac&quot;: &quot;Command+Shift+Y&quot;,
+                &quot;chromeos&quot;: &quot;Ctrl+Shift+U&quot;,
+                &quot;linux&quot;: &quot;Ctrl+Shift+J&quot;
+            }
+        },
+        &quot;_execute_page_action&quot;: {
+            &quot;suggested_key&quot;: {
+                &quot;default&quot;: &quot;Ctrl+Shift+E&quot;,
+                &quot;windows&quot;: &quot;Alt+Shift+P&quot;,
+                &quot;mac&quot;: &quot;Alt+Shift+P&quot;
+            }
+        },
+        ...
+    },
+
+    // 插件名字简写
+    &quot;short_name&quot;: &quot;Short Name&quot;, 
+    // 覆盖浏览器默认页面
+    &quot;chrome_url_overrides&quot;:
+    {
+        // 覆盖浏览器默认的新标签页
+        &quot;newtab&quot;: &quot;newtab.html&quot;
+    },
+    // Chrome40以前的插件配置页写法
+    &quot;options_page&quot;: &quot;options.html&quot;,
+    // Chrome40以后的插件配置页写法，如果2个都写，新版Chrome只认后面这一个
+    &quot;options_ui&quot;:
+    {
+        &quot;page&quot;: &quot;options.html&quot;,
+        // 添加一些默认的样式，推荐使用
+        &quot;chrome_style&quot;: true
+    },
+    // 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
+    &quot;omnibox&quot;: { &quot;keyword&quot; : &quot;go&quot; },
+    
+    // devtools页面入口，注意只能指向一个HTML文件，不能是JS文件
+    &quot;devtools_page&quot;: &quot;devtools.html&quot;,
+
+    ......
+    //还有很多其他的配置
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701044-2142" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="content-scripts"><a href="#content-scripts" class="header-anchor">#</a> <code>content-scripts</code></h3> <p><code>content-scripts</code>，其实就是Chrome插件中向页面注入脚本的一种形式（虽然名为script，其实还可以包括<code>css</code>的），借助<code>content-scripts</code>我们可以实现通过配置的方式轻松向指定页面注入<code>JS</code>和<code>CSS</code>，最常见的比如：广告屏蔽、页面<code>CSS</code>定制，等等。</p> <p><code>content-scripts</code>和原始页面共享DOM，但是不共享JS，如要访问页面JS（例如某个JS变量），只能通过<code>injected js</code>来实现。<strong><code>content-scripts</code>不能访问绝大部分chrome.xxx.api，除了下面这4种：</strong></p> <ul><li><code>chrome.extension(getURL , inIncognitoContext , lastError , onRequest , sendRequest)</code></li> <li><code>chrome.i18n</code></li> <li><code>chrome.runtime(connect , getManifest , getURL , id , onConnect , onMessage , sendMessage)</code></li> <li><code>chrome.storage</code></li></ul> <p>这些API绝大部分时候都够用了，非要调用其它API的话，你还可以通过通信来实现让background来帮你调用。</p> <h3 id="background"><a href="#background" class="header-anchor">#</a> <code>background</code></h3> <p>后台页面，这是一个<strong>常驻</strong>的页面，它的生命周期是插件中所有类型页面中<strong>最长</strong>的，它随着浏览器的打开而打开，随着浏览器的关闭而关闭，所以通常把需要一直运行的、启动就运行的、全局的代码放在<code>background</code>里面。</p> <p><code>background</code>的权限非常高，几乎可以调用所有的Chrome扩展API（<strong>除了devtools</strong>），而且它可以无限制跨域，也就是可以跨域访问任何网站而无需要求对方设置<code>CORS</code>。</p> <blockquote><p>经过测试，其实不止是<code>background</code>，所有的直接通过<code>chrome-extension://id/xx.html</code>这种方式打开的网页都可以无限制跨域。</p></blockquote> <p>配置中，<code>background</code>可以通过<code>page</code>指定一张网页，也可以通过<code>scripts</code>直接指定一个JS，Chrome会自动为这个JS生成一个默认的网页：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token comment">// 会一直常驻的后台JS或后台页面</span>
+    <span class="token property">&quot;background&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// 2种指定方式，如果指定JS，那么会自动生成一个背景页</span>
+        <span class="token property">&quot;page&quot;</span><span class="token operator">:</span> <span class="token string">&quot;background.html&quot;</span>
+        <span class="token comment">//</span><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;js/background.js&quot;</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-73699">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    // 会一直常驻的后台JS或后台页面
+    &quot;background&quot;:
+    {
+        // 2种指定方式，如果指定JS，那么会自动生成一个背景页
+        &quot;page&quot;: &quot;background.html&quot;
+        //&quot;scripts&quot;: [&quot;js/background.js&quot;]
+    },
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-73699" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-99158">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    // 会一直常驻的后台JS或后台页面
+    &quot;background&quot;:
+    {
+        // 2种指定方式，如果指定JS，那么会自动生成一个背景页
+        &quot;page&quot;: &quot;background.html&quot;
+        //&quot;scripts&quot;: [&quot;js/background.js&quot;]
+    },
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-99158" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="event-pages"><a href="#event-pages" class="header-anchor">#</a> <code>event-pages</code></h3> <p>鉴于<code>background</code>生命周期太长，长时间挂载后台可能会影响性能，所以Google又弄一个<code>event-pages</code>，在配置文件上，它与<code>background</code>的唯一区别就是多了一个<code>persistent</code>参数：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;background&quot;</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;event-page.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;persistent&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-6847">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    &quot;background&quot;:
+    {
+        &quot;scripts&quot;: [&quot;event-page.js&quot;],
+        &quot;persistent&quot;: false
+    },
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-6847" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-41407">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+    &quot;background&quot;:
+    {
+        &quot;scripts&quot;: [&quot;event-page.js&quot;],
+        &quot;persistent&quot;: false
+    },
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-41407" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>它的生命周期是：<strong>在被需要时加载，在空闲时被关闭</strong>，什么叫被需要时呢？比如第一次安装、插件更新、有content-script向它发送消息，等等。</p> <h3 id="popup"><a href="#popup" class="header-anchor">#</a> <code>popup</code></h3> <p><code>popup</code>是点击<code>browser_action</code>或者<code>page_action</code>图标时打开的一个小窗口网页，焦点离开网页就立即关闭，一般用来做一些临时性的交互。</p> <div class="img-box"><img src="/img/other5.4-2.webp" alt="other5.4-2"> <!----></div> <p><code>popup</code>可以包含任意你想要的HTML内容，并且会自适应大小。可以通过<code>default_popup</code>字段来指定<code>popup</code>页面，也可以调用<code>setPopup()</code>方法。</p> <p>需要特别注意的是，由于单击图标打开<code>popup</code>，焦点离开又立即关闭，所以<code>popup</code>页面的生命周期一般很短，需要长时间运行的代码千万不要写在<code>popup</code>里面。</p> <blockquote><p>在权限上，它和<code>background</code>非常类似，它们之间最大的不同是生命周期的不同，<code>popup</code>中可以直接通过<code>chrome.extension.getBackgroundPage()</code>获取<code>background</code>的<code>window</code>对象。</p></blockquote> <h3 id="injected-script"><a href="#injected-script" class="header-anchor">#</a> <code>injected-script</code></h3> <p>指的是通过DOM操作的方式向页面注入的一种JS。为什么需要通过这种方式注入JS呢？</p> <p>这是因为<code>content-script</code>有一个很大的“缺陷”，也就是无法访问页面中的JS，虽然它可以操作DOM，但是DOM却不能调用它，也就是无法在DOM中通过绑定事件的方式调用<code>content-script</code>中的代码（包括直接写<code>onclick</code>和<code>addEventListener</code>2种方式都不行），但是，“在页面上添加一个按钮并调用插件的扩展API”是一个很常见的需求，那该怎么办呢？其实这就是本小节要讲的。</p> <p>在<code>content-script</code>中通过DOM方式向页面注入<code>inject-script</code>代码示例：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 向页面注入JS</span>
+<span class="token keyword">function</span> <span class="token function">injectCustomJs</span><span class="token punctuation">(</span><span class="token parameter">jsPath</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    jsPath <span class="token operator">=</span> jsPath <span class="token operator">||</span> <span class="token string">'js/inject.js'</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> temp <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    temp<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'type'</span><span class="token punctuation">,</span> <span class="token string">'text/javascript'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js</span>
+    temp<span class="token punctuation">.</span>src <span class="token operator">=</span> chrome<span class="token punctuation">.</span>extension<span class="token punctuation">.</span><span class="token function">getURL</span><span class="token punctuation">(</span>jsPath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    temp<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 放在页面不好看，执行完后移除掉</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+manifest<span class="token punctuation">.</span>json
+<span class="token punctuation">{</span>
+    <span class="token comment">// 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的</span>
+    <span class="token string">&quot;web_accessible_resources&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;js/inject.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-28589">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 向页面注入JS
+function injectCustomJs(jsPath) {
+    jsPath = jsPath || 'js/inject.js';
+    var temp = document.createElement('script');
+    temp.setAttribute('type', 'text/javascript');
+    // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
+    temp.src = chrome.extension.getURL(jsPath);
+    temp.onload = function() {
+        // 放在页面不好看，执行完后移除掉
+        this.parentNode.removeChild(this);
+    };
+    document.head.appendChild(temp);
+}
+
+
+manifest.json
+{
+    // 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的
+    &quot;web_accessible_resources&quot;: [&quot;js/inject.js&quot;],
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-28589" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-5327">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 向页面注入JS
+function injectCustomJs(jsPath) {
+    jsPath = jsPath || 'js/inject.js';
+    var temp = document.createElement('script');
+    temp.setAttribute('type', 'text/javascript');
+    // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
+    temp.src = chrome.extension.getURL(jsPath);
+    temp.onload = function() {
+        // 放在页面不好看，执行完后移除掉
+        this.parentNode.removeChild(this);
+    };
+    document.head.appendChild(temp);
+}
+
+
+manifest.json
+{
+    // 普通页面能够直接访问的插件资源列表，如果不设置是无法直接访问的
+    &quot;web_accessible_resources&quot;: [&quot;js/inject.js&quot;],
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-5327" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="五种类型的js"><a href="#五种类型的js" class="header-anchor">#</a> 五种类型的JS</h2> <p>Chrome插件的JS主要可以分为这5类：<code>injected script</code>、<code>content-script</code>、<code>popup js</code>、<code>background js</code>和<code>devtools js</code>.</p> <h3 id="权限对比"><a href="#权限对比" class="header-anchor">#</a> 权限对比</h3> <table><thead><tr><th>JS种类</th> <th>可访问的API</th> <th>DOM访问情况</th> <th>JS访问情况</th> <th>直接跨域</th></tr></thead> <tbody><tr><td>injected script</td> <td>和普通JS无任何差别，不能访问任何扩展API</td> <td>可以</td> <td>可以</td> <td>不可以</td></tr> <tr><td>content script</td> <td>只能访问 extension、runtime等部分API</td> <td>可以</td> <td>不可以</td> <td>不可以</td></tr> <tr><td>popup js</td> <td>可访问绝大部分API，除了devtools系列</td> <td>不可直接访问</td> <td>不可以</td> <td>不可以</td></tr> <tr><td>background js</td> <td>可访问绝大部分API，除了devtools系列</td> <td>不可直接访问</td> <td>不可以</td> <td>不可以</td></tr> <tr><td>devtools js</td> <td>只能访问 devtools、extension、runtime等部分API</td> <td>可以</td> <td>可以</td> <td>不可以</td></tr></tbody></table> <h3 id="消息通信"><a href="#消息通信" class="header-anchor">#</a> 消息通信</h3> <h4 id="popup和background"><a href="#popup和background" class="header-anchor">#</a> popup和background</h4> <p><code>popup</code>可以直接调用<code>background</code>中的JS方法，也可以直接访问<code>background</code>的DOM：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// background.js</span>
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'我是background！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// popup.js</span>
+<span class="token keyword">var</span> bg <span class="token operator">=</span> chrome<span class="token punctuation">.</span>extension<span class="token punctuation">.</span><span class="token function">getBackgroundPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bg<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 访问bg的函数</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>bg<span class="token punctuation">.</span>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 访问bg的DOM</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-60193">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// background.js
+function test() {
+    alert('我是background！');
+}
+
+// popup.js
+var bg = chrome.extension.getBackgroundPage();
+bg.test(); // 访问bg的函数
+alert(bg.document.body.innerHTML); // 访问bg的DOM
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-60193" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701047-92941">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// background.js
+function test() {
+    alert('我是background！');
+}
+
+// popup.js
+var bg = chrome.extension.getBackgroundPage();
+bg.test(); // 访问bg的函数
+alert(bg.document.body.innerHTML); // 访问bg的DOM
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701047-92941" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在bg下面访问<code>popup</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> views <span class="token operator">=</span> chrome<span class="token punctuation">.</span>extension<span class="token punctuation">.</span><span class="token function">getViews</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token operator">:</span><span class="token string">'popup'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-7163">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var views = chrome.extension.getViews({type:'popup'});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-7163" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-34642">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var views = chrome.extension.getViews({type:'popup'});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-34642" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="popup-或者-content-scripts向主动bg发送消息-已验证）"><a href="#popup-或者-content-scripts向主动bg发送消息-已验证）" class="header-anchor">#</a> popup 或者 content-scripts向主动bg发送消息(已验证）</h4> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//popup.js /content-scripts</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>greeting<span class="token operator">:</span> <span class="token string">'你好，我是content-script呀，我主动发消息给后台！'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'收到来自后台的回复：'</span> <span class="token operator">+</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-13885">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//popup.js /content-scripts
+chrome.runtime.sendMessage({greeting: '你好，我是content-script呀，我主动发消息给后台！'}, function(response) {
+    console.log('收到来自后台的回复：' + response);
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-13885" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-38109">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//popup.js /content-scripts
+chrome.runtime.sendMessage({greeting: '你好，我是content-script呀，我主动发消息给后台！'}, function(response) {
+    console.log('收到来自后台的回复：' + response);
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-38109" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//bg</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> sendResponse</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'收到来自popup.js的消息：'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> sendResponse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sendResponse</span><span class="token punctuation">(</span><span class="token string">'我是后台，我已收到你的消息：'</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-84920">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//bg
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
+{
+    console.log('收到来自popup.js的消息：');
+    console.log(request, sender, sendResponse);
+    sendResponse('我是后台，我已收到你的消息：' + JSON.stringify(request));
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-84920" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-94779">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//bg
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
+{
+    console.log('收到来自popup.js的消息：');
+    console.log(request, sender, sendResponse);
+    sendResponse('我是后台，我已收到你的消息：' + JSON.stringify(request));
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-94779" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在互相发送消息的时候我们要注意生命周期的问题，我们肯定是需要先注册监听事件，再注册发送事件才行。不然肯定是无法接收到消息的。</p> <p>所以<code>popup.js</code>是点击的时候才会执行。因此<code>content-scripts</code>无法直接给<code>popup.js</code>发送消息。而经过验证<code>popup.js</code>貌似也无法直接给<code>content-scripts</code>发送消息，需要通过点击事件。</p> <h4 id="injected-script和content-script"><a href="#injected-script和content-script" class="header-anchor">#</a> <code>injected script</code>和<code>content-script</code></h4> <p><code>content-script</code>和页面内的脚本（<code>injected-script</code>自然也属于页面内的脚本）之间唯一共享的东西就是页面的DOM元素，有2种方法可以实现二者通讯：</p> <p><strong>可以通过<code>window.postMessage</code>和<code>window.addEventListener</code>来实现二者消息通讯；</strong></p> <ol><li>第一种（推荐）</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// injected-script中：</span>
+window<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;test&quot;</span><span class="token operator">:</span> <span class="token string">'你好！'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// content script中：</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-97138">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// injected-script中：
+window.postMessage({&quot;test&quot;: '你好！'}, '*');
+
+
+// content script中：
+window.addEventListener(&quot;message&quot;, function(e) {
+    console.log(e.data);
+}, false);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-97138" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701048-375">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// injected-script中：
+window.postMessage({&quot;test&quot;: '你好！'}, '*');
+
+
+// content script中：
+window.addEventListener(&quot;message&quot;, function(e) {
+    console.log(e.data);
+}, false);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701048-375" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ol start="2"><li>第二种：</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// injected-script中：</span>
+<span class="token keyword">var</span> customEvent <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createEvent</span><span class="token punctuation">(</span><span class="token string">'Event'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+customEvent<span class="token punctuation">.</span><span class="token function">initEvent</span><span class="token punctuation">(</span><span class="token string">'myCustomEvent'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">fireCustomEvent</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hiddenDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'myCustomEventDiv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hiddenDiv<span class="token punctuation">.</span>innerText <span class="token operator">=</span> data
+    hiddenDiv<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>customEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">fireCustomEvent</span><span class="token punctuation">(</span><span class="token string">'你好，我是普通JS！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// content script中：</span>
+<span class="token keyword">var</span> hiddenDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'myCustomEventDiv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>hiddenDiv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hiddenDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    hiddenDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> <span class="token string">'none'</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>hiddenDiv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+hiddenDiv<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'myCustomEvent'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> eventData <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'myCustomEventDiv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'收到自定义事件消息：'</span> <span class="token operator">+</span> eventData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701049-19515">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// injected-script中：
+var customEvent = document.createEvent('Event');
+customEvent.initEvent('myCustomEvent', true, true);
+function fireCustomEvent(data) {
+    hiddenDiv = document.getElementById('myCustomEventDiv');
+    hiddenDiv.innerText = data
+    hiddenDiv.dispatchEvent(customEvent);
+}
+fireCustomEvent('你好，我是普通JS！');
+
+
+// content script中：
+var hiddenDiv = document.getElementById('myCustomEventDiv');
+if(!hiddenDiv) {
+    hiddenDiv = document.createElement('div');
+    hiddenDiv.style.display = 'none';
+    document.body.appendChild(hiddenDiv);
+}
+hiddenDiv.addEventListener('myCustomEvent', function() {
+    var eventData = document.getElementById('myCustomEventDiv').innerText;
+    console.log('收到自定义事件消息：' + eventData);
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701049-19515" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701049-38405">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// injected-script中：
+var customEvent = document.createEvent('Event');
+customEvent.initEvent('myCustomEvent', true, true);
+function fireCustomEvent(data) {
+    hiddenDiv = document.getElementById('myCustomEventDiv');
+    hiddenDiv.innerText = data
+    hiddenDiv.dispatchEvent(customEvent);
+}
+fireCustomEvent('你好，我是普通JS！');
+
+
+// content script中：
+var hiddenDiv = document.getElementById('myCustomEventDiv');
+if(!hiddenDiv) {
+    hiddenDiv = document.createElement('div');
+    hiddenDiv.style.display = 'none';
+    document.body.appendChild(hiddenDiv);
+}
+hiddenDiv.addEventListener('myCustomEvent', function() {
+    var eventData = document.getElementById('myCustomEventDiv').innerText;
+    console.log('收到自定义事件消息：' + eventData);
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701049-38405" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h4 id="长连接和短连接"><a href="#长连接和短连接" class="header-anchor">#</a> 长连接和短连接</h4> <p>其实上面已经涉及到了，这里再单独说明一下。Chrome插件中有2种通信方式，一个是短连接（<code>chrome.tabs.sendMessage</code>和<code>chrome.runtime.sendMessage</code>），一个是长连接（<code>chrome.tabs.connect</code>和<code>chrome.runtime.connect</code>）。
+长短连接的概念我就不说了，大家都应该知道。</p> <p>短连接上面已经有代码示例了，这里只讲一下长连接。</p> <div class="language-js extra-class"><pre class="language-js"><code>popup<span class="token punctuation">.</span>js
+
+<span class="token comment">// 获取当前选项卡ID</span>
+   <span class="token keyword">function</span> <span class="token function">getCurrentTabId</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     chrome<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">{</span> active<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> currentWindow<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">tabs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token function">callback</span><span class="token punctuation">(</span>tabs<span class="token punctuation">.</span>length <span class="token operator">?</span> tabs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">function</span> <span class="token function">callbackInfo</span><span class="token punctuation">(</span><span class="token parameter">tabId</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tabId<span class="token punctuation">)</span>
+     <span class="token keyword">var</span> port <span class="token operator">=</span> chrome<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>tabId<span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">'test-connect'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> question<span class="token operator">:</span> <span class="token string">'你是谁啊？'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     port<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'收到消息：'</span> <span class="token operator">+</span> msg<span class="token punctuation">.</span>answer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>msg<span class="token punctuation">.</span>answer <span class="token operator">&amp;&amp;</span> msg<span class="token punctuation">.</span>answer<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'我是'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> question<span class="token operator">:</span> <span class="token string">'哦，原来是你啊！'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token function">getCurrentTabId</span><span class="token punctuation">(</span>callbackInfo<span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701049-57153">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="popup.js
+
+// 获取当前选项卡ID
+   function getCurrentTabId(callback) {
+     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+       if (callback) callback(tabs.length ? tabs[0].id : null);
+     });
+   }
+
+   function callbackInfo(tabId) {
+     console.log(tabId)
+     var port = chrome.tabs.connect(tabId, { name: 'test-connect' });
+     port.postMessage({ question: '你是谁啊？' });
+     port.onMessage.addListener(function(msg) {
+       alert('收到消息：' + msg.answer);
+       if (msg.answer &amp;&amp; msg.answer.startsWith('我是')) {
+         port.postMessage({ question: '哦，原来是你啊！' });
+       }
+     });
+   }
+
+   getCurrentTabId(callbackInfo)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701049-57153" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701049-50490">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="popup.js
+
+// 获取当前选项卡ID
+   function getCurrentTabId(callback) {
+     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+       if (callback) callback(tabs.length ? tabs[0].id : null);
+     });
+   }
+
+   function callbackInfo(tabId) {
+     console.log(tabId)
+     var port = chrome.tabs.connect(tabId, { name: 'test-connect' });
+     port.postMessage({ question: '你是谁啊？' });
+     port.onMessage.addListener(function(msg) {
+       alert('收到消息：' + msg.answer);
+       if (msg.answer &amp;&amp; msg.answer.startsWith('我是')) {
+         port.postMessage({ question: '哦，原来是你啊！' });
+       }
+     });
+   }
+
+   getCurrentTabId(callbackInfo)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701049-50490" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//content-script.js： 监听长连接</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onConnect<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">port</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>port<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">'test-connect'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        port<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'收到长连接消息：'</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>question <span class="token operator">==</span> <span class="token string">'你是谁啊？'</span><span class="token punctuation">)</span> port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>answer<span class="token operator">:</span> <span class="token string">'我是司音！'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701053-53311">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//content-script.js： 监听长连接
+chrome.runtime.onConnect.addListener(function(port) {
+    console.log(port);
+    if(port.name == 'test-connect') {
+        port.onMessage.addListener(function(msg) {
+            console.log('收到长连接消息：', msg);
+            if(msg.question == '你是谁啊？') port.postMessage({answer: '我是司音！'});
+        });
+    }
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701053-53311" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701053-57167">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//content-script.js： 监听长连接
+chrome.runtime.onConnect.addListener(function(port) {
+    console.log(port);
+    if(port.name == 'test-connect') {
+        port.onMessage.addListener(function(msg) {
+            console.log('收到长连接消息：', msg);
+            if(msg.question == '你是谁啊？') port.postMessage({answer: '我是司音！'});
+        });
+    }
+});
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701053-57167" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/Others/5.3.html" class="prev">
+        web 性能优化实践
+      </a></span> <span class="next"><a href="/FrontEnd/Others/5.5.html">
+        Google Cloud - IP 失效更换 IP 方法
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/115.1aec54a4.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

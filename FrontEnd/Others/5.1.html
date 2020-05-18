@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePress 搭建个人博客 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/112.db3075af.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/37.c1852146.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Image</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>业余·折腾</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Others/5.1.html" class="active sidebar-link">VuePress 搭建个人博客</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#一、-vuepress" class="sidebar-link">一、 VuePress</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#二、开始搭建" class="sidebar-link">二、开始搭建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#创建项目文件夹" class="sidebar-link">创建项目文件夹</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#全局安装-vuepress" class="sidebar-link">全局安装 VuePress</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#进入-vuepressdemo-文件夹，初始化项目" class="sidebar-link">进入 vuepressDemo 文件夹，初始化项目</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#创建文件夹和文件" class="sidebar-link">创建文件夹和文件</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#在-config-js-文件中配置网站标题、描述、主题等信息" class="sidebar-link">在 config.js 文件中配置网站标题、描述、主题等信息</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#在-package-json-文件里添加两个启动命令" class="sidebar-link">在 package.json 文件里添加两个启动命令</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#一切就绪-跑起来看看吧" class="sidebar-link">一切就绪 🎉 跑起来看看吧</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#三、一些tips" class="sidebar-link">三、一些Tips</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#代码块高亮" class="sidebar-link">代码块高亮</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#自定义容器" class="sidebar-link">自定义容器</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#支持-emoji" class="sidebar-link">支持 Emoji</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#支持-pwa" class="sidebar-link">支持 PWA</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#四、部署上线" class="sidebar-link">四、部署上线</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#登陆-github" class="sidebar-link">登陆 Github</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#新建仓库一：-username-github-io-（不用克隆到本地）" class="sidebar-link">新建仓库一： USERNAME.github.io （不用克隆到本地）</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#新建仓库二：随便起一个名字，比如：vuepressblog-（克隆到本地）" class="sidebar-link">新建仓库二：随便起一个名字，比如：vuepressBlog （克隆到本地）</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#修改仓库二中的-deploy-sh-发布脚本" class="sidebar-link">修改仓库二中的 deploy.sh 发布脚本</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#在-package-json-文件夹中添加发布命令" class="sidebar-link">在 package.json 文件夹中添加发布命令</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#大功告成，运行发布命令" class="sidebar-link">👏 大功告成，运行发布命令</a></li></ul></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#五、发布到自己的个人域名" class="sidebar-link">五、发布到自己的个人域名</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#修改仓库二中的-deploy-sh-文件" class="sidebar-link">修改仓库二中的 deploy.sh 文件</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/Others/5.1.html#大功告成，打开-https-blog-augustvino-cn-看一下吧" class="sidebar-link">👏 大功告成，打开 https://blog.augustvino.cn 看一下吧~~~</a></li></ul></li></ul></li><li><a href="/FrontEnd/Others/5.2.html" class="sidebar-link">前后端分离模式</a></li><li><a href="/FrontEnd/Others/5.3.html" class="sidebar-link">web 性能优化实践</a></li><li><a href="/FrontEnd/Others/5.4.html" class="sidebar-link">Chrome 拓展插件开发实践</a></li><li><a href="/FrontEnd/Others/5.5.html" class="sidebar-link">Google Cloud - IP 失效更换 IP 方法</a></li><li><a href="/FrontEnd/Others/5.6.html" class="sidebar-link">Google Cloud - Mac 使用 iterm2 自动 ssh 登录远程服务器</a></li><li><a href="/FrontEnd/Others/5.7.html" class="sidebar-link">Google Cloud - 一键脚本搭建 SS/搭建 SSR 服务并开启 BBR 加速</a></li><li><a href="/FrontEnd/Others/5.8.html" class="sidebar-link">解决 Github 下载速度太慢</a></li><li><a href="/FrontEnd/Others/5.9.html" class="sidebar-link">Mac 新系统搭建前端环境</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vuepress-搭建个人博客"><a href="#vuepress-搭建个人博客" class="header-anchor">#</a> VuePress 搭建个人博客</h1> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>这里引用一个张韵晨大神的<a href="https://github.com/augustVino/vuepress-devkit.git" target="_blank" rel="noopener noreferrer">工具包<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>:</p> <p><code>git clone https://github.com/augustVino/vuepress-devkit.git</code></p> <p>直接在此基础上搭建就好，省去了很多的坑...</p></div> <h2 id="一、-vuepress"><a href="#一、-vuepress" class="header-anchor">#</a> 一、 VuePress</h2> <p><strong>VuePress</strong> 是尤雨溪（vue.js 框架作者）4月12日发布的一个全新的基于 vue 的静态网站生成器，实际上就是一个 vue 的 spa 应用，内置 webpack，可以用来写文档。详见 <a href="https://vuepress.docschina.org/" target="_blank" rel="noopener noreferrer">VuePress中文网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="二、开始搭建"><a href="#二、开始搭建" class="header-anchor">#</a> 二、开始搭建</h2> <h3 id="创建项目文件夹"><a href="#创建项目文件夹" class="header-anchor">#</a> 创建项目文件夹</h3> <p>可以右键手动新建，也可以使用 mkdir 命令新建：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> vuepressDemo
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701065-91766">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="mkdir vuepressDemo
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701065-91766" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701065-23264">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="mkdir vuepressDemo
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701065-23264" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="全局安装-vuepress"><a href="#全局安装-vuepress" class="header-anchor">#</a> 全局安装 VuePress</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g vuepress
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701065-15830">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm install -g vuepress
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701065-15830" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701065-95562">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm install -g vuepress
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701065-95562" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="进入-vuepressdemo-文件夹，初始化项目"><a href="#进入-vuepressdemo-文件夹，初始化项目" class="header-anchor">#</a> 进入 vuepressDemo 文件夹，初始化项目</h3> <p>使用 <code>npm init</code> 或 <code>npm init -y</code>（默认yes）</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> init -y
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-39778">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm init -y
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-39778" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-92728">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm init -y
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-92728" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="创建文件夹和文件"><a href="#创建文件夹和文件" class="header-anchor">#</a> 创建文件夹和文件</h3> <p>在 vuepressDemo 文件夹中创建 <code>docs</code> 文件夹，在 <code>docs</code> 中创建 <code>.vuepress</code> 文件夹，在<code>.vuepress</code>中创建 <code>public</code> 文件夹和 <code>config.js</code> 文件，最终项目结构如下所示：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>vuepressDemo
+├─── docs
+│   ├── README.md
+│   └── .vuepress
+│       ├── public
+│       └── config.js
+└── package.json
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-63990">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vuepressDemo
+├─── docs
+│   ├── README.md
+│   └── .vuepress
+│       ├── public
+│       └── config.js
+└── package.json
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-63990" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-19860">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="vuepressDemo
+├─── docs
+│   ├── README.md
+│   └── .vuepress
+│       ├── public
+│       └── config.js
+└── package.json
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-19860" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="在-config-js-文件中配置网站标题、描述、主题等信息"><a href="#在-config-js-文件中配置网站标题、描述、主题等信息" class="header-anchor">#</a> 在 config.js 文件中配置网站标题、描述、主题等信息</h3> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    title<span class="token operator">:</span> <span class="token string">&quot;Vino's Blog&quot;</span><span class="token punctuation">,</span>
+    description<span class="token operator">:</span> <span class="token string">'前端爬坑之旅'</span><span class="token punctuation">,</span>
+    head<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">// 注入到当前页面的 HTML &lt;head&gt; 中的标签</span>
+        <span class="token punctuation">[</span><span class="token string">'link'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> rel<span class="token operator">:</span> <span class="token string">'icon'</span><span class="token punctuation">,</span> href<span class="token operator">:</span> <span class="token string">'/logo.jpg'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 增加一个自定义的 favicon(网页标签的图标)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    base<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token comment">// 这是部署到github相关的配置</span>
+    markdown<span class="token operator">:</span> <span class="token punctuation">{</span>
+        lineNumbers<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 代码块显示行号</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    themeConfig<span class="token operator">:</span> <span class="token punctuation">{</span>
+        nav<span class="token operator">:</span><span class="token punctuation">[</span> <span class="token comment">// 导航栏配置</span>
+            <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">'/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'进阶·博文'</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">'/Blog/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'爬坑·总结'</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">'/FrontEnd/'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                text<span class="token operator">:</span> <span class="token string">'Contact'</span><span class="token punctuation">,</span>
+                items<span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'GitHub'</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">'https://github.com/augustVino/augustVino.github.io'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Weibo'</span><span class="token punctuation">,</span> link<span class="token operator">:</span> <span class="token string">'https://weibo.com/neikeda/profile'</span> <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>   
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        sidebar<span class="token operator">:</span> <span class="token string">'auto'</span><span class="token punctuation">,</span> <span class="token comment">// 侧边栏配置</span>
+        sidebarDepth<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token comment">// 侧边栏显示2级</span>
+        lastUpdated<span class="token operator">:</span> <span class="token string">'Last Updated'</span><span class="token punctuation">,</span> <span class="token comment">// string | boolean</span>
+        search<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        searchMaxSuggestions<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        displayAllHeaders<span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-90108">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="module.exports = {
+    title: &quot;Vino's Blog&quot;,
+    description: '前端爬坑之旅',
+    head: [ // 注入到当前页面的 HTML &lt;head&gt; 中的标签
+        ['link', { rel: 'icon', href: '/logo.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
+    ],
+    base: '/', // 这是部署到github相关的配置
+    markdown: {
+        lineNumbers: true // 代码块显示行号
+    },
+    themeConfig: {
+        nav:[ // 导航栏配置
+            { text: 'Home', link: '/' },
+            { text: '进阶·博文', link: '/Blog/' },
+            { text: '爬坑·总结', link: '/FrontEnd/' },
+            {
+                text: 'Contact',
+                items: [
+                    { text: 'GitHub', link: 'https://github.com/augustVino/augustVino.github.io' },
+                    { text: 'Weibo', link: 'https://weibo.com/neikeda/profile' }
+                ]
+            }   
+        ],
+        sidebar: 'auto', // 侧边栏配置
+        sidebarDepth: 2, // 侧边栏显示2级
+        lastUpdated: 'Last Updated', // string | boolean
+        search: true,
+        searchMaxSuggestions: 10,
+        displayAllHeaders: false
+    }
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-90108" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-71178">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="module.exports = {
+    title: &quot;Vino's Blog&quot;,
+    description: '前端爬坑之旅',
+    head: [ // 注入到当前页面的 HTML &lt;head&gt; 中的标签
+        ['link', { rel: 'icon', href: '/logo.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
+    ],
+    base: '/', // 这是部署到github相关的配置
+    markdown: {
+        lineNumbers: true // 代码块显示行号
+    },
+    themeConfig: {
+        nav:[ // 导航栏配置
+            { text: 'Home', link: '/' },
+            { text: '进阶·博文', link: '/Blog/' },
+            { text: '爬坑·总结', link: '/FrontEnd/' },
+            {
+                text: 'Contact',
+                items: [
+                    { text: 'GitHub', link: 'https://github.com/augustVino/augustVino.github.io' },
+                    { text: 'Weibo', link: 'https://weibo.com/neikeda/profile' }
+                ]
+            }   
+        ],
+        sidebar: 'auto', // 侧边栏配置
+        sidebarDepth: 2, // 侧边栏显示2级
+        lastUpdated: 'Last Updated', // string | boolean
+        search: true,
+        searchMaxSuggestions: 10,
+        displayAllHeaders: false
+    }
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-71178" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="在-package-json-文件里添加两个启动命令"><a href="#在-package-json-文件里添加两个启动命令" class="header-anchor">#</a> 在 package.json 文件里添加两个启动命令</h3> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress dev docs&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress build docs&quot;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-21813">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vuepress dev docs&quot;,
+    &quot;build&quot;: &quot;vuepress build docs&quot;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-21813" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-24686">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vuepress dev docs&quot;,
+    &quot;build&quot;: &quot;vuepress build docs&quot;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-24686" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="一切就绪-跑起来看看吧"><a href="#一切就绪-跑起来看看吧" class="header-anchor">#</a> 一切就绪 🎉 跑起来看看吧</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run dev
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-75051">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm run dev
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-75051" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-28743">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm run dev
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-28743" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="三、一些tips"><a href="#三、一些tips" class="header-anchor">#</a> 三、一些Tips</h2> <p>完成了基础搭建后，就可以在docs目录下新建 <code>.md</code> 文件写文章了. <a href="https://www.jianshu.com/p/b03a8d7b1719" target="_blank" rel="noopener noreferrer">Markdown 语法整理大集合<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>下面给大家安利一些实用的方法。</p> <h3 id="代码块高亮"><a href="#代码块高亮" class="header-anchor">#</a> 代码块高亮</h3> <p>在 .md 文件中书写代码时，可在 ``` 后增加 js、html、json、bash等格式类型，代码块即可按照指定类型高亮</p> <p>代码：</p> <pre class="language-text"><code>``` js
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```</code></pre> <p>效果：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      msg<span class="token operator">:</span> <span class="token string">'Highlighted!'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-20140">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-20140" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701066-51769">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701066-51769" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="自定义容器"><a href="#自定义容器" class="header-anchor">#</a> 自定义容器</h3> <p>代码：</p> <div class="language- extra-class"><pre><code>::: tip 提示
+this is a tip
+:::
+
+::: warning 注意
+this is a tip
+:::
+
+::: danger 警告
+this is a tip
+:::
+</code><div class="m-mdic-copy-wrapper"><div id="j-notify-1589775701067-75696" class="u-mdic-copy-notify">copy success</div><button data-mdic-content="::: tip 提示
+this is a tip
+:::
+
+::: warning 注意
+this is a tip
+:::
+
+::: danger 警告
+this is a tip
+:::
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-75696" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);" class="u-mdic-copy-btn j-mdic-copy-btn">copy</button></div><div class="m-mdic-copy-wrapper"><div id="j-notify-1589775701067-42758" class="u-mdic-copy-notify">Copy successed</div><button data-mdic-content="::: tip 提示
+this is a tip
+:::
+
+::: warning 注意
+this is a tip
+:::
+
+::: danger 警告
+this is a tip
+:::
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-42758" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);" class="u-mdic-copy-btn j-mdic-copy-btn">Copy</button></div></pre></div><p>效果：</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>this is a tip</p></div> <div class="custom-block warning"><p class="custom-block-title">注意</p> <p>this is a tip</p></div> <div class="custom-block danger"><p class="custom-block-title">警告</p> <p>this is a tip</p></div> <h3 id="支持-emoji"><a href="#支持-emoji" class="header-anchor">#</a> 支持 Emoji</h3> <p>代码：</p> <div class="language- extra-class"><pre><code>:tada: :100: :bamboo: :gift_heart: :fire:
+</code><div class="m-mdic-copy-wrapper"><div id="j-notify-1589775701067-28273" class="u-mdic-copy-notify">copy success</div><button data-mdic-content=":tada: :100: :bamboo: :gift_heart: :fire:
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-28273" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);" class="u-mdic-copy-btn j-mdic-copy-btn">copy</button></div><div class="m-mdic-copy-wrapper"><div id="j-notify-1589775701067-35331" class="u-mdic-copy-notify">Copy successed</div><button data-mdic-content=":tada: :100: :bamboo: :gift_heart: :fire:
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-35331" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);" class="u-mdic-copy-btn j-mdic-copy-btn">Copy</button></div></pre></div><p>效果：
+🎉 💯 🎍 💝 🔥</p> <p>👉 这里有一份 <a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener noreferrer">Emoji 大全<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="支持-pwa"><a href="#支持-pwa" class="header-anchor">#</a> 支持 PWA</h3> <p>VuePress 默认支持 <a href="https://segmentfault.com/a/1190000012353473" target="_blank" rel="noopener noreferrer">PWA<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，配置方法如下：</p> <p>config.js 文件中增加</p> <div class="language-js extra-class"><pre class="language-js"><code>head<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">// 注入到当前页面的 HTML &lt;head&gt; 中的标签</span>
+  <span class="token punctuation">[</span><span class="token string">'link'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> rel<span class="token operator">:</span> <span class="token string">'manifest'</span><span class="token punctuation">,</span> href<span class="token operator">:</span> <span class="token string">'/photo.jpg'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'link'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> rel<span class="token operator">:</span> <span class="token string">'apple-touch-icon'</span><span class="token punctuation">,</span> href<span class="token operator">:</span> <span class="token string">'/photo.jpg'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span>
+serviceWorker<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token comment">// 是否开启 PWA</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701067-39349">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="head: [ // 注入到当前页面的 HTML &lt;head&gt; 中的标签
+  ['link', { rel: 'manifest', href: '/photo.jpg' }],
+  ['link', { rel: 'apple-touch-icon', href: '/photo.jpg' }],
+],
+serviceWorker: true // 是否开启 PWA
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-39349" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701067-88383">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="head: [ // 注入到当前页面的 HTML &lt;head&gt; 中的标签
+  ['link', { rel: 'manifest', href: '/photo.jpg' }],
+  ['link', { rel: 'apple-touch-icon', href: '/photo.jpg' }],
+],
+serviceWorker: true // 是否开启 PWA
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701067-88383" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>public 文件夹下新建 manifest.json 文件，添加</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;short_name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;张三&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;start_url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;index.html&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;display&quot;</span><span class="token operator">:</span> <span class="token string">&quot;standalone&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;background_color&quot;</span><span class="token operator">:</span> <span class="token string">&quot;#2196f3&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token string">&quot;张三的个人主页&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;theme_color&quot;</span><span class="token operator">:</span> <span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;icons&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;src&quot;</span><span class="token operator">:</span> <span class="token string">&quot;./photo.jpg&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;sizes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;144x144&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;image/png&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;related_applications&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;platform&quot;</span><span class="token operator">:</span> <span class="token string">&quot;web&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;platform&quot;</span><span class="token operator">:</span> <span class="token string">&quot;play&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://play.google.com/store/apps/details?id=cheeaun.hackerweb&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-94819">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+  &quot;name&quot;: &quot;张三&quot;,
+  &quot;short_name&quot;: &quot;张三&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;background_color&quot;: &quot;#2196f3&quot;,
+  &quot;description&quot;: &quot;张三的个人主页&quot;,
+  &quot;theme_color&quot;: &quot;blue&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;./photo.jpg&quot;,
+      &quot;sizes&quot;: &quot;144x144&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    }
+  ],
+  &quot;related_applications&quot;: [
+    {
+      &quot;platform&quot;: &quot;web&quot;
+    },
+    {
+      &quot;platform&quot;: &quot;play&quot;,
+      &quot;url&quot;: &quot;https://play.google.com/store/apps/details?id=cheeaun.hackerweb&quot;
+    }
+  ]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-94819" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-39235">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="{
+  &quot;name&quot;: &quot;张三&quot;,
+  &quot;short_name&quot;: &quot;张三&quot;,
+  &quot;start_url&quot;: &quot;index.html&quot;,
+  &quot;display&quot;: &quot;standalone&quot;,
+  &quot;background_color&quot;: &quot;#2196f3&quot;,
+  &quot;description&quot;: &quot;张三的个人主页&quot;,
+  &quot;theme_color&quot;: &quot;blue&quot;,
+  &quot;icons&quot;: [
+    {
+      &quot;src&quot;: &quot;./photo.jpg&quot;,
+      &quot;sizes&quot;: &quot;144x144&quot;,
+      &quot;type&quot;: &quot;image/png&quot;
+    }
+  ],
+  &quot;related_applications&quot;: [
+    {
+      &quot;platform&quot;: &quot;web&quot;
+    },
+    {
+      &quot;platform&quot;: &quot;play&quot;,
+      &quot;url&quot;: &quot;https://play.google.com/store/apps/details?id=cheeaun.hackerweb&quot;
+    }
+  ]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-39235" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>最后在 iPhone 的 safrai 浏览器中打开本网站，点击 <code>+添加到主屏幕</code> 就能在桌面看到一个像原生 App 一样的图标（感觉自己写了一个 App 有木有 😄）</p> <h2 id="四、部署上线"><a href="#四、部署上线" class="header-anchor">#</a> 四、部署上线</h2> <h3 id="登陆-github"><a href="#登陆-github" class="header-anchor">#</a> 登陆 <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Github<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h3> <p>打开 github 网站，登陆自己的 github 账号</p> <p>接着我们新建两个仓库：</p> <h3 id="新建仓库一：-username-github-io-（不用克隆到本地）"><a href="#新建仓库一：-username-github-io-（不用克隆到本地）" class="header-anchor">#</a> 新建仓库一： USERNAME.github.io （不用克隆到本地）</h3> <div class="custom-block warning"><p class="custom-block-title">注意</p> <p>USERNAME 必须是你 Github 的账号名称，不是你的名字拼音，要保证和Github账号名一模一样！</p></div> <p>例如我的 Github 账号名称是 augustVino</p> <p>那么新建仓库，Repository name 就填写为：augustVino.github.io</p> <p><b>这个仓库建好后，不用克隆到本地，内容更新修改都在仓库二中进行。</b></p> <h3 id="新建仓库二：随便起一个名字，比如：vuepressblog-（克隆到本地）"><a href="#新建仓库二：随便起一个名字，比如：vuepressblog-（克隆到本地）" class="header-anchor">#</a> 新建仓库二：随便起一个名字，比如：vuepressBlog （克隆到本地）</h3> <p>这个项目是用来开发博客的，以后只需要改这个项目就够了。</p> <p>将 vuepressDemo 文件夹的内容拷贝到仓库二（<code>vuepressBlog</code>文件夹），并在根目录下创建 <code>deploy.sh</code> 文件，内容如下：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token shebang important">#!/usr/bin/env sh</span>
+
+<span class="token comment"># 确保脚本抛出遇到的错误</span>
+<span class="token builtin class-name">set</span> -e
+
+<span class="token comment"># 生成静态文件</span>
+<span class="token function">npm</span> run build
+
+<span class="token comment"># 进入生成的文件夹</span>
+<span class="token builtin class-name">cd</span> docs/.vuepress/dist
+
+<span class="token comment"># 如果是发布到自定义域名</span>
+<span class="token comment"># echo 'www.yourwebsite.com' &gt; CNAME</span>
+
+<span class="token function">git</span> init
+<span class="token function">git</span> <span class="token function">add</span> -A
+<span class="token function">git</span> commit -m <span class="token string">'deploy'</span>
+
+<span class="token comment"># 如果你想要部署到 https://USERNAME.github.io</span>
+<span class="token function">git</span> push -f git@github.com:USERNAME/USERNAME.github.io.git master
+
+<span class="token comment"># 如果发布到 https://USERNAME.github.io/&lt;REPO&gt;  REPO=github上的项目</span>
+<span class="token comment"># git push -f git@github.com:USERNAME/&lt;REPO&gt;.git master:gh-pages</span>
+
+<span class="token builtin class-name">cd</span> -
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-8179">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+# echo 'www.yourwebsite.com' &gt; CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果你想要部署到 https://USERNAME.github.io
+git push -f git@github.com:USERNAME/USERNAME.github.io.git master
+
+# 如果发布到 https://USERNAME.github.io/&lt;REPO&gt;  REPO=github上的项目
+# git push -f git@github.com:USERNAME/&lt;REPO&gt;.git master:gh-pages
+
+cd -
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-8179" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-5162">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+# echo 'www.yourwebsite.com' &gt; CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果你想要部署到 https://USERNAME.github.io
+git push -f git@github.com:USERNAME/USERNAME.github.io.git master
+
+# 如果发布到 https://USERNAME.github.io/&lt;REPO&gt;  REPO=github上的项目
+# git push -f git@github.com:USERNAME/&lt;REPO&gt;.git master:gh-pages
+
+cd -
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-5162" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="修改仓库二中的-deploy-sh-发布脚本"><a href="#修改仓库二中的-deploy-sh-发布脚本" class="header-anchor">#</a> 修改仓库二中的 deploy.sh 发布脚本</h3> <p>把文件中的 USERNAME 改成 Github 账号名，例如我的账号名是 augustVino，那么就可以改为：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># 如果你想要部署到 https://USERNAME.github.io</span>
+<span class="token function">git</span> push -f git@github.com:augustVino/augustVino.github.io.git master
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-35760">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 如果你想要部署到 https://USERNAME.github.io
+git push -f git@github.com:augustVino/augustVino.github.io.git master
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-35760" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-84989">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="# 如果你想要部署到 https://USERNAME.github.io
+git push -f git@github.com:augustVino/augustVino.github.io.git master
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-84989" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这样仓库二和仓库一就建立了关联。</p> <p>简单说二者的关系是：仓库一负责显示网站内容，我们不需要改动它；日常开发和新增内容，都在仓库二中，并通过 npm run deploy 命令，将代码发布到仓库一。</p> <h3 id="在-package-json-文件夹中添加发布命令"><a href="#在-package-json-文件夹中添加发布命令" class="header-anchor">#</a> 在 package.json 文件夹中添加发布命令</h3> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;deploy&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bash deploy.sh&quot;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-60867">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&quot;scripts&quot;: {
+    &quot;deploy&quot;: &quot;bash deploy.sh&quot;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-60867" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-68350">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&quot;scripts&quot;: {
+    &quot;deploy&quot;: &quot;bash deploy.sh&quot;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-68350" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="大功告成，运行发布命令"><a href="#大功告成，运行发布命令" class="header-anchor">#</a> 👏 大功告成，运行发布命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run deploy
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-3781">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm run deploy
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-3781" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-50656">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="npm run deploy
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-50656" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>此时打开 <code>Github Settings</code> 中下面的链接: <a href="https://augustVino.github.io/" target="_blank" rel="noopener noreferrer">https://augustVino.github.io/<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 即可看到自己的主页啦~</p> <h2 id="五、发布到自己的个人域名"><a href="#五、发布到自己的个人域名" class="header-anchor">#</a> 五、发布到自己的个人域名</h2> <p>此处默认已经有了一个域名 😎
+下面跟着步骤一步步来就好啦~</p> <h3 id="修改仓库二中的-deploy-sh-文件"><a href="#修改仓库二中的-deploy-sh-文件" class="header-anchor">#</a> 修改仓库二中的 deploy.sh 文件</h3> <p>将仓库二中的 deploy.sh 文件的第 13 行反注释掉，并填上自己的域名，deploy.sh 文件的最终版：</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token shebang important">#!/usr/bin/env sh</span>
+
+<span class="token comment"># 确保脚本抛出遇到的错误</span>
+<span class="token builtin class-name">set</span> -e
+
+<span class="token comment"># 生成静态文件</span>
+<span class="token function">npm</span> run build
+
+<span class="token comment"># 进入生成的文件夹</span>
+<span class="token builtin class-name">cd</span> docs/.vuepress/dist
+
+<span class="token comment"># 如果是发布到自定义域名</span>
+<span class="token builtin class-name">echo</span> <span class="token string">'blog.augustvino.cn'</span> <span class="token operator">&gt;</span> CNAME
+
+<span class="token function">git</span> init
+<span class="token function">git</span> <span class="token function">add</span> -A
+<span class="token function">git</span> commit -m <span class="token string">'deploy'</span>
+
+<span class="token comment"># 如果你想要部署到 https://&lt;USERNAME&gt;.github.io</span>
+<span class="token function">git</span> push -f git@github.com:augustVino/augustVino.github.io.git master
+
+<span class="token comment"># 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;  REPO=github上的项目</span>
+<span class="token comment"># git push -f git@github.com:&lt;USERNAME&gt;/vuepress.git master:gh-pages</span>
+
+<span class="token builtin class-name">cd</span> -
+
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-16728">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+echo 'blog.augustvino.cn' &gt; CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果你想要部署到 https://&lt;USERNAME&gt;.github.io
+git push -f git@github.com:augustVino/augustVino.github.io.git master
+
+# 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;  REPO=github上的项目
+# git push -f git@github.com:&lt;USERNAME&gt;/vuepress.git master:gh-pages
+
+cd -
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-16728" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775701068-19952">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+echo 'blog.augustvino.cn' &gt; CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果你想要部署到 https://&lt;USERNAME&gt;.github.io
+git push -f git@github.com:augustVino/augustVino.github.io.git master
+
+# 如果发布到 https://&lt;USERNAME&gt;.github.io/&lt;REPO&gt;  REPO=github上的项目
+# git push -f git@github.com:&lt;USERNAME&gt;/vuepress.git master:gh-pages
+
+cd -
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775701068-19952" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>此时，我们运行 npm run deploy 即可发布到自己的专属域名啦~</p> <h3 id="大功告成，打开-https-blog-augustvino-cn-看一下吧"><a href="#大功告成，打开-https-blog-augustvino-cn-看一下吧" class="header-anchor">#</a> 👏 大功告成，打开 <a href="https://blog.augustvino.cn" target="_blank" rel="noopener noreferrer">https://blog.augustvino.cn<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 看一下吧~~~</h3> <p>拥有自己专属域名的个人博客感觉很酷哦~</p> <p>写一些文章，记录一点生活，把自己的网站发给同学朋友看看吧！ 😎</p> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/Vue/4.2.html" class="prev">
+        5分钟摸探vue实现双向绑定原理
+      </a></span> <span class="next"><a href="/FrontEnd/Others/5.2.html">
+        前后端分离模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/112.db3075af.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

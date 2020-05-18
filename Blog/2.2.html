@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>重新认识构造函数、原型和原型链 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/49.cf13277f.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第1期：this全面解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第2期：原型 Prototype</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/2.1.html" class="sidebar-link">JavaScript常用八种继承方案</a></li><li><a href="/Blog/2.2.html" class="active sidebar-link">重新认识构造函数、原型和原型链</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/2.2.html#构造函数" class="sidebar-link">构造函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/2.2.html#什么是构造函数" class="sidebar-link">什么是构造函数</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#symbol-是构造函数吗" class="sidebar-link">Symbol 是构造函数吗</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#constructor-值只读吗" class="sidebar-link">constructor 值只读吗</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#模拟实现-new" class="sidebar-link">模拟实现 new</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#原型" class="sidebar-link">原型</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/2.2.html#prototype" class="sidebar-link">prototype</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#proto" class="sidebar-link">__proto__</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#注意点" class="sidebar-link">注意点</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#优化实现-new" class="sidebar-link">优化实现 new</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#原型链" class="sidebar-link">原型链</a></li><li class="sidebar-sub-header"><a href="/Blog/2.2.html#小结" class="sidebar-link">小结</a></li></ul></li><li><a href="/Blog/2.2.1.html" class="sidebar-link">5分钟彻底了解js原型的精髓</a></li><li><a href="/Blog/2.3.html" class="sidebar-link">图解原型链及其继承优缺点</a></li><li><a href="/Blog/2.4.html" class="sidebar-link">深入探究 Function &amp; Object 鸡蛋问题</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第4期：节流防抖</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第6期：深浅拷贝原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第7期：调用堆栈</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="重新认识构造函数、原型和原型链"><a href="#重新认识构造函数、原型和原型链" class="header-anchor">#</a> 重新认识构造函数、原型和原型链</h1> <p>本篇文章重点介绍构造函数、原型和原型链相关知识，如果你还不知道 <code>Symbol</code> 是不是构造函数、<code>constructor</code> 属性是否只读、<code>prototype</code> 、<code>[[Prototype]]</code> 和 <code>__proto__</code> 的区别、什么是原型链，建议你好好阅读本文，希望对你有所帮助。</p> <div class="img-box"><img src="/img/2.2-1.webp" alt="2.2-1"> <!----></div> <h2 id="构造函数"><a href="#构造函数" class="header-anchor">#</a> 构造函数</h2> <h3 id="什么是构造函数"><a href="#什么是构造函数" class="header-anchor">#</a> 什么是构造函数</h3> <p><code>constructor</code> 返回创建实例对象时构造函数的引用。此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Parent<span class="token punctuation">;</span> <span class="token comment">// true</span>
+p<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688250-412">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+
+var p = new Parent(50);
+p.constructor === Parent; // true
+p.constructor === Object; // false
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688250-412" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688250-95167">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+
+var p = new Parent(50);
+p.constructor === Parent; // true
+p.constructor === Object; // false
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688250-95167" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>构造函数本身就是一个函数，与普通函数没有任何区别，不过为了规范一般将其首字母大写。构造函数和普通函数的区别在于，使用 <code>new</code> 生成实例的函数就是构造函数，直接调用的就是普通函数。</p> <p>那是不是意味着普通函数创建的实例没有 <code>constructor</code> 属性呢？不一定。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 普通函数</span>
+<span class="token keyword">function</span> <span class="token function">parent2</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> p2 <span class="token operator">=</span> <span class="token function">parent2</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// undefined</span>
+
+<span class="token comment">// 普通函数</span>
+<span class="token keyword">function</span> <span class="token function">parent3</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        age<span class="token operator">:</span> age
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> p3 <span class="token operator">=</span> <span class="token function">parent3</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p3<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688250-19610">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 普通函数
+function parent2(age) {
+    this.age = age;
+}
+var p2 = parent2(50);
+// undefined
+
+// 普通函数
+function parent3(age) {
+    return {
+        age: age
+    }
+}
+var p3 = parent3(50);
+p3.constructor === Object; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688250-19610" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688250-92360">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 普通函数
+function parent2(age) {
+    this.age = age;
+}
+var p2 = parent2(50);
+// undefined
+
+// 普通函数
+function parent3(age) {
+    return {
+        age: age
+    }
+}
+var p3 = parent3(50);
+p3.constructor === Object; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688250-92360" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="symbol-是构造函数吗"><a href="#symbol-是构造函数吗" class="header-anchor">#</a> Symbol 是构造函数吗</h3> <p><code>Symbol</code> 是基本数据类型，但作为构造函数来说它并不完整，因为它不支持语法 <code>new Symbol()</code>，Chrome 认为其不是构造函数，如果要生成实例直接使用 <code>Symbol()</code> 即可。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Symbol</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Symbol is not a constructor </span>
+
+<span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Symbol(123)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-3533">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="new Symbol(123); // Symbol is not a constructor 
+
+Symbol(123); // Symbol(123)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-3533" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-32866">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="new Symbol(123); // Symbol is not a constructor 
+
+Symbol(123); // Symbol(123)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-32866" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>虽然是基本数据类型，但 <code>Symbol(123)</code> 实例可以获取 <code>constructor</code> 属性值。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> sym <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> sym <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Symbol(123)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> sym<span class="token punctuation">.</span>constructor <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ƒ Symbol() { [native code] }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-63865">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var sym = Symbol(123); 
+console.log( sym );
+// Symbol(123)
+
+console.log( sym.constructor );
+// ƒ Symbol() { [native code] }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-63865" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-30549">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var sym = Symbol(123); 
+console.log( sym );
+// Symbol(123)
+
+console.log( sym.constructor );
+// ƒ Symbol() { [native code] }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-30549" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里的 <code>constructor</code> 属性来自哪里？其实是 <code>Symbol</code> 原型上的，即 <code>Symbol.prototype.constructor</code> 返回创建实例原型的函数， 默认为 <code>Symbol</code> 函数。</p> <h3 id="constructor-值只读吗"><a href="#constructor-值只读吗" class="header-anchor">#</a> constructor 值只读吗</h3> <p>这个得分情况，对于引用类型来说 <code>constructor</code> 属性值是可以修改的，但是对于基本类型来说是只读的。</p> <p>引用类型情况其值可修改这个很好理解，比如原型链继承方案中，就需要对 <code>constructor</code>重新赋值进行修正。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token class-name">Foo</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">method</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 设置 Bar 的 prototype 属性为 Foo 的实例对象</span>
+<span class="token class-name">Bar</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Bar</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token string">'Hello World'</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Bar</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">;</span>
+<span class="token comment">// true</span>
+
+<span class="token comment">// 修正 Bar.prototype.constructor 为 Bar 本身</span>
+<span class="token class-name">Bar</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Bar<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 创建 Bar 的一个新实例</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-2323">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Foo() {
+    this.value = 42;
+}
+Foo.prototype = {
+    method: function() {}
+};
+
+function Bar() {}
+
+// 设置 Bar 的 prototype 属性为 Foo 的实例对象
+Bar.prototype = new Foo();
+Bar.prototype.foo = 'Hello World';
+
+Bar.prototype.constructor === Object;
+// true
+
+// 修正 Bar.prototype.constructor 为 Bar 本身
+Bar.prototype.constructor = Bar;
+
+var test = new Bar() // 创建 Bar 的一个新实例
+console.log(test);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-2323" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-83759">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Foo() {
+    this.value = 42;
+}
+Foo.prototype = {
+    method: function() {}
+};
+
+function Bar() {}
+
+// 设置 Bar 的 prototype 属性为 Foo 的实例对象
+Bar.prototype = new Foo();
+Bar.prototype.foo = 'Hello World';
+
+Bar.prototype.constructor === Object;
+// true
+
+// 修正 Bar.prototype.constructor 为 Bar 本身
+Bar.prototype.constructor = Bar;
+
+var test = new Bar() // 创建 Bar 的一个新实例
+console.log(test);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-83759" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/2.2-2.webp" alt="2.2-2"> <!----></div> <p>对于基本类型来说是只读的，比如 <code>1、“muyiy”、true、Symbol</code>，当然 <code>null</code> 和 <code>undefined</code> 是没有 <code>constructor</code> 属性的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span>	types <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&quot;muyiy&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> types<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor <span class="token operator">=</span> Type<span class="token punctuation">;</span>
+	types<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor<span class="token punctuation">,</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">instanceof</span> <span class="token class-name">Type</span><span class="token punctuation">,</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> types<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// function Number() { [native code] }, false, 1</span>
+<span class="token comment">// function String() { [native code] }, false, muyiy</span>
+<span class="token comment">// function Boolean() { [native code] }, false, true</span>
+<span class="token comment">// function Symbol() { [native code] }, false, Symbol(123)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-91782">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Type() { };
+var	types = [1, &quot;muyiy&quot;, true, Symbol(123)];
+
+for(var i = 0; i &lt; types.length; i++) {
+	types[i].constructor = Type;
+	types[i] = [ types[i].constructor, types[i] instanceof Type, types[i].toString() ];
+};
+
+console.log( types.join(&quot;\n&quot;) );
+// function Number() { [native code] }, false, 1
+// function String() { [native code] }, false, muyiy
+// function Boolean() { [native code] }, false, true
+// function Symbol() { [native code] }, false, Symbol(123)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-91782" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-22211">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Type() { };
+var	types = [1, &quot;muyiy&quot;, true, Symbol(123)];
+
+for(var i = 0; i &lt; types.length; i++) {
+	types[i].constructor = Type;
+	types[i] = [ types[i].constructor, types[i] instanceof Type, types[i].toString() ];
+};
+
+console.log( types.join(&quot;\n&quot;) );
+// function Number() { [native code] }, false, 1
+// function String() { [native code] }, false, muyiy
+// function Boolean() { [native code] }, false, true
+// function Symbol() { [native code] }, false, Symbol(123)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-22211" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>为什么呢？因为创建他们的是只读的原生构造函数（<code>native constructors</code>），这个例子也说明了依赖一个对象的 <code>constructor</code> 属性并不安全。</p> <h3 id="模拟实现-new"><a href="#模拟实现-new" class="header-anchor">#</a> 模拟实现 new</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 木易杨</span>
+<span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 1、创建一个空的对象</span>
+    <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token comment">// 2、获得构造函数，同时删除 arguments 中第一个参数</span>
+    Con <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 3、链接到原型，obj 可以访问构造函数原型中的属性</span>
+    Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token class-name">Con</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 4、绑定 this 实现继承，obj 可以访问到构造函数中的属性</span>
+    <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token function">Con</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 5、优先返回构造函数返回的对象</span>
+	<span class="token keyword">return</span> ret <span class="token keyword">instanceof</span> <span class="token class-name">Object</span> <span class="token operator">?</span> ret <span class="token operator">:</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-46724">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 木易杨
+function create() {
+	// 1、创建一个空的对象
+    var obj = new Object(),
+	// 2、获得构造函数，同时删除 arguments 中第一个参数
+    Con = [].shift.call(arguments);
+	// 3、链接到原型，obj 可以访问构造函数原型中的属性
+    Object.setPrototypeOf(obj, Con.prototype);
+	// 4、绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 5、优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-46724" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688251-99247">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 木易杨
+function create() {
+	// 1、创建一个空的对象
+    var obj = new Object(),
+	// 2、获得构造函数，同时删除 arguments 中第一个参数
+    Con = [].shift.call(arguments);
+	// 3、链接到原型，obj 可以访问构造函数原型中的属性
+    Object.setPrototypeOf(obj, Con.prototype);
+	// 4、绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 5、优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688251-99247" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>之前写过一篇文章解析 <code>new</code> 的模拟实现过程，如果你对实现过程还不了解的话点击阅读。「【1.5.md】深度解析 <code>new</code> 原理及模拟实现」</p> <h2 id="原型"><a href="#原型" class="header-anchor">#</a> 原型</h2> <p>建议先看 <a href="/Blog/2.2.1">5分钟彻底了解js原型的精髓</a></p> <h3 id="prototype"><a href="#prototype" class="header-anchor">#</a> <code>prototype</code></h3> <p><code>JavaScript</code> 是一种基于原型的语言 (<code>prototype-based language</code>)，这个和 <code>Java</code> 等基于类的语言不一样。</p> <p>每个对象拥有一个原型对象，对象以其原型为模板，从原型继承方法和属性，这些属性和方法定义在对象的构造器函数的 <code>prototype</code> 属性上，而非对象实例本身。</p> <div class="img-box"><img src="/img/2.2-3.webp" alt="2.2-3"> <!----></div> <p>从上面这张图可以发现，<code>Parent</code> 对象有一个原型对象 <code>Parent.prototype</code>，其上有两个属性，分别是 <code>constructor</code> 和 <code>__proto__</code>，其中 <code>__proto__</code> 已被弃用。</p> <p>构造函数 <code>Parent</code> 有一个指向原型的指针，原型 <code>Parent.prototype</code> 有一个指向构造函数的指针 <code>Parent.prototype.constructor</code>，如上图所示，其实就是一个循环引用。</p> <div class="img-box"><img src="/img/2.2-4.webp" alt="2.2-4"> <!----></div> <h3 id="proto"><a href="#proto" class="header-anchor">#</a> <code>__proto__</code></h3> <p>上图可以看到 <code>Parent</code> 原型（ <code>Parent.prototype</code> ）上有 <code>__proto__</code> 属性，这是一个访问器属性（即 <code>getter</code> 函数和 <code>setter</code> 函数），通过它可以访问到对象的内部 <code>[[Prototype]]</code> (一个对象或 <code>null</code> )。</p> <p><code>__proto__</code> 发音 dunder proto，最先被 Firefox使用，后来在 ES6 被列为 Javascript 的标准内建属性。</p> <p><code>[[Prototype]]</code> 是对象的一个内部属性，外部代码无法直接访问。</p> <blockquote><p>遵循 ECMAScript 标准，someObject.[[Prototype]] 符号用于指向 someObject 的原型。</p></blockquote> <div class="img-box"><img src="/img/2.2-5.webp" alt="2.2-5"> <!----></div> <p>这里用 <code>p.__proto__</code> 获取对象的原型，<code>__proto__</code> 是每个实例上都有的属性，<code>prototype</code> 是构造函数的属性，这两个并不一样，但 <code>p.__proto__</code> 和 <code>Parent.prototype</code> 指向同一个对象。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Parent</span><span class="token punctuation">.</span>prototype
+<span class="token comment">// true</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688252-41171">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent() {}
+var p = new Parent();
+p.__proto__ === Parent.prototype
+// true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688252-41171" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688252-46206">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent() {}
+var p = new Parent();
+p.__proto__ === Parent.prototype
+// true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688252-46206" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>所以构造函数 <code>Parent</code>、<code>Parent.prototype</code> 和 <code>p</code> 的关系如下图。</p> <div class="img-box"><img src="/img/2.2-6.webp" alt="2.2-6"> <!----></div> <h3 id="注意点"><a href="#注意点" class="header-anchor">#</a> 注意点</h3> <p><code>__proto__</code> 属性在 <code>ES6</code> 时才被标准化，以确保 Web 浏览器的兼容性，但是不推荐使用，除了标准化的原因之外还有性能问题。为了更好的支持，推荐使用 <code>Object.getPrototypeOf()</code>。</p> <blockquote><p>通过改变一个对象的 <code>[[Prototype]]</code> 属性来改变和继承属性会对性能造成非常严重的影响，并且性能消耗的时间也不是简单的花费在 <code>obj.__proto__ = ...</code> 语句上, 它还会影响到所有继承自该 <code>[[Prototype]]</code> 的对象，如果你关心性能，你就不应该修改一个对象的 <code>[[Prototype]]</code>。</p></blockquote> <p>如果要读取或修改对象的 <code>[[Prototype]]</code> 属性，建议使用如下方案，但是此时设置对象的 <code>[[Prototype]]</code> 依旧是一个缓慢的操作，如果性能是一个问题，就要避免这种操作。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 修改</span>
+Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688252-89266">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 获取
+Object.getPrototypeOf()
+Reflect.getPrototypeOf()
+
+// 修改
+Object.setPrototypeOf()
+Reflect.setPrototypeOf()
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688252-89266" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688252-37125">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 获取
+Object.getPrototypeOf()
+Reflect.getPrototypeOf()
+
+// 修改
+Object.setPrototypeOf()
+Reflect.setPrototypeOf()
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688252-37125" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>如果要创建一个新对象，同时继承另一个对象的 <code>[[Prototype]]</code> ，推荐使用 <code>Object.create()</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    age<span class="token operator">:</span> <span class="token number">50</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> child <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688253-3189">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent() {
+    age: 50
+};
+var p = new Parent();
+var child = Object.create(p);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688253-3189" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688253-59077">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent() {
+    age: 50
+};
+var p = new Parent();
+var child = Object.create(p);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688253-59077" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里 <code>child</code> 是一个新的空对象，有一个指向对象 <code>p</code> 的指针 <code>__proto__</code>。</p> <h3 id="优化实现-new"><a href="#优化实现-new" class="header-anchor">#</a> 优化实现 new</h3> <p>正如上面介绍的不建议使用 <code>__proto__</code>，所以我们使用 <code>Object.create()</code> 来模拟实现，优化后的代码如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 1、获得构造函数，同时删除 arguments 中第一个参数</span>
+    Con <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 2、创建一个空的对象并链接到原型，obj 可以访问构造函数原型中的属性</span>
+    <span class="token keyword">var</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Con</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 3、绑定 this 实现继承，obj 可以访问到构造函数中的属性</span>
+    <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token function">Con</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 4、优先返回构造函数返回的对象</span>
+	<span class="token keyword">return</span> ret <span class="token keyword">instanceof</span> <span class="token class-name">Object</span> <span class="token operator">?</span> ret <span class="token operator">:</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688253-11247">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function create() {
+	// 1、获得构造函数，同时删除 arguments 中第一个参数
+    Con = [].shift.call(arguments);
+	// 2、创建一个空的对象并链接到原型，obj 可以访问构造函数原型中的属性
+    var obj = Object.create(Con.prototype);
+	// 3、绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 4、优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688253-11247" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688253-95297">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function create() {
+	// 1、获得构造函数，同时删除 arguments 中第一个参数
+    Con = [].shift.call(arguments);
+	// 2、创建一个空的对象并链接到原型，obj 可以访问构造函数原型中的属性
+    var obj = Object.create(Con.prototype);
+	// 3、绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 4、优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688253-95297" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="原型链"><a href="#原型链" class="header-anchor">#</a> 原型链</h2> <p>每个对象拥有一个原型对象，通过 <code>__proto__</code> 指针指向上一个原型 ，并从中继承方法和属性，同时原型对象也可能拥有原型，这样一层一层，最终指向 <code>null</code>。这种关系被称为<strong>原型链 (prototype chain)</strong>，通过原型链一个对象会拥有定义在其他对象中的属性和方法。</p> <p>我们看下面一个例子</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Parent<span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688254-19620">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+
+var p = new Parent(50);
+p.constructor === Parent; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688254-19620" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688254-36934">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+
+var p = new Parent(50);
+p.constructor === Parent; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688254-36934" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里 <code>p.constructor</code> 指向 <code>Parent</code>，那是不是意味着 <code>p</code> 实例存在 <code>constructor</code> 属性呢？并不是。</p> <p>我们打印下 <code>p</code> 值就知道了</p> <div class="img-box"><img src="/img/2.2-7.webp" alt="2.2-7"> <!----></div> <p>由图可以看到实例对象 <code>p</code> 本身没有 <code>constructor</code> 属性，是通过原型链向上查找 <code>__proto__</code> ，最终查找到 <code>constructor</code> 属性，该属性指向 <code>Parent</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Parent</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+p<span class="token punctuation">;</span>	<span class="token comment">// Parent {age: 50}</span>
+p<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Parent</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span> <span class="token comment">// true</span>
+p<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span> <span class="token comment">// true</span>
+p<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688254-805">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+var p = new Parent(50);
+
+p;	// Parent {age: 50}
+p.__proto__ === Parent.prototype; // true
+p.__proto__.__proto__ === Object.prototype; // true
+p.__proto__.__proto__.__proto__ === null; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688254-805" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775688254-87357">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Parent(age) {
+    this.age = age;
+}
+var p = new Parent(50);
+
+p;	// Parent {age: 50}
+p.__proto__ === Parent.prototype; // true
+p.__proto__.__proto__ === Object.prototype; // true
+p.__proto__.__proto__.__proto__ === null; // true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775688254-87357" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>下图展示了原型链的运作机制。</p> <div class="img-box"><img src="/img/2.2-8.webp" alt="2.2-8"> <!----></div> <h2 id="小结"><a href="#小结" class="header-anchor">#</a> 小结</h2> <ul><li><code>Symbol</code> 作为构造函数来说并不完整，因为不支持语法 <code>new Symbol()</code>，但其原型上拥有 <code>constructor</code> 属性，即 <code>Symbol.prototype.constructor</code>。</li> <li>引用类型 <code>constructor</code> 属性值是可以修改的，但是对于基本类型来说是只读的，当然 <code>null</code> 和 <code>undefined</code> 没有 <code>constructor</code> 属性。</li> <li><code>__proto__</code> 是每个实例上都有的属性，<code>prototype</code> 是构造函数的属性，在实例上并不存在，所以这两个并不一样，但 <code>p.__proto__</code> 和 <code>Parent.prototype</code> 指向同一个对象。</li> <li><code>__proto__</code> 属性在 <code>ES6</code> 时被标准化，但因为性能问题并不推荐使用，推荐使用 <code>Object.getPrototypeOf()</code>。</li> <li>每个对象拥有一个原型对象，通过 <code>__proto__</code> 指针指向上一个原型 ，并从中继承方法和属性，同时原型对象也可能拥有原型，这样一层一层，最终指向 <code>null</code>，这就是原型链。</li></ul> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Blog/2.1.html" class="prev">
+        JavaScript常用八种继承方案
+      </a></span> <span class="next"><a href="/Blog/2.2.1.html">
+        5分钟彻底了解js原型的精髓
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/49.cf13277f.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

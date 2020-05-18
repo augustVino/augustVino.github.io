@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>投影 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/79.630a29b6.js" as="script"><link rel="preload" href="/assets/js/8.5ba1a544.js" as="script"><link rel="preload" href="/assets/js/31.39ee6447.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/32.51b21fd8.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>CSS</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/CSS/3.1.html" class="sidebar-link">百度地图实现自定义InfoWindow的样式</a></li><li><a href="/FrontEnd/CSS/3.2.html" class="sidebar-link">文字</a></li><li><a href="/FrontEnd/CSS/3.3.html" class="active sidebar-link">投影</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#基本投影" class="sidebar-link">基本投影</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#不规则投影" class="sidebar-link">不规则投影</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#投影实践" class="sidebar-link">投影实践</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#晴天" class="sidebar-link">晴天</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#阴天" class="sidebar-link">阴天</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#雨天" class="sidebar-link">雨天</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/CSS/3.3.html#雪天" class="sidebar-link">雪天</a></li></ul></li></ul></li><li><a href="/FrontEnd/CSS/3.4.html" class="sidebar-link">背景</a></li><li><a href="/FrontEnd/CSS/3.5.html" class="sidebar-link">滤镜</a></li><li><a href="/FrontEnd/CSS/3.6.html" class="sidebar-link">渐变</a></li><li><a href="/FrontEnd/CSS/3.7.html" class="sidebar-link">裁减</a></li><li><a href="/FrontEnd/CSS/3.8.html" class="sidebar-link">flex 弹性布局</a></li><li><a href="/FrontEnd/CSS/3.9.html" class="sidebar-link">动画</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Image</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>业余·折腾</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="投影"><a href="#投影" class="header-anchor">#</a> 投影</h1> <h2 id="基本投影"><a href="#基本投影" class="header-anchor">#</a> 基本投影</h2> <p>👇 你可以在下面切换单选框来查看不同属性的实时效果。</p> <div class="wrapper" data-v-611fb426><div class="box" style="box-shadow:-5px 0px 5px 0px rgba(0, 0, 0, 0.8);" data-v-611fb426></div> <div class="checkbox-box" data-v-611fb426><label class="el-checkbox is-checked" data-v-611fb426><span class="el-checkbox__input is-checked"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" checked="checked" class="el-checkbox__original"></span><span class="el-checkbox__label">左侧投影<!----></span></label> <label class="el-checkbox" data-v-611fb426><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original"></span><span class="el-checkbox__label">右侧投影<!----></span></label> <label class="el-checkbox" data-v-611fb426><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original"></span><span class="el-checkbox__label">上侧投影<!----></span></label> <label class="el-checkbox" data-v-611fb426><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original"></span><span class="el-checkbox__label">下侧投影<!----></span></label></div></div> <h2 id="不规则投影"><a href="#不规则投影" class="header-anchor">#</a> 不规则投影</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>对于不规则图形的投影，可以使用<code>filter:drop-shadow</code>来替代<code>box-shadow</code>。</p></div> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>box<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+
+<span class="token selector">.box</span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 30px auto<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #58a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.box::after</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> -20px<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> -10px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 10px solid #58a<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #58a transparent transparent transparent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.box.none</span><span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.box.boxShadow</span><span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 10px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.box.dropShadow</span><span class="token punctuation">{</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">drop-shadow</span><span class="token punctuation">(</span>0 10px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.8<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714740-39899">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+
+&lt;style scoped&gt;
+
+.box{
+    position: relative;
+    margin: 30px auto;
+    width: 300px;
+    height: 120px;
+    background-color: #58a;
+}
+.box::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid #58a;
+    border-color: #58a transparent transparent transparent;
+}
+.box.none{
+    box-shadow:none;
+}
+.box.boxShadow{
+    box-shadow: 0 10px 8px rgba(0,0,0,0.8);
+}
+.box.dropShadow{
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.8));
+}
+&lt;/style&gt;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714740-39899" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714740-31252">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+
+&lt;style scoped&gt;
+
+.box{
+    position: relative;
+    margin: 30px auto;
+    width: 300px;
+    height: 120px;
+    background-color: #58a;
+}
+.box::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border: 10px solid #58a;
+    border-color: #58a transparent transparent transparent;
+}
+.box.none{
+    box-shadow:none;
+}
+.box.boxShadow{
+    box-shadow: 0 10px 8px rgba(0,0,0,0.8);
+}
+.box.dropShadow{
+    filter: drop-shadow(0 10px 8px rgba(0,0,0,0.8));
+}
+&lt;/style&gt;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714740-31252" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="wrapper" data-v-fdf77806><div class="box none" data-v-fdf77806></div> <div class="radio-box" data-v-fdf77806><label role="radio" aria-checked="true" tabindex="0" class="el-radio is-checked" data-v-fdf77806><span class="el-radio__input is-checked"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="none" checked="checked" class="el-radio__original"></span><span class="el-radio__label">无投影<!----></span></label> <label role="radio" tabindex="0" class="el-radio" data-v-fdf77806><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="boxShadow" class="el-radio__original"></span><span class="el-radio__label">box-shadow<!----></span></label> <label role="radio" tabindex="0" class="el-radio" data-v-fdf77806><span class="el-radio__input"><span class="el-radio__inner"></span><input type="radio" aria-hidden="true" tabindex="-1" value="dropShadow" class="el-radio__original"></span><span class="el-radio__label">drop-shadow<!----></span></label></div></div> <p>👆 你可以在上面勾选是否需要<code>drop-shadow</code>，来查看实时效果。</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>drop-shadow</code>的参数和<code>box-shadow</code>一样，上述勾选<code>drop-shadow</code>后的css代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">drop-shadow</span><span class="token punctuation">(</span>0 10px 8px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.8<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-4935">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="filter: drop-shadow(0 10px 8px rgba(0,0,0,0.8))
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-4935" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-82062">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="filter: drop-shadow(0 10px 8px rgba(0,0,0,0.8))
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-82062" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div></div> <h2 id="投影实践"><a href="#投影实践" class="header-anchor">#</a> 投影实践</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>以下示例来源于掘金文章：👉原文链接<a href="https://juejin.im/post/5d2716ab5188257b775d35ba" target="_blank" rel="noopener noreferrer">纯CSS实现动态晴阴雨雪<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <p>完成后最终效果如下： 投影实践
+<div class="img-box"><img src="/img/css3.3-1.gif" alt="css实现天气预报"> <!----></div>
+由于以上效果都是单标签实现的，不同的天气效果，用不同的类来实现，他们基本的html结构如下：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>weather-box<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>weather sunny<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>weather cloudy<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>weather rainy<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>weather snowy<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.weather-box</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 50px auto<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.weather</span> <span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+    <span class="token property">margin-right</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 180px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 240px<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #23b7E5<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-7738">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&lt;div class=&quot;weather-box&quot;&gt;
+    &lt;div class=&quot;weather sunny&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather cloudy&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather rainy&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather snowy&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.weather-box {
+    margin: 50px auto;
+    width: 800px;
+}
+.weather {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    width: 180px;
+    height: 240px;
+    background-color: #23b7E5;
+    border-radius: 8px;
+}
+&lt;/style&gt;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-7738" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-33242">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="&lt;div class=&quot;weather-box&quot;&gt;
+    &lt;div class=&quot;weather sunny&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather cloudy&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather rainy&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;weather snowy&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.weather-box {
+    margin: 50px auto;
+    width: 800px;
+}
+.weather {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    width: 180px;
+    height: 240px;
+    background-color: #23b7E5;
+    border-radius: 8px;
+}
+&lt;/style&gt;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-33242" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="晴天"><a href="#晴天" class="header-anchor">#</a> 晴天</h3> <p>晴天图标由两个元素组成：太阳和内六角形阳光。</p> <p><code>:before</code>、<code>:after</code> 两个伪元素可以在元素内部分别“添加”一个元素，正好都利用上了。</p> <h4 id="绘制太阳"><a href="#绘制太阳" class="header-anchor">#</a> 绘制太阳</h4> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.sunny:before</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 60px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 60px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #F6D963<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0 20px #ff0<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-50409">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".sunny:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: #F6D963;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff0;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-50409" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-81811">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".sunny:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: #F6D963;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff0;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-81811" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><code>content</code>用来生成一个元素。</p> <p><code>position</code>、<code>top</code>、<code>left</code>、<code>transform</code>用来实现中心居中。</p> <p><code>box-shadow</code>实现外发光效果，这只是<code>box-shadow</code>最基本最常用的使用方式。
+<div class="img-box"><img src="/img/css3.3-3" alt="css实现天气预报"> <!----></div></p> <h4 id="绘制内六角形"><a href="#绘制内六角形" class="header-anchor">#</a> 绘制内六角形</h4> <p>用 :after实现内六角形。</p> <p>实现的关键就是使用遮罩。通过<code>clip-path</code>绘制一个内六角形。这就变成了一个简单的初中几何问题。</p> <p>内六角形由两个等边三角形拼合而成。
+<div class="img-box"><img src="/img/css3.3-4" alt="css实现天气预报"> <!----></div>
+合并之后，我们可以把整体划分为若干个完全相同的小等边三角形。
+<div class="img-box"><img src="/img/css3.3-5" alt="css实现天气预报"> <!----></div>
+在垂直方向做个辅助线，连接中间顶部和底部两点。不难发现，“垂直方向的最大长度”要大于“水平方向的最大长度”。</p> <p>设小等边三角形的边长为1，以内六角形中心为坐标原点，可以计算出每个点的坐标，如下：
+<div class="img-box"><img src="/img/css3.3-6" alt="css实现天气预报"> <!----></div>
+为了使用<code>clip-path</code>的百分比定位来绘制图像，下一步需要把长度坐标转换为百分比坐标。</p> <p>设垂直方向最大长度为100%，仍以内六角形中心为坐标原点，每个点的坐标值转换如下：
+<div class="img-box"><img src="/img/css3.3-7" alt="css实现天气预报"> <!----></div>
+由于<code>clip-path</code>绘制原点是在左上角，<code>x</code>轴右侧为正值，<code>y</code>轴下方为正值。需要做下坐标系转换。即：</p> <blockquote><p>新x轴坐标值 = 旧x轴坐标值 + 50%</p></blockquote> <blockquote><p>新y轴坐标值 = (旧y轴坐标值 - 50%) * -1</p></blockquote> <div class="img-box"><img src="/img/css3.3-2" alt="css实现天气预报"> <!----></div> <p>使用<code>clip-path</code>的<code>polygon</code>方法绘制内六角形,样式代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.sunny:after</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> -45px 0 0 -45px<span class="token punctuation">;</span> 
+    <span class="token property">width</span><span class="token punctuation">:</span> 90px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 90px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #FFEB3B<span class="token punctuation">;</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>
+    	50% 0%<span class="token punctuation">,</span>
+        64.43% 25%<span class="token punctuation">,</span>
+        93.3% 25%<span class="token punctuation">,</span>
+        78.87% 50%<span class="token punctuation">,</span>
+        93.3% 75%<span class="token punctuation">,</span>
+        64.43% 75%<span class="token punctuation">,</span>
+        50% 100%<span class="token punctuation">,</span>
+        35.57% 75%<span class="token punctuation">,</span>
+        6.7% 75%<span class="token punctuation">,</span>
+        21.13% 50%<span class="token punctuation">,</span>
+        6.7% 25%<span class="token punctuation">,</span>
+        35.57% 25%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> sunScale 2s linear infinite<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> sunScale</span> <span class="token punctuation">{</span>
+    <span class="token selector">0%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">50%</span> <span class="token punctuation">{</span>
+    	<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>1.1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">100%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-56254">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".sunny:after {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -45px 0 0 -45px; 
+    width: 90px;
+    height: 90px;
+    background: #FFEB3B;
+    clip-path: polygon(
+    	50% 0%,
+        64.43% 25%,
+        93.3% 25%,
+        78.87% 50%,
+        93.3% 75%,
+        64.43% 75%,
+        50% 100%,
+        35.57% 75%,
+        6.7% 75%,
+        21.13% 50%,
+        6.7% 25%,
+        35.57% 25%);
+    z-index: 1;
+    animation: sunScale 2s linear infinite;
+}
+@keyframes sunScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+    	transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-56254" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714741-30665">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".sunny:after {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -45px 0 0 -45px; 
+    width: 90px;
+    height: 90px;
+    background: #FFEB3B;
+    clip-path: polygon(
+    	50% 0%,
+        64.43% 25%,
+        93.3% 25%,
+        78.87% 50%,
+        93.3% 75%,
+        64.43% 75%,
+        50% 100%,
+        35.57% 75%,
+        6.7% 75%,
+        21.13% 50%,
+        6.7% 25%,
+        35.57% 25%);
+    z-index: 1;
+    animation: sunScale 2s linear infinite;
+}
+@keyframes sunScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+    	transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714741-30665" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><blockquote><p>※注：safari需要将clip-path改为-webkit-clip-path。</p></blockquote> <div class="img-box"><img src="/img/css3.3-8" alt="css实现天气预报"> <!----></div> <p>实现原理就是通过<code>clip-path</code>绘制了一个内六角形遮罩，把黄颜色背景通过遮罩变成了最终的内六角形。</p> <p>animation通过关键帧动画实现了“放大缩小”交替动效。</p> <p>最终效果：
+<div class="img-box"><img src="/img/css3.3-9" alt="css实现天气预报"> <!----></div></p> <h3 id="阴天"><a href="#阴天" class="header-anchor">#</a> 阴天</h3> <p>观察图形发现，有两个云朵：前面的白云和后面的乌云。貌似需要分别用 <code>:before</code>和 <code>:after</code>实现。如果这样做的话，后续章节的雨天和雪天的雨雪元素就没有多余的伪元素可用了。所以只能用一个伪元素实现两朵云。 这里就用到了<code>box-shadow</code>的“影分身”了！</p> <p>由于后续章节的雨天和雪天都复用了云的样式，所以写在一起了，代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.cloudy:before,
+.rainy:before,
+.snowy:before</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 36px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 36px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-16342">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before,
+.rainy:before,
+.snowy:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-16342" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-82389">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before,
+.rainy:before,
+.snowy:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-82389" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-10" alt="css实现天气预报"> <!----></div> <p>真实的元素（真身）就是一个圆。通过<code>box-shodow</code>来把投影作为“分身”。</p> <p>先来看看<code>box-shadow</code>的属性：</p> <p><strong><code>box-shadow: h-shadow v-shadow blur spread color inset;</code></strong></p> <p>参数详解：</p> <ul><li><code>h-shadow</code>: 阴影的水平偏移量。</li> <li><code>v-shadow</code>: 阴影的垂直偏移量。</li> <li><code>blur</code>: 模糊距离(就是渐变的距离，设为0就没有渐变)。</li> <li><code>spread</code>: 投影的尺寸，通过这个控制“影分身”的大小。</li> <li><code>color</code>: 投影颜色，通过这个实现后方的乌云。</li> <li><code>inset</code>: 改为内阴影。这里用不到。</li></ul> <p>先复制一个影分身试试：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token property">box-shadow</span><span class="token punctuation">:</span> 22px -15px 0 6px #fff<span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-13807">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="box-shadow: 22px -15px 0 6px #fff;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-13807" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-20237">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="box-shadow: 22px -15px 0 6px #fff;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-20237" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-11" alt="css实现天气预报"> <!----></div> <p>继续复制多个影分身，带全部影分身的完整代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.cloudy:before,
+.rainy:before,
+.snowy:before</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 36px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 36px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 
+    	22px -15px 0 6px #fff<span class="token punctuation">,</span>
+    	57px -6px 0 2px #fff<span class="token punctuation">,</span>
+    	87px 4px 0 -4px #fff<span class="token punctuation">,</span>
+    	33px 6px 0 6px #fff<span class="token punctuation">,</span>
+    	61px 6px 0 2px #fff<span class="token punctuation">,</span>
+    	29px -23px 0 6px #ccc<span class="token punctuation">,</span>
+    	64px -14px 0 2px #ccc<span class="token punctuation">,</span>
+    	94px -4px 0 -4px #ccc<span class="token punctuation">;</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-68509">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before,
+.rainy:before,
+.snowy:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 
+    	22px -15px 0 6px #fff,
+    	57px -6px 0 2px #fff,
+    	87px 4px 0 -4px #fff,
+    	33px 6px 0 6px #fff,
+    	61px 6px 0 2px #fff,
+    	29px -23px 0 6px #ccc,
+    	64px -14px 0 2px #ccc,
+    	94px -4px 0 -4px #ccc;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-68509" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-44822">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before,
+.rainy:before,
+.snowy:before {
+    content: &quot;&quot;;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 
+    	22px -15px 0 6px #fff,
+    	57px -6px 0 2px #fff,
+    	87px 4px 0 -4px #fff,
+    	33px 6px 0 6px #fff,
+    	61px 6px 0 2px #fff,
+    	29px -23px 0 6px #ccc,
+    	64px -14px 0 2px #ccc,
+    	94px -4px 0 -4px #ccc;
+    z-index: 2;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-44822" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>五个分身的白圆（<code>#fff</code>）,三个分身的灰圆（<code>#ccc</code>）拼成了两朵云。</p> <p>再给云朵加上“上下浮动”的动效：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.cloudy:before</span> <span class="token punctuation">{</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> cloudMove 2s linear infinite<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> cloudMove</span> <span class="token punctuation">{</span>
+    <span class="token selector">0%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">50%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -60%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">100%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-50%<span class="token punctuation">,</span> -50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-15255">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before {
+    animation: cloudMove 2s linear infinite;
+}
+@keyframes cloudMove {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-15255" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-64383">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".cloudy:before {
+    animation: cloudMove 2s linear infinite;
+}
+@keyframes cloudMove {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-64383" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-12" alt="css实现天气预报"> <!----></div> <h3 id="雨天"><a href="#雨天" class="header-anchor">#</a> 雨天</h3> <p>云朵的代码直接复用阴天的。这里使用 <code>:after</code> 伪元素实现雨滴。</p> <p>先实现一个雨滴（为方便观看，暂时隐藏云朵）：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.rainy:after</span> <span class="token punctuation">{</span>
+	<span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span>50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-34249">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+	content: &quot;&quot;;
+    position: absolute;
+    top:50%;
+    left: 25%;
+    width: 4px;
+    height: 14px;
+    background: #fff;
+    border-radius: 2px;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-34249" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714742-20000">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+	content: &quot;&quot;;
+    position: absolute;
+    top:50%;
+    left: 25%;
+    width: 4px;
+    height: 14px;
+    background: #fff;
+    border-radius: 2px;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714742-20000" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-13" alt="css实现天气预报"> <!----></div> <p>然后通过<code>box-shadow</code>“影分身”：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.rainy:after</span> <span class="token punctuation">{</span>
+	    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+        <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+        <span class="token property">top</span><span class="token punctuation">:</span>50%<span class="token punctuation">;</span>
+        <span class="token property">left</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+        <span class="token property">height</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+        <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
++       <span class="token property">box-shadow</span><span class="token punctuation">:</span>
++    	    25px -10px 0 #fff<span class="token punctuation">,</span>
++    	    50px 0 0 #fff<span class="token punctuation">,</span>
++    	    75px -10px 0 #fff<span class="token punctuation">,</span>
++    	    0 25px 0 #fff<span class="token punctuation">,</span>
++    	    25px 15px 0 #fff<span class="token punctuation">,</span>
++    	    50px 25px 0 #fff<span class="token punctuation">,</span>
++    	    75px 15px 0 #fff<span class="token punctuation">,</span>
++    	    0 50px 0 #fff<span class="token punctuation">,</span>
++    	    25px 40px 0 #fff<span class="token punctuation">,</span>
++    	    50px 50px 0 #fff<span class="token punctuation">,</span>
++    	    75px 40px 0 #fff<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714743-40005">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+	    content: &quot;&quot;;
+        position: absolute;
+        top:50%;
+        left: 25%;
+        width: 4px;
+        height: 14px;
+        background: #fff;
+        border-radius: 2px;
++       box-shadow:
++    	    25px -10px 0 #fff,
++    	    50px 0 0 #fff,
++    	    75px -10px 0 #fff,
++    	    0 25px 0 #fff,
++    	    25px 15px 0 #fff,
++    	    50px 25px 0 #fff,
++    	    75px 15px 0 #fff,
++    	    0 50px 0 #fff,
++    	    25px 40px 0 #fff,
++    	    50px 50px 0 #fff,
++    	    75px 40px 0 #fff;
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714743-40005" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714743-36095">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+	    content: &quot;&quot;;
+        position: absolute;
+        top:50%;
+        left: 25%;
+        width: 4px;
+        height: 14px;
+        background: #fff;
+        border-radius: 2px;
++       box-shadow:
++    	    25px -10px 0 #fff,
++    	    50px 0 0 #fff,
++    	    75px -10px 0 #fff,
++    	    0 25px 0 #fff,
++    	    25px 15px 0 #fff,
++    	    50px 25px 0 #fff,
++    	    75px 15px 0 #fff,
++    	    0 50px 0 #fff,
++    	    25px 40px 0 #fff,
++    	    50px 50px 0 #fff,
++    	    75px 40px 0 #fff;
+    }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714743-36095" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-14" alt="css实现天气预报"> <!----></div> <p>再加入下雨的移动动效，修改如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.rainy:after</span> <span class="token punctuation">{</span>
+        ...<span class="token punctuation">(</span>略<span class="token punctuation">)</span>
++        <span class="token property">animation</span><span class="token punctuation">:</span> rainDrop 2s linear infinite<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
++   <span class="token atrule"><span class="token rule">@keyframes</span> rainDrop</span> <span class="token punctuation">{</span>
+<span class="token selector">+       0%</span> <span class="token punctuation">{</span>
++           <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
++       <span class="token punctuation">}</span>
+<span class="token selector">+       100%</span> <span class="token punctuation">{</span>
++           <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-4px<span class="token punctuation">,</span> 24px<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
++           <span class="token property">box-shadow</span><span class="token punctuation">:</span>
++           25px -10px 0 #fff<span class="token punctuation">,</span>
++           50px 0 0 #fff<span class="token punctuation">,</span>
++           75px -10px 0 #fff<span class="token punctuation">,</span>
++           0 25px 0 #fff<span class="token punctuation">,</span>
++           25px 15px 0 #fff<span class="token punctuation">,</span>
++           50px 25px 0 #fff<span class="token punctuation">,</span>
++           75px 15px 0 #fff<span class="token punctuation">,</span>
++           0 50px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
++           25px 40px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
++           50px 50px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
++           75px 40px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
++       <span class="token punctuation">}</span>
++   <span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714743-55573">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+        ...(略)
++        animation: rainDrop 2s linear infinite; 
+    }
++   @keyframes rainDrop {
++       0% {
++           transform: translate(0, 0) rotate(10deg);
++       }
++       100% {
++           transform: translate(-4px, 24px) rotate(10deg);
++           box-shadow:
++           25px -10px 0 #fff,
++           50px 0 0 #fff,
++           75px -10px 0 #fff,
++           0 25px 0 #fff,
++           25px 15px 0 #fff,
++           50px 25px 0 #fff,
++           75px 15px 0 #fff,
++           0 50px 0 rgba(255, 255, 255, 0),
++           25px 40px 0 rgba(255, 255, 255, 0),
++           50px 50px 0 rgba(255, 255, 255, 0),
++           75px 40px 0 rgba(255, 255, 255, 0);
++       }
++   }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714743-55573" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714743-26139">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".rainy:after {
+        ...(略)
++        animation: rainDrop 2s linear infinite; 
+    }
++   @keyframes rainDrop {
++       0% {
++           transform: translate(0, 0) rotate(10deg);
++       }
++       100% {
++           transform: translate(-4px, 24px) rotate(10deg);
++           box-shadow:
++           25px -10px 0 #fff,
++           50px 0 0 #fff,
++           75px -10px 0 #fff,
++           0 25px 0 #fff,
++           25px 15px 0 #fff,
++           50px 25px 0 #fff,
++           75px 15px 0 #fff,
++           0 50px 0 rgba(255, 255, 255, 0),
++           25px 40px 0 rgba(255, 255, 255, 0),
++           50px 50px 0 rgba(255, 255, 255, 0),
++           75px 40px 0 rgba(255, 255, 255, 0);
++       }
++   }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714743-26139" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-15" alt="css实现天气预报"> <!----></div> <p>动画添加了10度的旋转，让雨滴倾斜，以及垂直方向的移动。</p> <p>这里的关键就是：虽然本质是垂直移动，但为了看上去是“循环”效果，需要将最下面的雨滴进行透明渐变，同时调节<code>X</code>和<code>Y</code>轴的值，让最终位置正好跟初始位置重合，就不会显得“断开”。</p> <p>我们生成的是三行雨滴，第一行被云朵挡住了，实际能看到的是下面两行。在第一行移动到第二行位置的时候，原第三行已经透明看不见了，正好与初始状态一样，实现了无缝循环拼接。</p> <h3 id="雪天"><a href="#雪天" class="header-anchor">#</a> 雪天</h3> <p>雪天与雨天的区别就是把雨滴换成圆形，取消旋转角度。 代码如下：</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.snowy:after</span> <span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span>50%<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 25px -10px 0 #fff<span class="token punctuation">,</span>
+                50px 0 0 #fff<span class="token punctuation">,</span>
+                75px -10px 0 #fff<span class="token punctuation">,</span>
+                0 25px 0 #fff<span class="token punctuation">,</span>
+                25px 15px 0 #fff<span class="token punctuation">,</span>
+                50px 25px 0 #fff<span class="token punctuation">,</span>
+                75px 15px 0 #fff<span class="token punctuation">,</span>
+                0 50px 0 #fff<span class="token punctuation">,</span>
+                25px 40px 0 #fff<span class="token punctuation">,</span>
+                50px 50px 0 #fff<span class="token punctuation">,</span>
+                75px 40px 0 #fff<span class="token punctuation">;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> snowDrop 2s linear infinite<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> snowDrop</span> <span class="token punctuation">{</span>
+    <span class="token selector">0%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">100%</span> <span class="token punctuation">{</span>
+        <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>25px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token property">box-shadow</span><span class="token punctuation">:</span> 25px -10px 0 #fff<span class="token punctuation">,</span>
+                    50px 0 0 #fff<span class="token punctuation">,</span>
+                    75px -10px 0 #fff<span class="token punctuation">,</span>
+                    0 25px 0 #fff<span class="token punctuation">,</span>
+                    25px 15px 0 #fff<span class="token punctuation">,</span>
+                    50px 25px 0 #fff<span class="token punctuation">,</span>
+                    75px 15px 0 #fff<span class="token punctuation">,</span>
+                    0 50px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    25px 40px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    50px 50px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    75px 40px 0 <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714744-81172">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".snowy:after {
+    content: &quot;&quot;;
+    position: absolute;
+    top:50%;
+    left: 25%;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 25px -10px 0 #fff,
+                50px 0 0 #fff,
+                75px -10px 0 #fff,
+                0 25px 0 #fff,
+                25px 15px 0 #fff,
+                50px 25px 0 #fff,
+                75px 15px 0 #fff,
+                0 50px 0 #fff,
+                25px 40px 0 #fff,
+                50px 50px 0 #fff,
+                75px 40px 0 #fff;
+    animation: snowDrop 2s linear infinite; 
+}
+@keyframes snowDrop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(25px);
+        box-shadow: 25px -10px 0 #fff,
+                    50px 0 0 #fff,
+                    75px -10px 0 #fff,
+                    0 25px 0 #fff,
+                    25px 15px 0 #fff,
+                    50px 25px 0 #fff,
+                    75px 15px 0 #fff,
+                    0 50px 0 rgba(255, 255, 255, 0),
+                    25px 40px 0 rgba(255, 255, 255, 0),
+                    50px 50px 0 rgba(255, 255, 255, 0),
+                    75px 40px 0 rgba(255, 255, 255, 0);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714744-81172" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775714744-96368">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content=".snowy:after {
+    content: &quot;&quot;;
+    position: absolute;
+    top:50%;
+    left: 25%;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 25px -10px 0 #fff,
+                50px 0 0 #fff,
+                75px -10px 0 #fff,
+                0 25px 0 #fff,
+                25px 15px 0 #fff,
+                50px 25px 0 #fff,
+                75px 15px 0 #fff,
+                0 50px 0 #fff,
+                25px 40px 0 #fff,
+                50px 50px 0 #fff,
+                75px 40px 0 #fff;
+    animation: snowDrop 2s linear infinite; 
+}
+@keyframes snowDrop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(25px);
+        box-shadow: 25px -10px 0 #fff,
+                    50px 0 0 #fff,
+                    75px -10px 0 #fff,
+                    0 25px 0 #fff,
+                    25px 15px 0 #fff,
+                    50px 25px 0 #fff,
+                    75px 15px 0 #fff,
+                    0 50px 0 rgba(255, 255, 255, 0),
+                    25px 40px 0 rgba(255, 255, 255, 0),
+                    50px 50px 0 rgba(255, 255, 255, 0),
+                    75px 40px 0 rgba(255, 255, 255, 0);
+    }
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775714744-96368" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/css3.3-16" alt="css实现天气预报"> <!----></div> <div class="weather-box" data-v-d9952c9c><div class="weather sunny" data-v-d9952c9c></div> <div class="weather cloudy" data-v-d9952c9c></div> <div class="weather rainy" data-v-d9952c9c></div> <div class="weather snowy" data-v-d9952c9c></div></div> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/CSS/3.2.html" class="prev">
+        文字
+      </a></span> <span class="next"><a href="/FrontEnd/CSS/3.4.html">
+        背景
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/79.630a29b6.js" defer></script><script src="/assets/js/8.5ba1a544.js" defer></script><script src="/assets/js/31.39ee6447.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/32.51b21fd8.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

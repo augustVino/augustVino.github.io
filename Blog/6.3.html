@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>面试题之如何实现一个深拷贝 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/64.2298e1b5.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/37.c1852146.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第1期：this全面解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第2期：原型 Prototype</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第4期：节流防抖</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第6期：深浅拷贝原理</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/6.1.html" class="sidebar-link">详细解析赋值、浅拷贝和深拷贝的区别</a></li><li><a href="/Blog/6.2.html" class="sidebar-link">Object.assign 原理及其实现</a></li><li><a href="/Blog/6.3.html" class="active sidebar-link">面试题之如何实现一个深拷贝</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/6.3.html#引言" class="sidebar-link">引言</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#第一步：简单实现" class="sidebar-link">第一步：简单实现</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#第二步：拷贝数组" class="sidebar-link">第二步：拷贝数组</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#第三步：循环引用" class="sidebar-link">第三步：循环引用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/6.3.html#_1、使用哈希表" class="sidebar-link">1、使用哈希表</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#_2、使用数组" class="sidebar-link">2、使用数组</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#第四步：拷贝-symbol" class="sidebar-link">第四步：拷贝 Symbol</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/6.3.html#方法一" class="sidebar-link">方法一</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#方法二" class="sidebar-link">方法二</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#第五步：破解递归爆栈" class="sidebar-link">第五步：破解递归爆栈</a></li><li class="sidebar-sub-header"><a href="/Blog/6.3.html#思考题" class="sidebar-link">思考题</a></li></ul></li><li><a href="/Blog/6.4.html" class="sidebar-link">Lodash是如何实现深拷贝的</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第7期：调用堆栈</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="面试题之如何实现一个深拷贝"><a href="#面试题之如何实现一个深拷贝" class="header-anchor">#</a> 面试题之如何实现一个深拷贝</h1> <h2 id="引言"><a href="#引言" class="header-anchor">#</a> 引言</h2> <p>上篇文章详细介绍了浅拷贝 <code>Object.assign</code>，并对其进行了模拟实现，在实现的过程中，介绍了很多基础知识。今天这篇文章我们来看看一道必会面试题，即如何实现一个深拷贝。本文会详细介绍对象、数组、循环引用、引用丢失、Symbol 和递归爆栈等情况下的深拷贝实践，欢迎阅读。</p> <h2 id="第一步：简单实现"><a href="#第一步：简单实现" class="header-anchor">#</a> 第一步：简单实现</h2> <p>其实深拷贝可以拆分成 2 步，浅拷贝 + 递归，浅拷贝时判断属性值是否是对象，如果是对象就进行递归操作，两个一结合就实现了深拷贝。</p> <p>根据上篇文章内容，我们可以写出简单浅拷贝代码如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneShallow</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 测试用例</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;muyiy&quot;</span><span class="token punctuation">,</span>
+    book<span class="token operator">:</span> <span class="token punctuation">{</span>
+        title<span class="token operator">:</span> <span class="token string">&quot;You Don't Know JS&quot;</span><span class="token punctuation">,</span>
+        price<span class="token operator">:</span> <span class="token string">&quot;45&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    a1<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+    a2<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    a3<span class="token operator">:</span> <span class="token number">123</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">cloneShallow</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">&quot;高级前端进阶&quot;</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span>book<span class="token punctuation">.</span>price <span class="token operator">=</span> <span class="token string">&quot;55&quot;</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { </span>
+<span class="token comment">//   name: 'muyiy', </span>
+<span class="token comment">//   book: { title: 'You Don\'t Know JS', price: '55' },</span>
+<span class="token comment">//   a1: undefined,</span>
+<span class="token comment">//   a2: null,</span>
+<span class="token comment">//   a3: 123</span>
+<span class="token comment">// }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715918-4603">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneShallow(source) {
+    var target = {};
+    for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+
+// 测试用例
+var a = {
+    name: &quot;muyiy&quot;,
+    book: {
+        title: &quot;You Don't Know JS&quot;,
+        price: &quot;45&quot;
+    },
+    a1: undefined,
+    a2: null,
+    a3: 123
+}
+var b = cloneShallow(a);
+
+a.name = &quot;高级前端进阶&quot;;
+a.book.price = &quot;55&quot;;
+
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '55' },
+//   a1: undefined,
+//   a2: null,
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715918-4603" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715918-30167">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneShallow(source) {
+    var target = {};
+    for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+
+// 测试用例
+var a = {
+    name: &quot;muyiy&quot;,
+    book: {
+        title: &quot;You Don't Know JS&quot;,
+        price: &quot;45&quot;
+    },
+    a1: undefined,
+    a2: null,
+    a3: 123
+}
+var b = cloneShallow(a);
+
+a.name = &quot;高级前端进阶&quot;;
+a.book.price = &quot;55&quot;;
+
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '55' },
+//   a1: undefined,
+//   a2: null,
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715918-30167" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>上面代码是浅拷贝实现，只要稍微改动下，加上是否是对象的判断并在相应的位置使用递归就可以实现简单深拷贝。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep1</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep1</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注意这里</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用上面测试用例测试一下</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">cloneDeep1</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { </span>
+<span class="token comment">//   name: 'muyiy', </span>
+<span class="token comment">//   book: { title: 'You Don\'t Know JS', price: '45' }, </span>
+<span class="token comment">//   a1: undefined,</span>
+<span class="token comment">//   a2: {},</span>
+<span class="token comment">//   a3: 123</span>
+<span class="token comment">// }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-29491">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep1(source) {
+    var target = {};
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (typeof source[key] === 'object') {
+                target[key] = cloneDeep1(source[key]); // 注意这里
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 使用上面测试用例测试一下
+var b = cloneDeep1(a);
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '45' }, 
+//   a1: undefined,
+//   a2: {},
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-29491" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-73717">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep1(source) {
+    var target = {};
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (typeof source[key] === 'object') {
+                target[key] = cloneDeep1(source[key]); // 注意这里
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 使用上面测试用例测试一下
+var b = cloneDeep1(a);
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '45' }, 
+//   a1: undefined,
+//   a2: {},
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-73717" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>一个简单的深拷贝就完成了，但是这个实现还存在很多问题。</p> <ul><li>1、没有对传入参数进行校验，传入 <code>null</code> 时应该返回 <code>null</code> 而不是 <code>{}</code></li> <li>2、对于对象的判断逻辑不严谨，因为 <code>typeof null === 'object'</code></li> <li>3、没有考虑数组的兼容</li></ul> <h2 id="第二步：拷贝数组"><a href="#第二步：拷贝数组" class="header-anchor">#</a> 第二步：拷贝数组</h2> <p>我们来看下对于对象的判断，之前在【1.3.md】有过介绍，判断方案如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Object]'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-55666">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function isObject(obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-55666" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-70667">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function isObject(obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-70667" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>但是用在这里并不合适，因为我们要保留数组这种情况，所以这里使用 <code>typeof</code> 来处理。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">typeof</span> <span class="token keyword">null</span> <span class="token comment">//&quot;object&quot;</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">//&quot;object&quot;</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//&quot;object&quot;</span>
+<span class="token keyword">typeof</span> <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">//&quot;function&quot; (特殊情况)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-82879">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="typeof null //&quot;object&quot;
+typeof {} //&quot;object&quot;
+typeof [] //&quot;object&quot;
+typeof function foo(){} //&quot;function&quot; (特殊情况)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-82879" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-15556">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="typeof null //&quot;object&quot;
+typeof {} //&quot;object&quot;
+typeof [] //&quot;object&quot;
+typeof function foo(){} //&quot;function&quot; (特殊情况)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-15556" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>改动过后的 isObject 判断逻辑如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> obj <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-53891">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function isObject(obj) {
+	return typeof obj === 'object' &amp;&amp; obj != null;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-53891" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-11149">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function isObject(obj) {
+	return typeof obj === 'object' &amp;&amp; obj != null;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-11149" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>所以兼容数组的写法如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep2</span><span class="token punctuation">(</span><span class="token parameter">source</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> <span class="token comment">// 非对象返回自身</span>
+      
+    <span class="token keyword">var</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep2</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注意这里</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用上面测试用例测试一下</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">cloneDeep2</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { </span>
+<span class="token comment">//   name: 'muyiy', </span>
+<span class="token comment">//   book: { title: 'You Don\'t Know JS', price: '45' },</span>
+<span class="token comment">//   a1: undefined,</span>
+<span class="token comment">//   a2: null,</span>
+<span class="token comment">//   a3: 123</span>
+<span class="token comment">// }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-90171">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep2(source) {
+
+    if (!isObject(source)) return source; // 非对象返回自身
+      
+    var target = Array.isArray(source) ? [] : {};
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep2(source[key]); // 注意这里
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 使用上面测试用例测试一下
+var b = cloneDeep2(a);
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '45' },
+//   a1: undefined,
+//   a2: null,
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-90171" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715919-62960">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep2(source) {
+
+    if (!isObject(source)) return source; // 非对象返回自身
+      
+    var target = Array.isArray(source) ? [] : {};
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep2(source[key]); // 注意这里
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 使用上面测试用例测试一下
+var b = cloneDeep2(a);
+console.log(b);
+// { 
+//   name: 'muyiy', 
+//   book: { title: 'You Don\'t Know JS', price: '45' },
+//   a1: undefined,
+//   a2: null,
+//   a3: 123
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715919-62960" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="第三步：循环引用"><a href="#第三步：循环引用" class="header-anchor">#</a> 第三步：循环引用</h2> <p>我们知道 <code>JSON</code> 无法深拷贝循环引用，遇到这种情况会抛出异常。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 此处 a 是文章开始的测试用例</span>
+a<span class="token punctuation">.</span>circleRef <span class="token operator">=</span> a<span class="token punctuation">;</span>
+
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: Converting circular structure to JSON</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-69638">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+a.circleRef = a;
+
+JSON.parse(JSON.stringify(a));
+// TypeError: Converting circular structure to JSON
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-69638" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-88644">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+a.circleRef = a;
+
+JSON.parse(JSON.stringify(a));
+// TypeError: Converting circular structure to JSON
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-88644" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_1、使用哈希表"><a href="#_1、使用哈希表" class="header-anchor">#</a> 1、使用哈希表</h3> <p>解决方案很简单，其实就是循环检测，我们设置一个数组或者哈希表存储已拷贝过的对象，当检测到当前对象已存在于哈希表中时，取出该值并返回即可。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 新增代码，查哈希表</span>
+      
+    <span class="token keyword">var</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    hash<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 新增代码，哈希表设值</span>
+    
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 新增代码，传入哈希表</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-72168">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep3(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); // 新增代码，查哈希表
+      
+    var target = Array.isArray(source) ? [] : {};
+    hash.set(source, target); // 新增代码，哈希表设值
+    
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep3(source[key], hash); // 新增代码，传入哈希表
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-72168" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-4766">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep3(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); // 新增代码，查哈希表
+      
+    var target = Array.isArray(source) ? [] : {};
+    hash.set(source, target); // 新增代码，哈希表设值
+    
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep3(source[key], hash); // 新增代码，传入哈希表
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-4766" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>测试一下，看看效果如何。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 此处 a 是文章开始的测试用例</span>
+a<span class="token punctuation">.</span>circleRef <span class="token operator">=</span> a<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">// 	name: &quot;muyiy&quot;,</span>
+<span class="token comment">// 	a1: undefined,</span>
+<span class="token comment">//	a2: null,</span>
+<span class="token comment">// 	a3: 123,</span>
+<span class="token comment">// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},</span>
+<span class="token comment">// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …}</span>
+<span class="token comment">// }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-513">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+a.circleRef = a;
+
+var b = cloneDeep3(a);
+console.log(b);
+// {
+// 	name: &quot;muyiy&quot;,
+// 	a1: undefined,
+//	a2: null,
+// 	a3: 123,
+// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},
+// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …}
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-513" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-46588">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+a.circleRef = a;
+
+var b = cloneDeep3(a);
+console.log(b);
+// {
+// 	name: &quot;muyiy&quot;,
+// 	a1: undefined,
+//	a2: null,
+// 	a3: 123,
+// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},
+// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …}
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-46588" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_2、使用数组"><a href="#_2、使用数组" class="header-anchor">#</a> 2、使用数组</h3> <p>这里使用了<code>ES6</code> 中的 <code>WeakMap</code> 来处理，那在 <code>ES5</code> 下应该如何处理呢？</p> <p>也很简单，使用数组来处理就好啦，代码如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span><span class="token parameter">source<span class="token punctuation">,</span> uniqueList</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>uniqueList<span class="token punctuation">)</span> uniqueList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 新增代码，初始化数组</span>
+      
+    <span class="token keyword">var</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// ============= 新增代码</span>
+    <span class="token comment">// 数据已经存在，返回保存的数据</span>
+    <span class="token keyword">var</span> uniqueData <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>uniqueList<span class="token punctuation">,</span> source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>uniqueData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> uniqueData<span class="token punctuation">.</span>target<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        
+    <span class="token comment">// 数据不存在，保存源数据，以及对应的引用</span>
+    uniqueList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        source<span class="token operator">:</span> source<span class="token punctuation">,</span>
+        target<span class="token operator">:</span> target
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// =============</span>
+
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> uniqueList<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 新增代码，传入数组</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 新增方法，用于查找</span>
+<span class="token keyword">function</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">arr<span class="token punctuation">,</span> item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>source <span class="token operator">===</span> item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 用上面测试用例已测试通过</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-82857">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep3(source, uniqueList) {
+
+    if (!isObject(source)) return source; 
+    if (!uniqueList) uniqueList = []; // 新增代码，初始化数组
+      
+    var target = Array.isArray(source) ? [] : {};
+    
+    // ============= 新增代码
+    // 数据已经存在，返回保存的数据
+    var uniqueData = find(uniqueList, source);
+    if (uniqueData) {
+        return uniqueData.target;
+    };
+        
+    // 数据不存在，保存源数据，以及对应的引用
+    uniqueList.push({
+        source: source,
+        target: target
+    });
+    // =============
+
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep3(source[key], uniqueList); // 新增代码，传入数组
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 新增方法，用于查找
+function find(arr, item) {
+    for(var i = 0; i &lt; arr.length; i++) {
+        if (arr[i].source === item) {
+            return arr[i];
+        }
+    }
+    return null;
+}
+
+// 用上面测试用例已测试通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-82857" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-66602">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep3(source, uniqueList) {
+
+    if (!isObject(source)) return source; 
+    if (!uniqueList) uniqueList = []; // 新增代码，初始化数组
+      
+    var target = Array.isArray(source) ? [] : {};
+    
+    // ============= 新增代码
+    // 数据已经存在，返回保存的数据
+    var uniqueData = find(uniqueList, source);
+    if (uniqueData) {
+        return uniqueData.target;
+    };
+        
+    // 数据不存在，保存源数据，以及对应的引用
+    uniqueList.push({
+        source: source,
+        target: target
+    });
+    // =============
+
+    for(var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep3(source[key], uniqueList); // 新增代码，传入数组
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+
+// 新增方法，用于查找
+function find(arr, item) {
+    for(var i = 0; i &lt; arr.length; i++) {
+        if (arr[i].source === item) {
+            return arr[i];
+        }
+    }
+    return null;
+}
+
+// 用上面测试用例已测试通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-66602" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>现在已经很完美的解决了循环引用这种情况，那其实还是一种情况是引用丢失，我们看下面的例子。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token operator">:</span> obj1<span class="token punctuation">,</span> b<span class="token operator">:</span> obj1<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+obj2<span class="token punctuation">.</span>a <span class="token operator">===</span> obj2<span class="token punctuation">.</span>b<span class="token punctuation">;</span> 
+<span class="token comment">// true</span>
+
+<span class="token keyword">var</span> obj3 <span class="token operator">=</span> <span class="token function">cloneDeep2</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj3<span class="token punctuation">.</span>a <span class="token operator">===</span> obj3<span class="token punctuation">.</span>b<span class="token punctuation">;</span> 
+<span class="token comment">// false</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-68256">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = {};
+var obj2 = {a: obj1, b: obj1};
+
+obj2.a === obj2.b; 
+// true
+
+var obj3 = cloneDeep2(obj2);
+obj3.a === obj3.b; 
+// false
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-68256" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715920-10292">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = {};
+var obj2 = {a: obj1, b: obj1};
+
+obj2.a === obj2.b; 
+// true
+
+var obj3 = cloneDeep2(obj2);
+obj3.a === obj3.b; 
+// false
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715920-10292" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>引用丢失在某些情况下是有问题的，比如上面的对象 obj2，obj2 的键值 a 和 b 同时引用了同一个对象 obj1，使用 cloneDeep2 进行深拷贝后就丢失了引用关系变成了两个不同的对象，那如何处理呢。</p> <p>其实你有没有发现，我们的 cloneDeep3 已经解决了这个问题，因为只要存储已拷贝过的对象就可以了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> obj3 <span class="token operator">=</span> <span class="token function">cloneDeep3</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj3<span class="token punctuation">.</span>a <span class="token operator">===</span> obj3<span class="token punctuation">.</span>b<span class="token punctuation">;</span> 
+<span class="token comment">// true</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-92991">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj3 = cloneDeep3(obj2);
+obj3.a === obj3.b; 
+// true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-92991" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-76270">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj3 = cloneDeep3(obj2);
+obj3.a === obj3.b; 
+// true
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-76270" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="第四步：拷贝-symbol"><a href="#第四步：拷贝-symbol" class="header-anchor">#</a> 第四步：拷贝 Symbol</h2> <p>这个时候可能要搞事情了，那我们能不能拷贝 <code>Symol</code> 类型呢？</p> <p>当然可以，不过 <code>Symbol</code> 在 <code>ES6</code> 下才有，我们需要一些方法来检测出 <code>Symble</code> 类型。</p> <p>方法一：<code>Object.getOwnPropertySymbols(...)</code></p> <p>方法二：<code>Reflect.ownKeys(...)</code></p> <p><strong>对于方法一</strong>可以查找一个给定对象的符号属性时返回一个 ?<code>symbol</code> 类型的数组。注意，每个初始化的对象都是没有自己的 <code>symbol</code> 属性的，因此这个数组可能为空，除非你已经在对象上设置了 <code>symbol</code> 属性。（来自MDN）</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建新的symbol类型</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 从全局的symbol注册?表设置和取得symbol</span>
+
+obj<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;localSymbol&quot;</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;globalSymbol&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> objectSymbols <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>objectSymbols<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>objectSymbols<span class="token punctuation">)</span>         <span class="token comment">// [Symbol(a), Symbol(b)]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>objectSymbols<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment">// Symbol(a)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-68738">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj = {};
+var a = Symbol(&quot;a&quot;); // 创建新的symbol类型
+var b = Symbol.for(&quot;b&quot;); // 从全局的symbol注册?表设置和取得symbol
+
+obj[a] = &quot;localSymbol&quot;;
+obj[b] = &quot;globalSymbol&quot;;
+
+var objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols.length); // 2
+console.log(objectSymbols)         // [Symbol(a), Symbol(b)]
+console.log(objectSymbols[0])      // Symbol(a)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-68738" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-29118">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj = {};
+var a = Symbol(&quot;a&quot;); // 创建新的symbol类型
+var b = Symbol.for(&quot;b&quot;); // 从全局的symbol注册?表设置和取得symbol
+
+obj[a] = &quot;localSymbol&quot;;
+obj[b] = &quot;globalSymbol&quot;;
+
+var objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols.length); // 2
+console.log(objectSymbols)         // [Symbol(a), Symbol(b)]
+console.log(objectSymbols[0])      // Symbol(a)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-29118" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><strong>对于方法二</strong>返回一个由目标对象<strong>自身</strong>的属性键组成的数组。它的返回值等同于<code>Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))</code>。(来自MDN)</p> <div class="language-js extra-class"><pre class="language-js"><code>Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span><span class="token punctuation">{</span>z<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ &quot;z&quot;, &quot;y&quot;, &quot;x&quot; ]</span>
+Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [&quot;length&quot;]</span>
+
+<span class="token keyword">var</span> sym <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">&quot;comet&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> sym2 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">&quot;meteor&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">[</span>sym<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;str&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;773&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;0&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+           <span class="token punctuation">[</span>sym2<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;-1&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;8&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;second str&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [ &quot;0&quot;, &quot;8&quot;, &quot;773&quot;, &quot;str&quot;, &quot;-1&quot;, &quot;second str&quot;, Symbol(comet), Symbol(meteor) ]</span>
+<span class="token comment">// 注意顺序</span>
+<span class="token comment">// Indexes in numeric order, </span>
+<span class="token comment">// strings in insertion order, </span>
+<span class="token comment">// symbols in insertion order</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-55351">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="Reflect.ownKeys({z: 3, y: 2, x: 1}); // [ &quot;z&quot;, &quot;y&quot;, &quot;x&quot; ]
+Reflect.ownKeys([]); // [&quot;length&quot;]
+
+var sym = Symbol.for(&quot;comet&quot;);
+var sym2 = Symbol.for(&quot;meteor&quot;);
+var obj = {[sym]: 0, &quot;str&quot;: 0, &quot;773&quot;: 0, &quot;0&quot;: 0,
+           [sym2]: 0, &quot;-1&quot;: 0, &quot;8&quot;: 0, &quot;second str&quot;: 0};
+Reflect.ownKeys(obj);
+// [ &quot;0&quot;, &quot;8&quot;, &quot;773&quot;, &quot;str&quot;, &quot;-1&quot;, &quot;second str&quot;, Symbol(comet), Symbol(meteor) ]
+// 注意顺序
+// Indexes in numeric order, 
+// strings in insertion order, 
+// symbols in insertion order
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-55351" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-37464">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="Reflect.ownKeys({z: 3, y: 2, x: 1}); // [ &quot;z&quot;, &quot;y&quot;, &quot;x&quot; ]
+Reflect.ownKeys([]); // [&quot;length&quot;]
+
+var sym = Symbol.for(&quot;comet&quot;);
+var sym2 = Symbol.for(&quot;meteor&quot;);
+var obj = {[sym]: 0, &quot;str&quot;: 0, &quot;773&quot;: 0, &quot;0&quot;: 0,
+           [sym2]: 0, &quot;-1&quot;: 0, &quot;8&quot;: 0, &quot;second str&quot;: 0};
+Reflect.ownKeys(obj);
+// [ &quot;0&quot;, &quot;8&quot;, &quot;773&quot;, &quot;str&quot;, &quot;-1&quot;, &quot;second str&quot;, Symbol(comet), Symbol(meteor) ]
+// 注意顺序
+// Indexes in numeric order, 
+// strings in insertion order, 
+// symbols in insertion order
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-37464" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="方法一"><a href="#方法一" class="header-anchor">#</a> 方法一</h3> <p>思路就是先查找有没有 <code>Symbol</code> 属性，如果查找到则先遍历处理 <code>Symbol</code> 情况，然后再处理正常情况，多出来的逻辑就是下面的新增代码。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      
+    <span class="token keyword">let</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    hash<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// ============= 新增代码</span>
+    <span class="token keyword">let</span> symKeys <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 查找</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>symKeys<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 查找成功	</span>
+        symKeys<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">symKey</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>symKey<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>symKey<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>symKey<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>symKey<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>symKey<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>    
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// =============</span>
+    
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> source<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-21354">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    
+    // ============= 新增代码
+    let symKeys = Object.getOwnPropertySymbols(source); // 查找
+    if (symKeys.length) { // 查找成功	
+        symKeys.forEach(symKey =&gt; {
+            if (isObject(source[symKey])) {
+                target[symKey] = cloneDeep4(source[symKey], hash); 
+            } else {
+                target[symKey] = source[symKey];
+            }    
+        });
+    }
+    // =============
+    
+    for(let key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep4(source[key], hash); 
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-21354" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-96942">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    
+    // ============= 新增代码
+    let symKeys = Object.getOwnPropertySymbols(source); // 查找
+    if (symKeys.length) { // 查找成功	
+        symKeys.forEach(symKey =&gt; {
+            if (isObject(source[symKey])) {
+                target[symKey] = cloneDeep4(source[symKey], hash); 
+            } else {
+                target[symKey] = source[symKey];
+            }    
+        });
+    }
+    // =============
+    
+    for(let key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+            if (isObject(source[key])) {
+                target[key] = cloneDeep4(source[key], hash); 
+            } else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-96942" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>测试下效果</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 此处 a 是文章开始的测试用例</span>
+<span class="token keyword">var</span> sym1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">&quot;a&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建新的symbol类型</span>
+<span class="token keyword">var</span> sym2 <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">&quot;b&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 从全局的symbol注册?表设置和取得symbol</span>
+
+a<span class="token punctuation">[</span>sym1<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;localSymbol&quot;</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span>sym2<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;globalSymbol&quot;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// {</span>
+<span class="token comment">// 	name: &quot;muyiy&quot;,</span>
+<span class="token comment">// 	a1: undefined,</span>
+<span class="token comment">//	a2: null,</span>
+<span class="token comment">// 	a3: 123,</span>
+<span class="token comment">// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},</span>
+<span class="token comment">// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …},</span>
+<span class="token comment">//  [Symbol(a)]: 'localSymbol',</span>
+<span class="token comment">//  [Symbol(b)]: 'globalSymbol'</span>
+<span class="token comment">// }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-17525">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+var sym1 = Symbol(&quot;a&quot;); // 创建新的symbol类型
+var sym2 = Symbol.for(&quot;b&quot;); // 从全局的symbol注册?表设置和取得symbol
+
+a[sym1] = &quot;localSymbol&quot;;
+a[sym2] = &quot;globalSymbol&quot;;
+
+var b = cloneDeep4(a);
+console.log(b);
+// {
+// 	name: &quot;muyiy&quot;,
+// 	a1: undefined,
+//	a2: null,
+// 	a3: 123,
+// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},
+// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …},
+//  [Symbol(a)]: 'localSymbol',
+//  [Symbol(b)]: 'globalSymbol'
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-17525" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715921-63473">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 此处 a 是文章开始的测试用例
+var sym1 = Symbol(&quot;a&quot;); // 创建新的symbol类型
+var sym2 = Symbol.for(&quot;b&quot;); // 从全局的symbol注册?表设置和取得symbol
+
+a[sym1] = &quot;localSymbol&quot;;
+a[sym2] = &quot;globalSymbol&quot;;
+
+var b = cloneDeep4(a);
+console.log(b);
+// {
+// 	name: &quot;muyiy&quot;,
+// 	a1: undefined,
+//	a2: null,
+// 	a3: 123,
+// 	book: {title: &quot;You Don't Know JS&quot;, price: &quot;45&quot;},
+// 	circleRef: {name: &quot;muyiy&quot;, book: {…}, a1: undefined, a2: null, a3: 123, …},
+//  [Symbol(a)]: 'localSymbol',
+//  [Symbol(b)]: 'globalSymbol'
+// }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715921-63473" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="方法二"><a href="#方法二" class="header-anchor">#</a> 方法二</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      
+    <span class="token keyword">let</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    hash<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+  	Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">// 改动</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>  
+  	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 测试已通过</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-3366">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    
+  	Reflect.ownKeys(source).forEach(key =&gt; { // 改动
+        if (isObject(source[key])) {
+            target[key] = cloneDeep4(source[key], hash); 
+        } else {
+            target[key] = source[key];
+        }  
+  	});
+    return target;
+}
+
+// 测试已通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-3366" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-31151">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [] : {};
+    hash.set(source, target);
+    
+  	Reflect.ownKeys(source).forEach(key =&gt; { // 改动
+        if (isObject(source[key])) {
+            target[key] = cloneDeep4(source[key], hash); 
+        } else {
+            target[key] = source[key];
+        }  
+  	});
+    return target;
+}
+
+// 测试已通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-31151" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里使用了 <code>Reflect.ownKeys()</code> 获取所有的键值，同时包括 <code>Symbol</code>，对 <code>source</code> 遍历赋值即可。</p> <p>写到这里已经差不多了，我们再延伸下，对于 <code>target</code> 换一种写法，改动如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> hash <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> source<span class="token punctuation">;</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+      
+    <span class="token keyword">let</span> target <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token operator">...</span>source<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span>source <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 改动 1</span>
+    hash<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+  	Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">// 改动 2</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">cloneDeep4</span><span class="token punctuation">(</span>source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            target<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> source<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>  
+  	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 测试已通过</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-94024">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [...source] : { ...source }; // 改动 1
+    hash.set(source, target);
+    
+  	Reflect.ownKeys(target).forEach(key =&gt; { // 改动 2
+        if (isObject(source[key])) {
+            target[key] = cloneDeep4(source[key], hash); 
+        } else {
+            target[key] = source[key];
+        }  
+  	});
+    return target;
+}
+
+// 测试已通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-94024" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-43782">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep4(source, hash = new WeakMap()) {
+
+    if (!isObject(source)) return source; 
+    if (hash.has(source)) return hash.get(source); 
+      
+    let target = Array.isArray(source) ? [...source] : { ...source }; // 改动 1
+    hash.set(source, target);
+    
+  	Reflect.ownKeys(target).forEach(key =&gt; { // 改动 2
+        if (isObject(source[key])) {
+            target[key] = cloneDeep4(source[key], hash); 
+        } else {
+            target[key] = source[key];
+        }  
+  	});
+    return target;
+}
+
+// 测试已通过
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-43782" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在改动 1 中，返回一个新数组或者新对象，获取到源对象之后就可以如改动 2 所示传入 target 遍历赋值即可。</p> <p><code>Reflect.ownKeys()</code> 这种方式的问题在于不能深拷贝原型链上的数据，因为返回的是目标对象<strong>自身</strong>的属性键组成的数组。如果想深拷贝原型链上的数据怎么办，那用 <code>for..in</code> 就可以了。</p> <p>我们再介绍下两个知识点，分别是<strong>构造字面量数组时使用展开语法</strong>和<strong>构造字面量对象时使用展开语法</strong>。（以下代码示例来源于 MDN）</p> <h4 id="_1、展开语法之字面量数组"><a href="#_1、展开语法之字面量数组" class="header-anchor">#</a> 1、展开语法之字面量数组</h4> <p>这是 <code>ES2015 （ES6）</code> 才有的语法，可以通过字面量方式, 构造新数组，而不再需要组合使用 <code>push</code>, <code>splice</code>, <code>concat</code> 等方法。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> parts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'shoulders'</span><span class="token punctuation">,</span> <span class="token string">'knees'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token keyword">var</span> lyrics <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'head'</span><span class="token punctuation">,</span> <span class="token operator">...</span>parts<span class="token punctuation">,</span> <span class="token string">'and'</span><span class="token punctuation">,</span> <span class="token string">'toes'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+<span class="token comment">// [&quot;head&quot;, &quot;shoulders&quot;, &quot;knees&quot;, &quot;and&quot;, &quot;toes&quot;]</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-32785">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var parts = ['shoulders', 'knees']; 
+var lyrics = ['head', ...parts, 'and', 'toes']; 
+// [&quot;head&quot;, &quot;shoulders&quot;, &quot;knees&quot;, &quot;and&quot;, &quot;toes&quot;]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-32785" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-64861">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var parts = ['shoulders', 'knees']; 
+var lyrics = ['head', ...parts, 'and', 'toes']; 
+// [&quot;head&quot;, &quot;shoulders&quot;, &quot;knees&quot;, &quot;and&quot;, &quot;toes&quot;]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-64861" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里的使用方法和参数列表的展开有点类似。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> w<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-30487">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function myFunction(v, w, x, y, z) { }
+var args = [0, 1];
+myFunction(-1, ...args, 2, ...[3]);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-30487" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-81049">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function myFunction(v, w, x, y, z) { }
+var args = [0, 1];
+myFunction(-1, ...args, 2, ...[3]);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-81049" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>返回的是新数组，对新数组修改之后不会影响到旧数组，类似于 <code>arr.slice()</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// like arr.slice()</span>
+arr2<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+<span class="token comment">// arr2 此时变成 [1, 2, 3, 4]</span>
+<span class="token comment">// arr 不受影响</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-77769">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4); 
+
+// arr2 此时变成 [1, 2, 3, 4]
+// arr 不受影响
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-77769" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-42831">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var arr = [1, 2, 3];
+var arr2 = [...arr]; // like arr.slice()
+arr2.push(4); 
+
+// arr2 此时变成 [1, 2, 3, 4]
+// arr 不受影响
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-42831" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>展开语法和 <code>Object.assign()</code> 行为一致, 执行的都是浅拷贝（即只遍历一层）。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
+b<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token comment">// [[], [2], [3]]</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-26171">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var a = [[1], [2], [3]];
+var b = [...a];
+b.shift().shift(); // 1
+// [[], [2], [3]]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-26171" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-54743">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var a = [[1], [2], [3]];
+var b = [...a];
+b.shift().shift(); // 1
+// [[], [2], [3]]
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-54743" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里 a 是多层数组，b 只拷贝了第一层，对于第二层依旧和 a 持有同一个地址，所以对 b 的修改会影响到 a。</p> <h4 id="_2、展开语法之字面量对象"><a href="#_2、展开语法之字面量对象" class="header-anchor">#</a> 2、展开语法之字面量对象</h4> <p>这是 <code>ES2018</code> 才有的语法，将已有对象的所有<strong>可枚举属性</strong>拷贝到新构造的对象中，类似于 <code>Object.assign()</code> 方法。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> clonedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// { foo: &quot;bar&quot;, x: 42 }</span>
+
+<span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1<span class="token punctuation">,</span> <span class="token operator">...</span>obj2 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// { foo: &quot;baz&quot;, x: 42, y: 13 }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-91131">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+
+var clonedObj = { ...obj1 };
+// { foo: &quot;bar&quot;, x: 42 }
+
+var mergedObj = { ...obj1, ...obj2 };
+// { foo: &quot;baz&quot;, x: 42, y: 13 }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-91131" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715922-64229">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+
+var clonedObj = { ...obj1 };
+// { foo: &quot;bar&quot;, x: 42 }
+
+var mergedObj = { ...obj1, ...obj2 };
+// { foo: &quot;baz&quot;, x: 42, y: 13 }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715922-64229" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><code>Object.assign()</code> 函数会触发 <code>setters</code>，而展开语法不会。有时候不能替换或者模拟 <code>Object.assign()</code> 函数，因为会得到意想不到的结果，如下所示。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> x<span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">merge</span> <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token operator">...</span>objects</span> <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token operator">...</span>objects <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token function">merge</span> <span class="token punctuation">(</span> obj1<span class="token punctuation">,</span> obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }</span>
+
+<span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token function">merge</span> <span class="token punctuation">(</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj1<span class="token punctuation">,</span> obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-24803">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+const merge = ( ...objects ) =&gt; ( { ...objects } );
+
+var mergedObj = merge ( obj1, obj2);
+// { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
+
+var mergedObj = merge ( {}, obj1, obj2);
+// { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-24803" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-16340">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var obj1 = { foo: 'bar', x: 42 };
+var obj2 = { foo: 'baz', y: 13 };
+const merge = ( ...objects ) =&gt; ( { ...objects } );
+
+var mergedObj = merge ( obj1, obj2);
+// { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }
+
+var mergedObj = merge ( {}, obj1, obj2);
+// { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-16340" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>这里实际上是将多个解构变为剩余参数（ <code>rest</code> ），然后再将剩余参数展开为字面量对象.</p> <h2 id="第五步：破解递归爆栈"><a href="#第五步：破解递归爆栈" class="header-anchor">#</a> 第五步：破解递归爆栈</h2> <p>上面四步使用的都是递归方法，但是有一个问题在于会爆栈，错误提示如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// RangeError: Maximum call stack size exceeded</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-79516">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// RangeError: Maximum call stack size exceeded
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-79516" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-3022">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// RangeError: Maximum call stack size exceeded
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-3022" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>那应该如何解决呢？其实我们使用循环就可以了，代码如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cloneDeep5</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> root <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 栈</span>
+    <span class="token keyword">const</span> loopList <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            parent<span class="token operator">:</span> root<span class="token punctuation">,</span>
+            key<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+            data<span class="token operator">:</span> x<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span><span class="token punctuation">(</span>loopList<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 广度优先</span>
+        <span class="token keyword">const</span> node <span class="token operator">=</span> loopList<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> parent <span class="token operator">=</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">;</span>
+        <span class="token keyword">const</span> key <span class="token operator">=</span> node<span class="token punctuation">.</span>key<span class="token punctuation">;</span>
+        <span class="token keyword">const</span> data <span class="token operator">=</span> node<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+
+        <span class="token comment">// 初始化赋值目标，key为undefined则拷贝到父元素，否则拷贝到子元素</span>
+        <span class="token keyword">let</span> res <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> key <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            res <span class="token operator">=</span> parent<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token keyword">in</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> data<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// 下一次循环</span>
+                    loopList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                        parent<span class="token operator">:</span> res<span class="token punctuation">,</span>
+                        key<span class="token operator">:</span> k<span class="token punctuation">,</span>
+                        data<span class="token operator">:</span> data<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    res<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> root<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-13727">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep5(x) {
+    const root = {};
+
+    // 栈
+    const loopList = [
+        {
+            parent: root,
+            key: undefined,
+            data: x,
+        }
+    ];
+
+    while(loopList.length) {
+        // 广度优先
+        const node = loopList.pop();
+        const parent = node.parent;
+        const key = node.key;
+        const data = node.data;
+
+        // 初始化赋值目标，key为undefined则拷贝到父元素，否则拷贝到子元素
+        let res = parent;
+        if (typeof key !== 'undefined') {
+            res = parent[key] = {};
+        }
+
+        for(let k in data) {
+            if (data.hasOwnProperty(k)) {
+                if (typeof data[k] === 'object') {
+                    // 下一次循环
+                    loopList.push({
+                        parent: res,
+                        key: k,
+                        data: data[k],
+                    });
+                } else {
+                    res[k] = data[k];
+                }
+            }
+        }
+    }
+
+    return root;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-13727" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715923-15693">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function cloneDeep5(x) {
+    const root = {};
+
+    // 栈
+    const loopList = [
+        {
+            parent: root,
+            key: undefined,
+            data: x,
+        }
+    ];
+
+    while(loopList.length) {
+        // 广度优先
+        const node = loopList.pop();
+        const parent = node.parent;
+        const key = node.key;
+        const data = node.data;
+
+        // 初始化赋值目标，key为undefined则拷贝到父元素，否则拷贝到子元素
+        let res = parent;
+        if (typeof key !== 'undefined') {
+            res = parent[key] = {};
+        }
+
+        for(let k in data) {
+            if (data.hasOwnProperty(k)) {
+                if (typeof data[k] === 'object') {
+                    // 下一次循环
+                    loopList.push({
+                        parent: res,
+                        key: k,
+                        data: data[k],
+                    });
+                } else {
+                    res[k] = data[k];
+                }
+            }
+        }
+    }
+
+    return root;
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715923-15693" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>由于篇幅问题就不过多介绍了，详情请参考下面这篇文章。</p> <blockquote><p><a href="https://segmentfault.com/a/1190000016672263" target="_blank" rel="noopener noreferrer">深拷贝的终极探索（99%的人都不知道）<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote> <h2 id="思考题"><a href="#思考题" class="header-anchor">#</a> 思考题</h2> <blockquote><p>如何用 JS 实现 JSON.parse?</p></blockquote> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Blog/6.2.html" class="prev">
+        Object.assign 原理及其实现
+      </a></span> <span class="next"><a href="/Blog/6.4.html">
+        Lodash是如何实现深拷贝的
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/64.2298e1b5.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

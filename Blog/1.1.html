@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaScript深入之史上最全--5种this绑定全面解析 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/42.f18fd12e.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/37.c1852146.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第1期：this全面解析</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/1.1.html" class="active sidebar-link">JavaScript深入之史上最全--5种this绑定全面解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_1-调用位置" class="sidebar-link">1 调用位置</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_2-绑定规则" class="sidebar-link">2 绑定规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_2-1-默认绑定" class="sidebar-link">2.1 默认绑定</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_2-2-隐式绑定" class="sidebar-link">2.2 隐式绑定</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_2-3-显示绑定" class="sidebar-link">2.3 显示绑定</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_2-4-new绑定" class="sidebar-link">2.4 new绑定</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_3-优先级" class="sidebar-link">3 优先级</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_4-绑定例外" class="sidebar-link">4 绑定例外</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_4-1-被忽略的this" class="sidebar-link">4.1 被忽略的this</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_4-2-间接引用" class="sidebar-link">4.2 间接引用</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_4-3-软绑定" class="sidebar-link">4.3 软绑定</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_5-this词法" class="sidebar-link">5 this词法</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_6-思考题一" class="sidebar-link">6 思考题一</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#_7-思考题二" class="sidebar-link">7 思考题二</a></li><li class="sidebar-sub-header"><a href="/Blog/1.1.html#符" class="sidebar-link">符</a></li></ul></li><li><a href="/Blog/1.2.html" class="sidebar-link">JavaScript深入之重新认识箭头函数的this</a></li><li><a href="/Blog/1.3.html" class="sidebar-link">深度解析 call 和 apply 原理、使用场景及实现</a></li><li><a href="/Blog/1.4.html" class="sidebar-link">深度解析bind原理、使用场景及模拟实现</a></li><li><a href="/Blog/1.5.html" class="sidebar-link">深度解析 new 原理及模拟实现</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第2期：原型 Prototype</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第4期：节流防抖</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第6期：深浅拷贝原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第7期：调用堆栈</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="javascript深入之史上最全-5种this绑定全面解析"><a href="#javascript深入之史上最全-5种this绑定全面解析" class="header-anchor">#</a> JavaScript深入之史上最全--5种this绑定全面解析</h1> <p><code>this</code>的绑定规则总共有下面5种。</p> <ul><li>1、默认绑定（严格/非严格模式）</li> <li>2、隐式绑定</li> <li>3、显式绑定</li> <li>4、new绑定</li> <li>5、箭头函数绑定</li></ul> <h2 id="_1-调用位置"><a href="#_1-调用位置" class="header-anchor">#</a> 1 调用位置</h2> <p>调用位置就是函数在代码中<strong>被调用的位置</strong>（而不是声明的位置）。</p> <p>查找方法：</p> <ul><li>分析调用栈：调用位置就是当前正在执行的函数的<strong>前一个调用</strong>中</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 当前调用栈是：baz</span>
+    <span class="token comment">// 因此，当前调用位置是全局作用域</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;baz&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- bar的调用位置</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 当前调用栈是：baz --&gt; bar</span>
+    <span class="token comment">// 因此，当前调用位置在baz中</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;bar&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- foo的调用位置</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 当前调用栈是：baz --&gt; bar --&gt; foo</span>
+    <span class="token comment">// 因此，当前调用位置在bar中</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;foo&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- baz的调用位置</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687900-91546">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function baz() {
+    // 当前调用栈是：baz
+    // 因此，当前调用位置是全局作用域
+    
+    console.log( &quot;baz&quot; );
+    bar(); // &lt;-- bar的调用位置
+}
+
+function bar() {
+    // 当前调用栈是：baz --&gt; bar
+    // 因此，当前调用位置在baz中
+    
+    console.log( &quot;bar&quot; );
+    foo(); // &lt;-- foo的调用位置
+}
+
+function foo() {
+    // 当前调用栈是：baz --&gt; bar --&gt; foo
+    // 因此，当前调用位置在bar中
+    
+    console.log( &quot;foo&quot; );
+}
+
+baz(); // &lt;-- baz的调用位置
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687900-91546" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687900-47779">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function baz() {
+    // 当前调用栈是：baz
+    // 因此，当前调用位置是全局作用域
+    
+    console.log( &quot;baz&quot; );
+    bar(); // &lt;-- bar的调用位置
+}
+
+function bar() {
+    // 当前调用栈是：baz --&gt; bar
+    // 因此，当前调用位置在baz中
+    
+    console.log( &quot;bar&quot; );
+    foo(); // &lt;-- foo的调用位置
+}
+
+function foo() {
+    // 当前调用栈是：baz --&gt; bar --&gt; foo
+    // 因此，当前调用位置在bar中
+    
+    console.log( &quot;foo&quot; );
+}
+
+baz(); // &lt;-- baz的调用位置
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687900-47779" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li><p>使用开发者工具得到调用栈：</p> <p>设置断点或者插入<code>debugger</code>;语句，运行时调试器会在那个位置暂停，同时展示当前位置的函数调用列表，这就是<strong>调用栈</strong>。找到栈中的<strong>第二个元素</strong>，这就是真正的调用位置。</p></li></ul> <h2 id="_2-绑定规则"><a href="#_2-绑定规则" class="header-anchor">#</a> 2 绑定规则</h2> <h3 id="_2-1-默认绑定"><a href="#_2-1-默认绑定" class="header-anchor">#</a> 2.1 默认绑定</h3> <ul><li><strong>独立函数调用</strong>，可以把默认绑定看作是无法应用其他规则时的默认规则，this指向<strong>全局对象</strong>。</li> <li><strong>严格模式</strong>下，不能将全局对象用于默认绑定，this会绑定到<code>undefined</code>。只有函数运行在非严格模式下，默认绑定才能绑定到全局对象。在严格模式下<strong>调用</strong>函数则不影响默认绑定。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 运行在严格模式下，this会绑定到undefined</span>
+    <span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token comment">// 调用</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Cannot read property 'a' of undefined</span>
+
+<span class="token comment">// --------------------------------------</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 运行</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 严格模式下调用函数则不影响默认绑定</span>
+    <span class="token string">&quot;use strict&quot;</span><span class="token punctuation">;</span>
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687915-11209">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() { // 运行在严格模式下，this会绑定到undefined
+    &quot;use strict&quot;;
+    console.log( this.a );
+}
+var a = 2;
+// 调用
+foo(); // TypeError: Cannot read property 'a' of undefined
+
+// --------------------------------------
+
+function foo() { // 运行
+    console.log( this.a );
+}
+var a = 2;
+
+(function() { // 严格模式下调用函数则不影响默认绑定
+    &quot;use strict&quot;;
+    foo(); // 2
+})();
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687915-11209" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687915-38389">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() { // 运行在严格模式下，this会绑定到undefined
+    &quot;use strict&quot;;
+    console.log( this.a );
+}
+var a = 2;
+// 调用
+foo(); // TypeError: Cannot read property 'a' of undefined
+
+// --------------------------------------
+
+function foo() { // 运行
+    console.log( this.a );
+}
+var a = 2;
+
+(function() { // 严格模式下调用函数则不影响默认绑定
+    &quot;use strict&quot;;
+    foo(); // 2
+})();
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687915-38389" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_2-2-隐式绑定"><a href="#_2-2-隐式绑定" class="header-anchor">#</a> 2.2 隐式绑定</h3> <p>当函数引用有<strong>上下文对象</strong>时，隐式绑定规则会把函数中的this绑定到这个上下文对象。对象属性引用链中只有上一层或者说最后一层在调用中起作用。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    foo<span class="token operator">:</span> foo
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687916-91782">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+obj.foo(); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687916-91782" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687916-22933">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+obj.foo(); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687916-22933" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><blockquote><p>隐式丢失</p></blockquote> <p>被隐式绑定的函数特定情况下会丢失绑定对象，应用默认绑定，把this绑定到全局对象或者undefined上。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 虽然bar是obj.foo的一个引用，但是实际上，它引用的是foo函数本身。</span>
+<span class="token comment">// bar()是一个不带任何修饰的函数调用，应用默认绑定。</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    foo<span class="token operator">:</span> foo
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> bar <span class="token operator">=</span> obj<span class="token punctuation">.</span>foo<span class="token punctuation">;</span> <span class="token comment">// 函数别名</span>
+
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">&quot;oops, global&quot;</span><span class="token punctuation">;</span> <span class="token comment">// a是全局对象的属性</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &quot;oops, global&quot;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687917-38688">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 虽然bar是obj.foo的一个引用，但是实际上，它引用的是foo函数本身。
+// bar()是一个不带任何修饰的函数调用，应用默认绑定。
+function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+var bar = obj.foo; // 函数别名
+
+var a = &quot;oops, global&quot;; // a是全局对象的属性
+
+bar(); // &quot;oops, global&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687917-38688" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687917-54615">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 虽然bar是obj.foo的一个引用，但是实际上，它引用的是foo函数本身。
+// bar()是一个不带任何修饰的函数调用，应用默认绑定。
+function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+var bar = obj.foo; // 函数别名
+
+var a = &quot;oops, global&quot;; // a是全局对象的属性
+
+bar(); // &quot;oops, global&quot;
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687917-54615" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>参数传递就是一种隐式赋值，传入函数时也会被隐式赋值。回调函数丢失this绑定是非常常见的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">doFoo</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// fn其实引用的是foo</span>
+    
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- 调用位置！</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    foo<span class="token operator">:</span> foo
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">&quot;oops, global&quot;</span><span class="token punctuation">;</span> <span class="token comment">// a是全局对象的属性</span>
+
+<span class="token function">doFoo</span><span class="token punctuation">(</span> obj<span class="token punctuation">.</span>foo <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &quot;oops, global&quot;</span>
+
+<span class="token comment">// ----------------------------------------</span>
+
+<span class="token comment">// JS环境中内置的setTimeout()函数实现和下面的伪代码类似：</span>
+<span class="token keyword">function</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> delay</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 等待delay毫秒</span>
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- 调用位置！</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687917-29847">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+function doFoo(fn) {
+    // fn其实引用的是foo
+    
+    fn(); // &lt;-- 调用位置！
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+var a = &quot;oops, global&quot;; // a是全局对象的属性
+
+doFoo( obj.foo ); // &quot;oops, global&quot;
+
+// ----------------------------------------
+
+// JS环境中内置的setTimeout()函数实现和下面的伪代码类似：
+function setTimeout(fn, delay) {
+    // 等待delay毫秒
+    fn(); // &lt;-- 调用位置！
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687917-29847" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687917-17989">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+function doFoo(fn) {
+    // fn其实引用的是foo
+    
+    fn(); // &lt;-- 调用位置！
+}
+
+var obj = {
+    a: 2,
+    foo: foo
+};
+
+var a = &quot;oops, global&quot;; // a是全局对象的属性
+
+doFoo( obj.foo ); // &quot;oops, global&quot;
+
+// ----------------------------------------
+
+// JS环境中内置的setTimeout()函数实现和下面的伪代码类似：
+function setTimeout(fn, delay) {
+    // 等待delay毫秒
+    fn(); // &lt;-- 调用位置！
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687917-17989" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_2-3-显示绑定"><a href="#_2-3-显示绑定" class="header-anchor">#</a> 2.3 显示绑定</h3> <p>通过<code>call(..)</code> 或者 <code>apply(..)</code>方法。第一个参数是一个对象，在调用函数时将这个对象绑定到this。因为直接指定this的绑定对象，称之为显示绑定。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2  调用foo时强制把foo的this绑定到obj上</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687918-6638">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2
+};
+
+foo.call( obj ); // 2  调用foo时强制把foo的this绑定到obj上
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687918-6638" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687918-88091">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2
+};
+
+foo.call( obj ); // 2  调用foo时强制把foo的this绑定到obj上
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687918-88091" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>显示绑定无法解决丢失绑定问题。</p> <p>解决方案：</p> <ul><li>1、硬绑定
+创建函数bar()，并在它的内部手动调用foo.call(obj)，强制把foo的this绑定到了obj。这种方式让我想起了<strong>借用构造函数继承</strong>，没看过的可以点击查看 <a href="/Blog/2.1">JavaScript常用八种继承方案</a></li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span> bar<span class="token punctuation">,</span> <span class="token number">100</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+
+<span class="token comment">// 硬绑定的bar不可能再修改它的this</span>
+<span class="token function">bar</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> window <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687918-96169">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = function() {
+    foo.call( obj );
+};
+
+bar(); // 2
+setTimeout( bar, 100 ); // 2
+
+// 硬绑定的bar不可能再修改它的this
+bar.call( window ); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687918-96169" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687918-25604">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log( this.a );
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = function() {
+    foo.call( obj );
+};
+
+bar(); // 2
+setTimeout( bar, 100 ); // 2
+
+// 硬绑定的bar不可能再修改它的this
+bar.call( window ); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687918-25604" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>典型应用场景是创建一个包裹函数，负责接收参数并返回值。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">something</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">,</span> something <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">+</span> something<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span> obj<span class="token punctuation">,</span> arguments <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">bar</span><span class="token punctuation">(</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687919-37255">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = function() {
+    return foo.apply( obj, arguments );
+};
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687919-37255" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687919-45771">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = function() {
+    return foo.apply( obj, arguments );
+};
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687919-45771" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>创建一个可以重复使用的辅助函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">something</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">,</span> something <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">+</span> something<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 简单的辅助绑定函数</span>
+<span class="token keyword">function</span> <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span> obj<span class="token punctuation">,</span> arguments <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">bind</span><span class="token punctuation">(</span> foo<span class="token punctuation">,</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">bar</span><span class="token punctuation">(</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687919-46513">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+// 简单的辅助绑定函数
+function bind(fn, obj) {
+    return function() {
+        return fn.apply( obj, arguments );
+    }
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = bind( foo, obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687919-46513" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687919-44862">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+// 简单的辅助绑定函数
+function bind(fn, obj) {
+    return function() {
+        return fn.apply( obj, arguments );
+    }
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = bind( foo, obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687919-44862" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>ES5内置了Function.prototype.bind，bind会返回一个硬绑定的新函数，用法如下。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">something</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">,</span> something <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">+</span> something<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token function">bar</span><span class="token punctuation">(</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687920-18099">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = foo.bind( obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687920-18099" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687920-65425">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(something) {
+    console.log( this.a, something );
+    return this.a + something;
+}
+
+var obj = {
+    a: 2
+};
+
+var bar = foo.bind( obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687920-65425" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><ul><li>2、API调用的“上下文”</li></ul> <p>JS许多内置函数提供了一个可选参数，被称之为“上下文”（context），其作用和<code>bind(..)</code>一样，确保回调函数使用指定的this。这些函数实际上通过<code>call(..)</code>和<code>apply(..)</code>实现了显式绑定。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> el<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">&quot;awesome&quot;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token comment">// 调用foo(..)时把this绑定到obj</span>
+myArray<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span> foo<span class="token punctuation">,</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 1 awesome 2 awesome 3 awesome</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687920-13840">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(el) {
+	console.log( el, this.id );
+}
+
+var obj = {
+    id: &quot;awesome&quot;
+}
+
+var myArray = [1, 2, 3]
+// 调用foo(..)时把this绑定到obj
+myArray.forEach( foo, obj );
+// 1 awesome 2 awesome 3 awesome
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687920-13840" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687920-66587">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(el) {
+	console.log( el, this.id );
+}
+
+var obj = {
+    id: &quot;awesome&quot;
+}
+
+var myArray = [1, 2, 3]
+// 调用foo(..)时把this绑定到obj
+myArray.forEach( foo, obj );
+// 1 awesome 2 awesome 3 awesome
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687920-66587" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_2-4-new绑定"><a href="#_2-4-new绑定" class="header-anchor">#</a> 2.4 new绑定</h3> <ul><li>在JS中，<code>构造函数</code>只是使用<code>new</code>操作符时被调用的<code>普通</code>函数，他们不属于某个类，也不会实例化一个类。</li> <li>包括内置对象函数（比如<code>Number(..)</code>）在内的所有函数都可以用<code>new</code>来调用，这种函数调用被称为构造函数调用。</li> <li>实际上并不存在所谓的“构造函数”，只有对于函数的“<strong>构造调用</strong>”。</li></ul> <p>使用<code>new</code>来调用函数，或者说发生构造函数调用时，会自动执行下面的操作。</p> <ul><li>1、创建（或者说构造）一个新对象。</li> <li>2、这个新对象会被执行<code>[[Prototype]]</code>连接。</li> <li>3、这个新对象会绑定到函数调用的<code>this</code>。</li> <li>4、如果函数没有返回其他对象，那么<code>new</code>表达式中的函数调用会自动返回这个新对象。</li></ul> <p>使用<code>new</code>来调用<code>foo(..)</code>时，会构造一个新对象并把它（<code>bar</code>）绑定到<code>foo(..)</code>调用中的this。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">foo</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bar和foo(..)调用中的this进行绑定</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> bar<span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687921-73472">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a) {
+    this.a = a;
+}
+
+var bar = new foo(2); // bar和foo(..)调用中的this进行绑定
+console.log( bar.a ); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687921-73472" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687921-46990">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a) {
+    this.a = a;
+}
+
+var bar = new foo(2); // bar和foo(..)调用中的this进行绑定
+console.log( bar.a ); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687921-46990" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><strong>手写一个new实现</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 创建一个空的对象</span>
+    <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token comment">// 获得构造函数，arguments中去除第一个参数</span>
+    Con <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 链接到原型，obj 可以访问到构造函数原型中的属性</span>
+    obj<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> <span class="token class-name">Con</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span>
+	<span class="token comment">// 绑定 this 实现继承，obj 可以访问到构造函数中的属性</span>
+    <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token function">Con</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 优先返回构造函数返回的对象</span>
+	<span class="token keyword">return</span> ret <span class="token keyword">instanceof</span> <span class="token class-name">Object</span> <span class="token operator">?</span> ret <span class="token operator">:</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687923-60358">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function create() {
+	// 创建一个空的对象
+    var obj = new Object(),
+	// 获得构造函数，arguments中去除第一个参数
+    Con = [].shift.call(arguments);
+	// 链接到原型，obj 可以访问到构造函数原型中的属性
+    obj.__proto__ = Con.prototype;
+	// 绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687923-60358" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687923-88768">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function create() {
+	// 创建一个空的对象
+    var obj = new Object(),
+	// 获得构造函数，arguments中去除第一个参数
+    Con = [].shift.call(arguments);
+	// 链接到原型，obj 可以访问到构造函数原型中的属性
+    obj.__proto__ = Con.prototype;
+	// 绑定 this 实现继承，obj 可以访问到构造函数中的属性
+    var ret = Con.apply(obj, arguments);
+	// 优先返回构造函数返回的对象
+	return ret instanceof Object ? ret : obj;
+};
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687923-88768" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>使用这个手写的new</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 使用内置函数new</span>
+<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
+                        
+<span class="token comment">// 使用手写的new，即create</span>
+<span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token function">create</span><span class="token punctuation">(</span>Person<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687924-32161">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Person() {...}
+
+// 使用内置函数new
+var person = new Person(...)
+                        
+// 使用手写的new，即create
+var person = create(Person, ...)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687924-32161" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687924-75562">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function Person() {...}
+
+// 使用内置函数new
+var person = new Person(...)
+                        
+// 使用手写的new，即create
+var person = create(Person, ...)
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687924-75562" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><strong>代码原理解析：</strong></p> <ul><li>1、用new Object()的方式新建了一个对象obj</li> <li>2、取出第一个参数，就是我们要传入的构造函数。此外因为 shift 会修改原数组，所以 - arguments会被去除第一个参数</li> <li>3、将 obj的原型指向构造函数，这样obj就可以访问到构造函数原型中的属性</li> <li>4、使用apply，改变构造函数this 的指向到新建的对象，这样 obj就可以访问到构造函数中- 的属性</li> <li>5、返回 obj</li></ul> <h2 id="_3-优先级"><a href="#_3-优先级" class="header-anchor">#</a> 3 优先级</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token parameter">st</span><span class="token operator">=&gt;</span>start<span class="token operator">:</span> Start
+<span class="token parameter">e</span><span class="token operator">=&gt;</span>end<span class="token operator">:</span> End
+<span class="token parameter">cond1</span><span class="token operator">=&gt;</span>condition<span class="token operator">:</span> <span class="token keyword">new</span>绑定
+<span class="token parameter">op1</span><span class="token operator">=&gt;</span>operation<span class="token operator">:</span> <span class="token keyword">this</span>绑定新创建的对象，
+				<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+				
+<span class="token parameter">cond2</span><span class="token operator">=&gt;</span>condition<span class="token operator">:</span> 显示绑定
+<span class="token parameter">op2</span><span class="token operator">=&gt;</span>operation<span class="token operator">:</span> <span class="token keyword">this</span>绑定指定的对象，
+				<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span>
+				
+<span class="token parameter">cond3</span><span class="token operator">=&gt;</span>condition<span class="token operator">:</span> 隐式绑定
+<span class="token parameter">op3</span><span class="token operator">=&gt;</span>operation<span class="token operator">:</span> <span class="token keyword">this</span>绑定上下文对象，
+				<span class="token keyword">var</span> bar <span class="token operator">=</span> obj1<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+				
+<span class="token parameter">op4</span><span class="token operator">=&gt;</span>operation<span class="token operator">:</span> 默认绑定
+<span class="token parameter">op5</span><span class="token operator">=&gt;</span>operation<span class="token operator">:</span> 函数体严格模式下绑定到<span class="token keyword">undefined</span>，
+				否则绑定到全局对象，
+				<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+st<span class="token operator">-</span><span class="token operator">&gt;</span>cond1
+<span class="token function">cond1</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>op1<span class="token operator">-</span><span class="token operator">&gt;</span>e
+<span class="token function">cond1</span><span class="token punctuation">(</span>no<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>cond2
+<span class="token function">cond2</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>op2<span class="token operator">-</span><span class="token operator">&gt;</span>e
+<span class="token function">cond2</span><span class="token punctuation">(</span>no<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>cond3
+<span class="token function">cond3</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>op3<span class="token operator">-</span><span class="token operator">&gt;</span>e
+<span class="token function">cond3</span><span class="token punctuation">(</span>no<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span>op4<span class="token operator">-</span><span class="token operator">&gt;</span>op5<span class="token operator">-</span><span class="token operator">&gt;</span>e
+
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687924-90546">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="st=&gt;start: Start
+e=&gt;end: End
+cond1=&gt;condition: new绑定
+op1=&gt;operation: this绑定新创建的对象，
+				var bar = new foo()
+				
+cond2=&gt;condition: 显示绑定
+op2=&gt;operation: this绑定指定的对象，
+				var bar = foo.call(obj2)
+				
+cond3=&gt;condition: 隐式绑定
+op3=&gt;operation: this绑定上下文对象，
+				var bar = obj1.foo()
+				
+op4=&gt;operation: 默认绑定
+op5=&gt;operation: 函数体严格模式下绑定到undefined，
+				否则绑定到全局对象，
+				var bar = foo()
+
+st-&gt;cond1
+cond1(yes)-&gt;op1-&gt;e
+cond1(no)-&gt;cond2
+cond2(yes)-&gt;op2-&gt;e
+cond2(no)-&gt;cond3
+cond3(yes)-&gt;op3-&gt;e
+cond3(no)-&gt;op4-&gt;op5-&gt;e
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687924-90546" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687924-80024">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="st=&gt;start: Start
+e=&gt;end: End
+cond1=&gt;condition: new绑定
+op1=&gt;operation: this绑定新创建的对象，
+				var bar = new foo()
+				
+cond2=&gt;condition: 显示绑定
+op2=&gt;operation: this绑定指定的对象，
+				var bar = foo.call(obj2)
+				
+cond3=&gt;condition: 隐式绑定
+op3=&gt;operation: this绑定上下文对象，
+				var bar = obj1.foo()
+				
+op4=&gt;operation: 默认绑定
+op5=&gt;operation: 函数体严格模式下绑定到undefined，
+				否则绑定到全局对象，
+				var bar = foo()
+
+st-&gt;cond1
+cond1(yes)-&gt;op1-&gt;e
+cond1(no)-&gt;cond2
+cond2(yes)-&gt;op2-&gt;e
+cond2(no)-&gt;cond3
+cond3(yes)-&gt;op3-&gt;e
+cond3(no)-&gt;op4-&gt;op5-&gt;e
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687924-80024" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>在<code>new</code>中使用硬绑定函数的目的是预先设置函数的一些参数，这样在使用<code>new</code>进行初始化时就可以只传入其余的参数（<strong>柯里化</strong>）。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">p1<span class="token punctuation">,</span> p2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> p1 <span class="token operator">+</span> p2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 之所以使用null是因为在本例中我们并不关心硬绑定的this是什么</span>
+<span class="token comment">// 反正使用new时this会被修改</span>
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">&quot;p1&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> baz <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">bar</span><span class="token punctuation">(</span> <span class="token string">&quot;p2&quot;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+baz<span class="token punctuation">.</span>val<span class="token punctuation">;</span> <span class="token comment">// p1p2s</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687925-63388">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(p1, p2) {
+    this.val = p1 + p2;
+}
+
+// 之所以使用null是因为在本例中我们并不关心硬绑定的this是什么
+// 反正使用new时this会被修改
+var bar = foo.bind( null, &quot;p1&quot; );
+
+var baz = new bar( &quot;p2&quot; );
+
+baz.val; // p1p2s
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687925-63388" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687925-94284">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(p1, p2) {
+    this.val = p1 + p2;
+}
+
+// 之所以使用null是因为在本例中我们并不关心硬绑定的this是什么
+// 反正使用new时this会被修改
+var bar = foo.bind( null, &quot;p1&quot; );
+
+var baz = new bar( &quot;p2&quot; );
+
+baz.val; // p1p2s
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687925-94284" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="_4-绑定例外"><a href="#_4-绑定例外" class="header-anchor">#</a> 4 绑定例外</h2> <h3 id="_4-1-被忽略的this"><a href="#_4-1-被忽略的this" class="header-anchor">#</a> 4.1 被忽略的this</h3> <p>把<code>null</code>或者<code>undefined</code>作为<code>this</code>的绑定对象传入<code>call</code>、<code>apply</code>或者<code>bind</code>，这些值在调用时会被忽略，实际应用的是默认规则。</p> <p>下面两种情况下会传入<code>null</code></p> <ul><li>使用<code>apply(..)</code>来“展开”一个数组，并当作参数传入一个函数</li> <li><code>bind(..)</code>可以对参数进行柯里化（预先设置一些参数）</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;a:&quot;</span> <span class="token operator">+</span> a <span class="token operator">+</span> <span class="token string">&quot;，b:&quot;</span> <span class="token operator">+</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 把数组”展开“成参数</span>
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a:2，b:3</span>
+
+<span class="token comment">// 使用bind(..)进行柯里化</span>
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">bar</span><span class="token punctuation">(</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a:2，b:3 </span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-92786">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a, b) {
+    console.log( &quot;a:&quot; + a + &quot;，b:&quot; + b );
+}
+
+// 把数组”展开“成参数
+foo.apply( null, [2, 3] ); // a:2，b:3
+
+// 使用bind(..)进行柯里化
+var bar = foo.bind( null, 2 );
+bar( 3 ); // a:2，b:3 
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-92786" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-75342">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a, b) {
+    console.log( &quot;a:&quot; + a + &quot;，b:&quot; + b );
+}
+
+// 把数组”展开“成参数
+foo.apply( null, [2, 3] ); // a:2，b:3
+
+// 使用bind(..)进行柯里化
+var bar = foo.bind( null, 2 );
+bar( 3 ); // a:2，b:3 
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-75342" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>总是传入<code>null</code>来忽略this绑定可能产生一些副作用。如果某个函数确实使用了this，那默认绑定规则会把this绑定到全局对象中。</p> <blockquote><p>更安全的this</p></blockquote> <p>安全的做法就是传入一个特殊的对象（空对象），把this绑定到这个对象不会对你的程序产生任何副作用。</p> <p>JS中创建一个空对象最简单的方法是<strong>Object.create(null)</strong>，这个和<code>{}</code>很像，但是并不会创建<code>Object.prototype</code>这个委托，所以比<code>{}</code>更空。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">&quot;a:&quot;</span> <span class="token operator">+</span> a <span class="token operator">+</span> <span class="token string">&quot;，b:&quot;</span> <span class="token operator">+</span> b <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 我们的空对象</span>
+<span class="token keyword">var</span> ø <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span> <span class="token keyword">null</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 把数组”展开“成参数</span>
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span> ø<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a:2，b:3</span>
+
+<span class="token comment">// 使用bind(..)进行柯里化</span>
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span> ø<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">bar</span><span class="token punctuation">(</span> <span class="token number">3</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// a:2，b:3 </span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-51248">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a, b) {
+    console.log( &quot;a:&quot; + a + &quot;，b:&quot; + b );
+}
+
+// 我们的空对象
+var ø = Object.create( null );
+
+// 把数组”展开“成参数
+foo.apply( ø, [2, 3] ); // a:2，b:3
+
+// 使用bind(..)进行柯里化
+var bar = foo.bind( ø, 2 );
+bar( 3 ); // a:2，b:3 
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-51248" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-76008">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo(a, b) {
+    console.log( &quot;a:&quot; + a + &quot;，b:&quot; + b );
+}
+
+// 我们的空对象
+var ø = Object.create( null );
+
+// 把数组”展开“成参数
+foo.apply( ø, [2, 3] ); // a:2，b:3
+
+// 使用bind(..)进行柯里化
+var bar = foo.bind( ø, 2 );
+bar( 3 ); // a:2，b:3 
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-76008" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_4-2-间接引用"><a href="#_4-2-间接引用" class="header-anchor">#</a> 4.2 间接引用</h3> <p>间接引用下，调用这个函数会应用默认绑定规则。间接引用最容易在<strong>赋值</strong>时发生。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// p.foo = o.foo的返回值是目标函数的引用，所以调用位置是foo()而不是p.foo()或者o.foo()</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> foo<span class="token operator">:</span> foo <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+o<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+<span class="token punctuation">(</span>p<span class="token punctuation">.</span>foo <span class="token operator">=</span> o<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-39338">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// p.foo = o.foo的返回值是目标函数的引用，所以调用位置是foo()而不是p.foo()或者o.foo()
+function foo() {
+    console.log( this.a );
+}
+
+var a = 2;
+var o = { a: 3, foo: foo };
+var p = { a: 4};
+
+o.foo(); // 3
+(p.foo = o.foo)(); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-39338" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687926-19972">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// p.foo = o.foo的返回值是目标函数的引用，所以调用位置是foo()而不是p.foo()或者o.foo()
+function foo() {
+    console.log( this.a );
+}
+
+var a = 2;
+var o = { a: 3, foo: foo };
+var p = { a: 4};
+
+o.foo(); // 3
+(p.foo = o.foo)(); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687926-19972" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="_4-3-软绑定"><a href="#_4-3-软绑定" class="header-anchor">#</a> 4.3 软绑定</h3> <ul><li>硬绑定可以把this强制绑定到指定的对象（<code>new</code>除外），防止函数调用应用默认绑定规则。但是会降低函数的灵活性，使用<strong>硬绑定之后就无法使用隐式绑定或者显式绑定来修改this</strong>。</li> <li><strong>如果给默认绑定指定一个全局对象和undefined以外的值</strong>，那就可以实现和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 默认绑定规则，优先级排最后</span>
+<span class="token comment">// 如果this绑定到全局对象或者undefined，那就把指定的默认对象obj绑定到this,否则不会修改this</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>softBind<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">softBind</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> fn <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token comment">// 捕获所有curried参数</span>
+        <span class="token keyword">var</span> curried <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> arguments<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token keyword">var</span> <span class="token function-variable function">bound</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>
+            	<span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span> <span class="token operator">||</span> <span class="token keyword">this</span> <span class="token operator">===</span> <span class="token punctuation">(</span>window <span class="token operator">||</span> global<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> 
+                	obj <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+                curried<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span> curried<span class="token punctuation">,</span> arguments <span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        bound<span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span> fn<span class="token punctuation">.</span>prototype <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bound<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687927-66661">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 默认绑定规则，优先级排最后
+// 如果this绑定到全局对象或者undefined，那就把指定的默认对象obj绑定到this,否则不会修改this
+if(!Function.prototype.softBind) {
+    Function.prototype.softBind = function(obj) {
+        var fn = this;
+        // 捕获所有curried参数
+        var curried = [].slice.call( arguments, 1 ); 
+        var bound = function() {
+            return fn.apply(
+            	(!this || this === (window || global)) ? 
+                	obj : this,
+                curried.concat.apply( curried, arguments )
+            );
+        };
+        bound.prototype = Object.create( fn.prototype );
+        return bound;
+    };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687927-66661" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687927-8264">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// 默认绑定规则，优先级排最后
+// 如果this绑定到全局对象或者undefined，那就把指定的默认对象obj绑定到this,否则不会修改this
+if(!Function.prototype.softBind) {
+    Function.prototype.softBind = function(obj) {
+        var fn = this;
+        // 捕获所有curried参数
+        var curried = [].slice.call( arguments, 1 ); 
+        var bound = function() {
+            return fn.apply(
+            	(!this || this === (window || global)) ? 
+                	obj : this,
+                curried.concat.apply( curried, arguments )
+            );
+        };
+        bound.prototype = Object.create( fn.prototype );
+        return bound;
+    };
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687927-8264" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>使用：软绑定版本的foo()可以手动将this绑定到obj2或者obj3上，但如果应用默认绑定，则会将this绑定到obj。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;name:&quot;</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;obj&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;obj2&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    obj3 <span class="token operator">=</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;obj3&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 默认绑定，应用软绑定，软绑定把this绑定到默认对象obj</span>
+<span class="token keyword">var</span> fooOBJ <span class="token operator">=</span> foo<span class="token punctuation">.</span><span class="token function">softBind</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fooOBJ</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// name: obj </span>
+
+<span class="token comment">// 隐式绑定规则</span>
+obj2<span class="token punctuation">.</span>foo <span class="token operator">=</span> foo<span class="token punctuation">.</span><span class="token function">softBind</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj2<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// name: obj2 &lt;---- 看！！！</span>
+
+<span class="token comment">// 显式绑定规则</span>
+<span class="token function">fooOBJ</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> obj3 <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// name: obj3 &lt;---- 看！！！</span>
+
+<span class="token comment">// 绑定丢失，应用软绑定</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span> obj2<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token number">10</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// name: obj</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687928-18568">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log(&quot;name:&quot; + this.name);
+}
+
+var obj = { name: &quot;obj&quot; },
+    obj2 = { name: &quot;obj2&quot; },
+    obj3 = { name: &quot;obj3&quot; };
+
+// 默认绑定，应用软绑定，软绑定把this绑定到默认对象obj
+var fooOBJ = foo.softBind( obj );
+fooOBJ(); // name: obj 
+
+// 隐式绑定规则
+obj2.foo = foo.softBind( obj );
+obj2.foo(); // name: obj2 &lt;---- 看！！！
+
+// 显式绑定规则
+fooOBJ.call( obj3 ); // name: obj3 &lt;---- 看！！！
+
+// 绑定丢失，应用软绑定
+setTimeout( obj2.foo, 10 ); // name: obj
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687928-18568" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687928-43735">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    console.log(&quot;name:&quot; + this.name);
+}
+
+var obj = { name: &quot;obj&quot; },
+    obj2 = { name: &quot;obj2&quot; },
+    obj3 = { name: &quot;obj3&quot; };
+
+// 默认绑定，应用软绑定，软绑定把this绑定到默认对象obj
+var fooOBJ = foo.softBind( obj );
+fooOBJ(); // name: obj 
+
+// 隐式绑定规则
+obj2.foo = foo.softBind( obj );
+obj2.foo(); // name: obj2 &lt;---- 看！！！
+
+// 显式绑定规则
+fooOBJ.call( obj3 ); // name: obj3 &lt;---- 看！！！
+
+// 绑定丢失，应用软绑定
+setTimeout( obj2.foo, 10 ); // name: obj
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687928-43735" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h2 id="_5-this词法"><a href="#_5-this词法" class="header-anchor">#</a> 5 this词法</h2> <p>ES6新增一种特殊函数类型：箭头函数，箭头函数无法使用上述四条规则，而是根据外层（函数或者全局）作用域（<strong>词法作用域</strong>）来决定this。</p> <ul><li><code>foo()</code>内部创建的箭头函数会捕获调用时<code>foo()</code>的this。由于<code>foo()</code>的this绑定到<code>obj1</code>，<code>bar</code>(引用箭头函数)的this也会绑定到<code>obj1</code>，<strong>箭头函数的绑定无法被修改</strong>(<code>new</code>也不行)。</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 返回一个箭头函数</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// this继承自foo()</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">3</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> obj1 <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">bar</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span> obj2 <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2，不是3！</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687928-99973">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    // 返回一个箭头函数
+    return (a) =&gt; {
+        // this继承自foo()
+        console.log( this.a );
+    };
+}
+
+var obj1 = {
+    a: 2
+};
+
+var obj2 = {
+    a: 3
+}
+
+var bar = foo.call( obj1 );
+bar.call( obj2 ); // 2，不是3！
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687928-99973" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687928-41530">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    // 返回一个箭头函数
+    return (a) =&gt; {
+        // this继承自foo()
+        console.log( this.a );
+    };
+}
+
+var obj1 = {
+    a: 2
+};
+
+var obj2 = {
+    a: 3
+}
+
+var bar = foo.call( obj1 );
+bar.call( obj2 ); // 2，不是3！
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687928-41530" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>ES6之前和箭头函数类似的模式，采用的是词法作用域取代了传统的this机制。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token comment">// lexical capture of this</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> self<span class="token punctuation">.</span>a <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// self只是继承了foo()函数的this绑定</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-95175">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    var self = this; // lexical capture of this
+    setTimeout( function() {
+        console.log( self.a ); // self只是继承了foo()函数的this绑定
+    }, 100 );
+}
+
+var obj = {
+    a: 2
+};
+
+foo.call(obj); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-95175" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-40021">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="function foo() {
+    var self = this; // lexical capture of this
+    setTimeout( function() {
+        console.log( self.a ); // self只是继承了foo()函数的this绑定
+    }, 100 );
+}
+
+var obj = {
+    a: 2
+};
+
+foo.call(obj); // 2
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-40021" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>代码风格统一问题：如果既有this风格的代码，还会使用 <code>seft = this</code> 或者箭头函数来否定this机制。</p> <ul><li>只使用词法作用域并完全抛弃错误this风格的代码；</li> <li>完全采用this风格，在必要时使用<code>bind(..)</code>，尽量避免使用 <code>self = this</code> 和箭头函数。</li></ul> <h2 id="_6-思考题一"><a href="#_6-思考题一" class="header-anchor">#</a> 6 思考题一</h2> <p>代码1：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">&quot;global scope&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">&quot;local scope&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> scope<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-3226">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var scope = &quot;global scope&quot;;
+function checkscope(){
+    var scope = &quot;local scope&quot;;
+    function f(){
+        return scope;
+    }
+    return f;
+}
+
+checkscope()();      
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-3226" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-86003">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var scope = &quot;global scope&quot;;
+function checkscope(){
+    var scope = &quot;local scope&quot;;
+    function f(){
+        return scope;
+    }
+    return f;
+}
+
+checkscope()();      
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-86003" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>代码2：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">&quot;global scope&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">&quot;local scope&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> scope<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-70516">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var scope = &quot;global scope&quot;;
+function checkscope(){
+    var scope = &quot;local scope&quot;;
+    function f(){
+        return scope;
+    }
+    return f;
+}
+
+var foo = checkscope(); 
+foo();         
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-70516" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687929-82557">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var scope = &quot;global scope&quot;;
+function checkscope(){
+    var scope = &quot;local scope&quot;;
+    function f(){
+        return scope;
+    }
+    return f;
+}
+
+var foo = checkscope(); 
+foo();         
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687929-82557" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>上面的两个代码中，<code>checkscope()</code>执行完成后，闭包f所引用的自由变量<code>scope</code>会被垃圾回收吗？为什么？</p> <p><strong>解答:</strong></p> <p><code>checkscope()</code>执行完成后，代码1中自由变量特定时间之后<strong>回收</strong>，代码2中自由变量<strong>不回收</strong>。</p> <p>首先要说明的是，现在主流浏览器的垃圾回收算法是<strong>标记清除</strong>，标记清除并非是标记执行栈的进出，而是<strong>从根开始遍历</strong>，也是一个找引用关系的过程，但是因为从根开始，相互引用的情况不会被计入。所以当垃圾回收开始时，从<strong>Root</strong>（全局对象）开始寻找这个对象的引用是否可达，如果引用链断裂，那么这个对象就会回收。</p> <p>闭包中的作用域链中 parentContext.vo 是对象，被放在<strong>堆</strong>中，<strong>栈</strong>中的变量会随着执行环境进出而销毁，<strong>堆</strong>中需要垃圾回收，闭包内的自由变量会被分配到堆上，所以当外部方法执行完毕后，对其的引用并没有丢。</p> <p>每次进入函数执行时，会重新创建可执行环境和活动对象，但函数的<code>[[Scope]]</code>是函数定义时就已经定义好的（<strong>词法作用域规则</strong>），不可更改。</p> <ul><li>对于代码1：</li></ul> <p><code>checkscope()</code>执行时,将<code>checkscope</code>对象指针压入栈中，其执行环境变量如下</p> <div class="language-js extra-class"><pre class="language-js"><code>checkscopeContext<span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token constant">AO</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        arguments<span class="token operator">:</span>
+        scope<span class="token operator">:</span>
+        f<span class="token operator">:</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">this</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Scope<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token constant">AO</span><span class="token punctuation">,</span> globalContext<span class="token punctuation">.</span><span class="token constant">VO</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-4242">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="checkscopeContext:{
+    AO:{
+        arguments:
+        scope:
+        f:
+    },
+    this,
+    [[Scope]]:[AO, globalContext.VO]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-4242" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-20478">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="checkscopeContext:{
+    AO:{
+        arguments:
+        scope:
+        f:
+    },
+    this,
+    [[Scope]]:[AO, globalContext.VO]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-20478" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>执行完毕后<strong>出栈</strong>，该对象没有绑定给谁，从<strong>Root</strong>开始查找无法可达，此活动对象一段时间后会被回收</p> <ul><li>对于代码2：</li></ul> <p><code>checkscope()</code>执行后，返回的是<code>f</code>对象，其执行环境变量如下</p> <div class="language-js extra-class"><pre class="language-js"><code>fContext<span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token constant">AO</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        arguments<span class="token operator">:</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">this</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token punctuation">[</span>Scope<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token constant">AO</span><span class="token punctuation">,</span> checkscopeContext<span class="token punctuation">.</span><span class="token constant">AO</span><span class="token punctuation">,</span> globalContext<span class="token punctuation">.</span><span class="token constant">VO</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-11427">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="fContext:{
+    AO:{
+        arguments:
+    },
+    this,
+    [[Scope]]:[AO, checkscopeContext.AO, globalContext.VO]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-11427" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-7130">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="fContext:{
+    AO:{
+        arguments:
+    },
+    this,
+    [[Scope]]:[AO, checkscopeContext.AO, globalContext.VO]
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-7130" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>此对象赋值给<code>var foo = checkscope();</code>，将<code>foo</code>压入栈中，<code>foo</code>指向堆中的f活动对象,对于<code>Root</code>来说可达，不会被回收。</p> <p>如果一定要自由变量<code>scope</code>回收，那么该怎么办？？？</p> <p>很简单，<code>foo = null;</code>，把引用断开就可以了。</p> <h2 id="_7-思考题二"><a href="#_7-思考题二" class="header-anchor">#</a> 7 思考题二</h2> <p>依次给出console.log输出的数值。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>
+    num<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">sub</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+myObject<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> sub <span class="token operator">=</span> myObject<span class="token punctuation">.</span>sub<span class="token punctuation">;</span>
+<span class="token function">sub</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-86244">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var num = 1;
+var myObject = {
+    num: 2,
+    add: function() {
+        this.num = 3;
+        (function() {
+            console.log(this.num);
+            this.num = 4;
+        })();
+        console.log(this.num);
+    },
+    sub: function() {
+        console.log(this.num)
+    }
+}
+myObject.add();
+console.log(myObject.num);
+console.log(num);
+var sub = myObject.sub;
+sub();
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-86244" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687932-8776">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var num = 1;
+var myObject = {
+    num: 2,
+    add: function() {
+        this.num = 3;
+        (function() {
+            console.log(this.num);
+            this.num = 4;
+        })();
+        console.log(this.num);
+    },
+    sub: function() {
+        console.log(this.num)
+    }
+}
+myObject.add();
+console.log(myObject.num);
+console.log(num);
+var sub = myObject.sub;
+sub();
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687932-8776" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><hr> <hr> <p>空</p> <p>白</p> <p>占</p> <p>位</p> <h2 id="符"><a href="#符" class="header-anchor">#</a> 符</h2> <hr> <p>答案有两种情况，分为严格模式和非严格模式。</p> <ul><li>严格模式下，报错。TypeError: Cannot read property 'num' of undefined</li> <li>非严格模式下，输出：1、3、3、4、4</li></ul> <p>解答过程：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>
+    num<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 隐式绑定 修改 myObject.num = 3</span>
+        <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 默认绑定 输出 1</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment">// 默认绑定 修改 window.num = 4</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 隐式绑定 输出 3</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">sub</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token punctuation">)</span> <span class="token comment">// 因为丢失了隐式绑定的myObject，所以使用默认绑定 输出 4</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+myObject<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+<span class="token keyword">var</span> sub <span class="token operator">=</span> myObject<span class="token punctuation">.</span>sub<span class="token punctuation">;</span><span class="token comment">//  丢失了隐式绑定的myObject</span>
+<span class="token function">sub</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687935-68941">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var num = 1;
+var myObject = {
+    num: 2,
+    add: function() {
+        this.num = 3; // 隐式绑定 修改 myObject.num = 3
+        (function() {
+            console.log(this.num); // 默认绑定 输出 1
+            this.num = 4; // 默认绑定 修改 window.num = 4
+        })();
+        console.log(this.num); // 隐式绑定 输出 3
+    },
+    sub: function() {
+        console.log(this.num) // 因为丢失了隐式绑定的myObject，所以使用默认绑定 输出 4
+    }
+}
+myObject.add(); // 1 3
+console.log(myObject.num); // 3
+console.log(num); // 4
+var sub = myObject.sub;//  丢失了隐式绑定的myObject
+sub(); // 4
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687935-68941" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775687935-15680">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var num = 1;
+var myObject = {
+    num: 2,
+    add: function() {
+        this.num = 3; // 隐式绑定 修改 myObject.num = 3
+        (function() {
+            console.log(this.num); // 默认绑定 输出 1
+            this.num = 4; // 默认绑定 修改 window.num = 4
+        })();
+        console.log(this.num); // 隐式绑定 输出 3
+    },
+    sub: function() {
+        console.log(this.num) // 因为丢失了隐式绑定的myObject，所以使用默认绑定 输出 4
+    }
+}
+myObject.add(); // 1 3
+console.log(myObject.num); // 3
+console.log(num); // 4
+var sub = myObject.sub;//  丢失了隐式绑定的myObject
+sub(); // 4
+
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775687935-15680" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/Blog/1.2.html">
+        JavaScript深入之重新认识箭头函数的this
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/42.f18fd12e.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

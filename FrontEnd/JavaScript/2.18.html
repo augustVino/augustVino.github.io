@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>如何解决异步请求的竞态问题 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/102.9ae8ed71.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/66.99608c3b.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link router-link-active">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/JavaScript/2.1.html" class="sidebar-link">总结一下 ES6 常用知识点</a></li><li><a href="/FrontEnd/JavaScript/2.2.html" class="sidebar-link">防止按钮在短时间内重复点击</a></li><li><a href="/FrontEnd/JavaScript/2.3.html" class="sidebar-link">JavaScript类数组对象NodeList</a></li><li><a href="/FrontEnd/JavaScript/2.4.html" class="sidebar-link">Web Notification</a></li><li><a href="/FrontEnd/JavaScript/2.5.html" class="sidebar-link">JS 数组知识点</a></li><li><a href="/FrontEnd/JavaScript/2.6.html" class="sidebar-link">类数组的 push</a></li><li><a href="/FrontEnd/JavaScript/2.7.html" class="sidebar-link">实现一个sleep函数</a></li><li><a href="/FrontEnd/JavaScript/2.8.html" class="sidebar-link">实现简单的Event模块的emit和on方法</a></li><li><a href="/FrontEnd/JavaScript/2.9.html" class="sidebar-link">实现简单的Promise</a></li><li><a href="/FrontEnd/JavaScript/2.10.html" class="sidebar-link">H5页面中长按保存图片</a></li><li><a href="/FrontEnd/JavaScript/2.11.1.html" class="sidebar-link">JS 中常用的距离总结（上）</a></li><li><a href="/FrontEnd/JavaScript/2.11.2.html" class="sidebar-link">JS 中常用的距离总结（下）</a></li><li><a href="/FrontEnd/JavaScript/2.12.html" class="sidebar-link">h5 图片验证码</a></li><li><a href="/FrontEnd/JavaScript/2.13.html" class="sidebar-link">JS 数据结构--链表</a></li><li><a href="/FrontEnd/JavaScript/2.14.html" class="sidebar-link">JS技巧(工具)函数</a></li><li><a href="/FrontEnd/JavaScript/2.15.html" class="sidebar-link">JavaScript方法的重写</a></li><li><a href="/FrontEnd/JavaScript/2.16.html" class="sidebar-link">IntersectionObserver 实现图片懒加载</a></li><li><a href="/FrontEnd/JavaScript/2.17.html" class="sidebar-link">audio、video标签在各端的自动播放</a></li><li><a href="/FrontEnd/JavaScript/2.18.html" class="active sidebar-link">如何解决异步请求的竞态问题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#引子" class="sidebar-link">引子</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#场景描述" class="sidebar-link">场景描述</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#模拟重现" class="sidebar-link">模拟重现</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#简单粗暴的解决方式" class="sidebar-link">简单粗暴的解决方式</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#真实场景搭建" class="sidebar-link">真实场景搭建</a></li><li class="sidebar-sub-header"><a href="/FrontEnd/JavaScript/2.18.html#promise-和-xhr-abort" class="sidebar-link">Promise 和 XHR.abort()</a></li></ul></li><li><a href="/FrontEnd/JavaScript/2.19.html" class="sidebar-link">事件对象 event 中的 target 和 currentTarget</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Image</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>业余·折腾</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>支付·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>算法·相关</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>面试·相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/FrontEnd/Interview/8.1.html" class="sidebar-link">HTTP系列</a></li><li><a href="/FrontEnd/Interview/8.2.html" class="sidebar-link">JavaScript - 45道 Promise 题</a></li><li><a href="/FrontEnd/Interview/8.3.html" class="sidebar-link">JavaScript - 40道 this 题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="如何解决异步请求的竞态问题"><a href="#如何解决异步请求的竞态问题" class="header-anchor">#</a> 如何解决异步请求的竞态问题</h1> <h2 id="引子"><a href="#引子" class="header-anchor">#</a> 引子</h2> <p>这大概是所有前端在实际工作中都要解决的问题吧。。。</p> <p>在现在的交互场景中，搜索框里的实时下拉提示，地图缩放时的数据更新等等。。</p> <p>只要你多次触发同一个动作 多次调用了同一个接口，你就要考虑时序的问题</p> <p>这次所讨论的内容并不是给请求加loading的判断啊，或者节流啊防抖啊，或者 async/await啊之类的</p> <p>因为在下面的场景中这些并不能解决问题。。</p> <p>请注意，我们的接口响应时间是随机的，而且我们要得到最新的结果，也就是最后一个请求得到的响应</p> <h2 id="场景描述"><a href="#场景描述" class="header-anchor">#</a> 场景描述</h2> <p>现在页面上有一个输入框，随着用户的输入会不断发出异步请求，取回后端返回的结果渲染在页面上。</p> <p>但是蛋疼的是，接口的响应时间并不确定，也就是说，有可能先请求的后返回，后请求的却先返回了。</p> <p>如果不作处理，这会导致前端渲染的结果错误（不是最后一个请求返回的结果）</p> <p>那么。。如何才能保证页面正确的渲染呢？</p> <h2 id="模拟重现"><a href="#模拟重现" class="header-anchor">#</a> 模拟重现</h2> <p>我们可以先简单重现一下，领会一下精神，代码如下(<a href="https://github.com/augustVino/JavaScript_Learning/blob/master/request_async/demo0.html" target="_blank" rel="noopener noreferrer">demo0<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>)，效果如图</p> <div class="img-box"><img src="/img/javascript2.18-2.png" alt="javascript2.18-2"> <!----></div> <div class="img-box"><img src="/img/javascript2.18-1" alt="javascript2.18-1"> <!----></div> <p>可以看到，我们实际想渲染的是第四个请求的结果，但是却被第三的请求的结果后来居上了，导致了显示错误</p> <h2 id="简单粗暴的解决方式"><a href="#简单粗暴的解决方式" class="header-anchor">#</a> 简单粗暴的解决方式</h2> <p>最简单的想法就是记一下数（其实已经记了）。。。比较一下是不是最后一个就好了(<a href="https://github.com/augustVino/JavaScript_Learning/blob/master/request_async/demo1.html" target="_blank" rel="noopener noreferrer">demo1<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>)</p> <div class="img-box"><img src="/img/javascript2.18-3.png" alt="javascript2.18-3"> <!----></div> <div class="img-box"><img src="/img/javascript2.18-4" alt="javascript2.18-4"> <!----></div> <p>OK，这样看起来已经阔以了</p> <p>但是这样简单的方法在实际使用中并不方便，你总是需要想办法返回一个计数，然后做比较判断。。每个请求还都要重写一遍。。</p> <p>鉴于现代的异步请求基本上都会使用  <code>Promise</code> ，接下来我们就介绍一种结合了 <code>Promise</code> 和 <code>XHR.abort()</code> 的新方法</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>XMLHttpRequest</code> 提供的 <code>abort</code> 方法 可以用来将 <code>XMLHttpRequest</code> 的 <code>readyState</code> 置为 <code>0</code>。这样就可以视为请求被 &quot;终止&quot; 了  ^ . ^</p> <p>但是请注意，这只是前端视角上的&quot;终止&quot;，实际上请求还是会到达服务器的（后面我们会证明这一点）。</p> <p>从 <code>http</code> 原理来讲，也没可能会有所谓的终止请求的。简单设想一下，前端发出一个删除数据的请求，正常的请求流程中，请求被服务器接受，后端操作数据库，删掉数据，然后把结果响应给前端。在这中间前端如果真的能在响应到达之前终止请求的话，那删掉的数据怎么办呢。。。   -，-</p> <p>所有的终止方法都只能是在到达前端之后不做处理而已，这样在用户看来就是被&quot;终止&quot;了。</p></div> <h2 id="真实场景搭建"><a href="#真实场景搭建" class="header-anchor">#</a> 真实场景搭建</h2> <p>为了能真实的测试我们的请求和响应的情况，我们就真的写一个随机响应的<code>node</code>服务出来吧 ~</p> <p>新建一个 <a href="https://github.com/augustVino/JavaScript_Learning/blob/master/request_async/server.js" target="_blank" rel="noopener noreferrer">server.js<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> ， 代码如下</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// server.js</span>
+<span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span>statusCOde <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/plain; charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Allow-Origin'</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> pathname<span class="token punctuation">,</span> query <span class="token punctuation">}</span> <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>url<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pathname <span class="token operator">===</span> <span class="token string">'/mock'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 随机时间</span>
+        <span class="token keyword">let</span> time <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">接受到第 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>query<span class="token punctuation">.</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 个模拟请求，</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>time<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> ms 后响应</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">响应第 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>query<span class="token punctuation">.</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 个模拟请求</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span>index<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775706417-35475">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// server.js
+const http = require('http')
+const url = require('url')
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+    res.statusCOde = 200;
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const { pathname, query } = url.parse(req.url, true);
+
+    if (pathname === '/mock') {
+        // 随机时间
+        let time = Math.random() * 1000;
+        console.log(`接受到第 ${query.index} 个模拟请求，${time} ms 后响应`);
+        setTimeout(() =&gt; {
+            console.log(`响应第 ${query.index} 个模拟请求`)
+            res.end(query.index)
+        }, time);
+    }
+})
+server.listen(port, hostname, () =&gt; {
+    console.log(`Server running at http://${hostname}:${port}/`);
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775706417-35475" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775706417-23833">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="// server.js
+const http = require('http')
+const url = require('url')
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) =&gt; {
+    res.statusCOde = 200;
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    const { pathname, query } = url.parse(req.url, true);
+
+    if (pathname === '/mock') {
+        // 随机时间
+        let time = Math.random() * 1000;
+        console.log(`接受到第 ${query.index} 个模拟请求，${time} ms 后响应`);
+        setTimeout(() =&gt; {
+            console.log(`响应第 ${query.index} 个模拟请求`)
+            res.end(query.index)
+        }, time);
+    }
+})
+server.listen(port, hostname, () =&gt; {
+    console.log(`Server running at http://${hostname}:${port}/`);
+})
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775706417-23833" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>同样的，我们的前端请求也要写一个真实的<a href="https://github.com/augustVino/JavaScript_Learning/blob/master/request_async/demo2.html" target="_blank" rel="noopener noreferrer">demo2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>现代的异步请求离不开 <code>Promise</code>，即使你用 <code>XHR</code> 也建议用 <code>Promise</code> 包装</p> <p>实际上，这样的封装只有一次，整个项目都会使用这个封装好的 <code>xhrAdapter</code></p> <div class="img-box"><img src="/img/javascript2.18-6.png" alt="javascript2.18-6"> <!----></div> <p>接下来，测试一下是否能重现我们要的场景</p> <div class="img-box"><img src="/img/javascript2.18-5" alt="javascript2.18-5"> <!----></div> <p>可以看到，请求按顺序发出了，但是响应是不定时的。现在舞台搭好了。</p> <h2 id="promise-和-xhr-abort"><a href="#promise-和-xhr-abort" class="header-anchor">#</a> Promise 和 XHR.abort()</h2> <p>之前，我们解决问题的思路是给请求计数，通过对比来判断出最后一个请求</p> <p>现在，换一种思路。在连续的请求过程中，每当我发出一个请求，我就将之前正在 <code>pending</code> 的请求的 <code>Promise</code> <code>reject</code> 掉，并且该请求的 <code>XHR</code> 对象执行 <code>abort()</code></p> <p>之前的请求 如果已经有响应的不用管它，我们当前的请求的结果会覆盖它的</p> <p>这样就能确保最后的响应是正确的了</p> <p>那么问题来了，怎样才能记录之前的请求，还要能在适当的时机执行对它的一系列操作呢？</p> <p>这个问题，其实 <code>Promise</code> 自己就是答案。仔细想一想，只要 <code>Promise</code> 的状态改变了，就会在 <code>.then</code> 或者 <code>.catch</code> 中执行我们之前写好的回调函数，而且利用这个回调函数，刚好可以用来保存之前的请求。简直完美</p> <p>这样的话，就需要我们自己生成一个 <code>Promise</code> 并把它的 <code>.then</code> 回调关联到我们的 <code>xhrAdapter</code> 中，回调函数中会保存当时的 <code>XHR</code> 请求对象和其包装 <code>Promise</code> 的<code>reject</code> 方法，有了这两个对象就可以达到我们的目的了。</p> <p>那下面我们就来具体实现一下这个想法</p> <p>首先，总不能每次都写一遍生成 <code>Promise</code> 的代码。这里就构造一个名为 <code>CancelToken</code> 的类用来生成 <code>Promise</code>，为了防止多次执行取消操作，也对取消请求操作进行记录, 需要同样的构造一个 <code>Cancel</code> 的类</p> <p>这样的话其实也有一个小问题，就是这个两个类和具体发出请求的方法，也就是 <code>handleInput</code>  肯定是不在一起的了，那如何才能在外部( <code>handleInput</code> 中)控制一个 <code>Promise</code> 的状态呢？</p> <p>具体的答案我们还是先来看一下代码就知道了<a href="https://github.com/augustVino/JavaScript_Learning/blob/master/request_async/demo3.html" target="_blank" rel="noopener noreferrer">demo3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//请求记录</span>
+<span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">/* 改装之后的 XHR 封装 */</span>
+<span class="token keyword">function</span> <span class="token function">xhrAdapter</span><span class="token punctuation">(</span><span class="token parameter">index<span class="token punctuation">,</span> cancelToken</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        request<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">http://127.0.0.1:3000/mock?index=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        request<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">handleLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>request <span class="token operator">||</span> request<span class="token punctuation">.</span>readyState <span class="token operator">!==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token keyword">var</span> response <span class="token operator">=</span> <span class="token punctuation">{</span>
+                    data<span class="token operator">:</span> request<span class="token punctuation">.</span>responseText<span class="token punctuation">,</span>
+                    status<span class="token operator">:</span> request<span class="token punctuation">.</span>status<span class="token punctuation">,</span>
+                    statusText<span class="token operator">:</span> request<span class="token punctuation">.</span>statusText<span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">;</span>
+                <span class="token function">resolve</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">//需要取消的请求</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cancelToken<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">//使用 cancel 方法改变 this.promise 状态为 reslove 时触发</span>
+            cancelToken<span class="token punctuation">.</span>promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">onCanceled</span><span class="token punctuation">(</span><span class="token parameter">cancel</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>request<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+                <span class="token comment">//利用 XHR 提供的 abort() 取消未发出的请求</span>
+                request<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token comment">//将用来包装 XHR 的外部 Promise 状态转为失败</span>
+                <span class="token function">reject</span><span class="token punctuation">(</span>cancel<span class="token punctuation">)</span>
+                request <span class="token operator">=</span> <span class="token keyword">null</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        request<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* Cancel */</span>
+<span class="token keyword">class</span> <span class="token class-name">Cancel</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* Cancel Token */</span>
+<span class="token keyword">class</span> <span class="token class-name">CancelToken</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">executor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> executor <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'executor must be a function.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">//将构造的 Promise 的 resolve 方法赋值给外部的变量 resolvePromise</span>
+        <span class="token comment">//这样就可以在外部改变 Promise 的状态，也就是 this.promise 的状态</span>
+        <span class="token keyword">let</span> resolvePromise
+        <span class="token keyword">this</span><span class="token punctuation">.</span>promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">promiseExecutor</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            resolvePromise <span class="token operator">=</span> resolve<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">let</span> token <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token comment">//执行传入的 executor 方法，将 cancel 方法作为参数传入</span>
+        <span class="token comment">//这样外部方法 executor 中就可以获取到用来改变 this.promise 状态的 cancel 方法了</span>
+        <span class="token function">executor</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">//防止多次调用 cancel</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>token<span class="token punctuation">.</span>reason<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token comment">//生成一个 Cancel 实例，记录 reason 参数</span>
+            token<span class="token punctuation">.</span>reason <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cancel</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//改变 this.promise 状态</span>
+            <span class="token function">resolvePromise</span><span class="token punctuation">(</span>token<span class="token punctuation">.</span>reason<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* 用法 */</span>
+<span class="token keyword">let</span> cancel<span class="token punctuation">;</span>
+<span class="token comment">/* 响应输入事件 */</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">handleInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cancel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">取消第 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>index<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 个请求</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    index<span class="token operator">++</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">xhrAdapter</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">CancelToken</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">executor</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cancel <span class="token operator">=</span> c
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#result'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">这是第 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 个请求的处理结果</span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775706418-2899">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//请求记录
+let index = 0;
+/* 改装之后的 XHR 封装 */
+function xhrAdapter(index, cancelToken) {
+    return new Promise(function(resolve, reject) {
+        var request = new XMLHttpRequest();
+        request.open('GET', `http://127.0.0.1:3000/mock?index=${index}`, true)
+        request.onreadystatechange = function handleLoad() {
+                if (!request || request.readyState !== 4) return;
+                if (request.status === 0) return;
+                var response = {
+                    data: request.responseText,
+                    status: request.status,
+                    statusText: request.statusText,
+                };
+                resolve(response);
+            }
+            //需要取消的请求
+        if (cancelToken) {
+            //使用 cancel 方法改变 this.promise 状态为 reslove 时触发
+            cancelToken.promise.then(function onCanceled(cancel) {
+                if (!request) return;
+                //利用 XHR 提供的 abort() 取消未发出的请求
+                request.abort()
+                    //将用来包装 XHR 的外部 Promise 状态转为失败
+                reject(cancel)
+                request = null
+            })
+        }
+        request.send()
+    })
+}
+/* Cancel */
+class Cancel {
+    constructor(message) {
+        this.message = message;
+    }
+}
+/* Cancel Token */
+class CancelToken {
+    constructor(executor) {
+        if (typeof executor !== 'function') {
+            throw new TypeError('executor must be a function.');
+        }
+        //将构造的 Promise 的 resolve 方法赋值给外部的变量 resolvePromise
+        //这样就可以在外部改变 Promise 的状态，也就是 this.promise 的状态
+        let resolvePromise
+        this.promise = new Promise(function promiseExecutor(resolve) {
+            resolvePromise = resolve;
+        });
+
+        let token = this;
+        //执行传入的 executor 方法，将 cancel 方法作为参数传入
+        //这样外部方法 executor 中就可以获取到用来改变 this.promise 状态的 cancel 方法了
+        executor(function cancel(message) {
+            //防止多次调用 cancel
+            if (token.reason) return;
+            //生成一个 Cancel 实例，记录 reason 参数
+            token.reason = new Cancel(message);
+            //改变 this.promise 状态
+            resolvePromise(token.reason);
+        });
+    }
+}
+/* 用法 */
+let cancel;
+/* 响应输入事件 */
+async function handleInput() {
+    if (cancel) {
+        cancel(`取消第 ${index} 个请求`)
+    }
+    index++
+    const { data } = await xhrAdapter(index, new CancelToken(function executor(c) {
+        cancel = c
+    }))
+    document.querySelector('#result').value = `这是第 ${data} 个请求的处理结果`
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775706418-2899" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775706418-86669">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="//请求记录
+let index = 0;
+/* 改装之后的 XHR 封装 */
+function xhrAdapter(index, cancelToken) {
+    return new Promise(function(resolve, reject) {
+        var request = new XMLHttpRequest();
+        request.open('GET', `http://127.0.0.1:3000/mock?index=${index}`, true)
+        request.onreadystatechange = function handleLoad() {
+                if (!request || request.readyState !== 4) return;
+                if (request.status === 0) return;
+                var response = {
+                    data: request.responseText,
+                    status: request.status,
+                    statusText: request.statusText,
+                };
+                resolve(response);
+            }
+            //需要取消的请求
+        if (cancelToken) {
+            //使用 cancel 方法改变 this.promise 状态为 reslove 时触发
+            cancelToken.promise.then(function onCanceled(cancel) {
+                if (!request) return;
+                //利用 XHR 提供的 abort() 取消未发出的请求
+                request.abort()
+                    //将用来包装 XHR 的外部 Promise 状态转为失败
+                reject(cancel)
+                request = null
+            })
+        }
+        request.send()
+    })
+}
+/* Cancel */
+class Cancel {
+    constructor(message) {
+        this.message = message;
+    }
+}
+/* Cancel Token */
+class CancelToken {
+    constructor(executor) {
+        if (typeof executor !== 'function') {
+            throw new TypeError('executor must be a function.');
+        }
+        //将构造的 Promise 的 resolve 方法赋值给外部的变量 resolvePromise
+        //这样就可以在外部改变 Promise 的状态，也就是 this.promise 的状态
+        let resolvePromise
+        this.promise = new Promise(function promiseExecutor(resolve) {
+            resolvePromise = resolve;
+        });
+
+        let token = this;
+        //执行传入的 executor 方法，将 cancel 方法作为参数传入
+        //这样外部方法 executor 中就可以获取到用来改变 this.promise 状态的 cancel 方法了
+        executor(function cancel(message) {
+            //防止多次调用 cancel
+            if (token.reason) return;
+            //生成一个 Cancel 实例，记录 reason 参数
+            token.reason = new Cancel(message);
+            //改变 this.promise 状态
+            resolvePromise(token.reason);
+        });
+    }
+}
+/* 用法 */
+let cancel;
+/* 响应输入事件 */
+async function handleInput() {
+    if (cancel) {
+        cancel(`取消第 ${index} 个请求`)
+    }
+    index++
+    const { data } = await xhrAdapter(index, new CancelToken(function executor(c) {
+        cancel = c
+    }))
+    document.querySelector('#result').value = `这是第 ${data} 个请求的处理结果`
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775706418-86669" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>实际效果：</p> <div class="img-box"><img src="/img/javascript2.18-7" alt="javascript2.18-7"> <!----></div> <p>看来效果还是阔以的，而且写法高端了很多</p> <p>实际上，如果你用 Axios 的话。。你会发现，上面的实现就是 Axios 的源码</p> <p>的简陋版本</p> <p>哈哈哈，没错，你直接用 Axios 就行了。</p> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/FrontEnd/JavaScript/2.17.html" class="prev">
+        audio、video标签在各端的自动播放
+      </a></span> <span class="next"><a href="/FrontEnd/JavaScript/2.19.html">
+        事件对象 event 中的 target 和 currentTarget
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/102.9ae8ed71.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>

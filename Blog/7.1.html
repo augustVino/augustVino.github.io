@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>理解JavaScript 中的执行上下文和执行栈 | Vino&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/img/logo_desktop_ico.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/img/logo_desktop_ico.png">
+    <meta name="description" content="前端爬坑之旅">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <link rel="preload" href="/assets/css/0.styles.e2aafa94.css" as="style"><link rel="preload" href="/assets/js/app.6a883236.js" as="script"><link rel="preload" href="/assets/js/2.9374ea52.js" as="script"><link rel="preload" href="/assets/js/66.99608c3b.js" as="script"><link rel="preload" href="/assets/js/37.c1852146.js" as="script"><link rel="preload" href="/assets/js/40.c8e1b6f3.js" as="script"><link rel="preload" href="/assets/js/11.c968a7c6.js" as="script"><link rel="preload" href="/assets/js/10.832e2843.js" as="script"><link rel="prefetch" href="/assets/js/100.a77dd05d.js"><link rel="prefetch" href="/assets/js/101.73c0a4ce.js"><link rel="prefetch" href="/assets/js/102.9ae8ed71.js"><link rel="prefetch" href="/assets/js/103.12561fe9.js"><link rel="prefetch" href="/assets/js/104.bec8e2c8.js"><link rel="prefetch" href="/assets/js/105.84cc1c77.js"><link rel="prefetch" href="/assets/js/106.3f8b202c.js"><link rel="prefetch" href="/assets/js/107.37d1f20e.js"><link rel="prefetch" href="/assets/js/108.4300c29e.js"><link rel="prefetch" href="/assets/js/109.c5b5ea31.js"><link rel="prefetch" href="/assets/js/110.6256e819.js"><link rel="prefetch" href="/assets/js/111.f3bed9b7.js"><link rel="prefetch" href="/assets/js/112.db3075af.js"><link rel="prefetch" href="/assets/js/113.b1a2bcee.js"><link rel="prefetch" href="/assets/js/114.a7af67ef.js"><link rel="prefetch" href="/assets/js/115.1aec54a4.js"><link rel="prefetch" href="/assets/js/116.bf8a8c99.js"><link rel="prefetch" href="/assets/js/117.9036cf29.js"><link rel="prefetch" href="/assets/js/118.526a918f.js"><link rel="prefetch" href="/assets/js/119.1b31bef6.js"><link rel="prefetch" href="/assets/js/12.8e946eb4.js"><link rel="prefetch" href="/assets/js/120.c419da80.js"><link rel="prefetch" href="/assets/js/121.0b66c6f9.js"><link rel="prefetch" href="/assets/js/122.27c5c6a4.js"><link rel="prefetch" href="/assets/js/123.daaaf41c.js"><link rel="prefetch" href="/assets/js/124.d4b9000e.js"><link rel="prefetch" href="/assets/js/125.053f3bc0.js"><link rel="prefetch" href="/assets/js/126.d540e42e.js"><link rel="prefetch" href="/assets/js/127.e93ae496.js"><link rel="prefetch" href="/assets/js/128.d0a8dcf6.js"><link rel="prefetch" href="/assets/js/129.462abe68.js"><link rel="prefetch" href="/assets/js/13.eba7a0f8.js"><link rel="prefetch" href="/assets/js/130.4769bd2f.js"><link rel="prefetch" href="/assets/js/131.d5b31911.js"><link rel="prefetch" href="/assets/js/132.acc7040a.js"><link rel="prefetch" href="/assets/js/133.71933ed3.js"><link rel="prefetch" href="/assets/js/134.bd38bf43.js"><link rel="prefetch" href="/assets/js/135.bad5b011.js"><link rel="prefetch" href="/assets/js/136.555d3bd2.js"><link rel="prefetch" href="/assets/js/137.6537e4ea.js"><link rel="prefetch" href="/assets/js/138.ce213003.js"><link rel="prefetch" href="/assets/js/139.c18da3bb.js"><link rel="prefetch" href="/assets/js/14.7e00c282.js"><link rel="prefetch" href="/assets/js/140.539f3db1.js"><link rel="prefetch" href="/assets/js/15.749d7854.js"><link rel="prefetch" href="/assets/js/16.e815d63f.js"><link rel="prefetch" href="/assets/js/17.67b20db3.js"><link rel="prefetch" href="/assets/js/18.0b154c9b.js"><link rel="prefetch" href="/assets/js/19.04e82b4c.js"><link rel="prefetch" href="/assets/js/20.6c871bbe.js"><link rel="prefetch" href="/assets/js/21.040cfd9f.js"><link rel="prefetch" href="/assets/js/22.ba06fe8a.js"><link rel="prefetch" href="/assets/js/23.659cd4a3.js"><link rel="prefetch" href="/assets/js/24.0ee4737d.js"><link rel="prefetch" href="/assets/js/25.c6e6b0c1.js"><link rel="prefetch" href="/assets/js/26.31505d35.js"><link rel="prefetch" href="/assets/js/27.8d43c162.js"><link rel="prefetch" href="/assets/js/28.a6118c14.js"><link rel="prefetch" href="/assets/js/29.7e2f4b2e.js"><link rel="prefetch" href="/assets/js/3.8eff0f5c.js"><link rel="prefetch" href="/assets/js/30.4e2fbafe.js"><link rel="prefetch" href="/assets/js/31.39ee6447.js"><link rel="prefetch" href="/assets/js/32.51b21fd8.js"><link rel="prefetch" href="/assets/js/33.ee7a2d0d.js"><link rel="prefetch" href="/assets/js/34.9c200580.js"><link rel="prefetch" href="/assets/js/35.3143ab4d.js"><link rel="prefetch" href="/assets/js/36.ea6f63b6.js"><link rel="prefetch" href="/assets/js/38.bc0a4a86.js"><link rel="prefetch" href="/assets/js/39.06c223ea.js"><link rel="prefetch" href="/assets/js/4.f4c73307.js"><link rel="prefetch" href="/assets/js/41.a7f1a166.js"><link rel="prefetch" href="/assets/js/42.f18fd12e.js"><link rel="prefetch" href="/assets/js/43.fc98e253.js"><link rel="prefetch" href="/assets/js/44.b2c07c67.js"><link rel="prefetch" href="/assets/js/45.4fc13d73.js"><link rel="prefetch" href="/assets/js/46.65529072.js"><link rel="prefetch" href="/assets/js/47.dc68f044.js"><link rel="prefetch" href="/assets/js/48.6cf203cb.js"><link rel="prefetch" href="/assets/js/49.cf13277f.js"><link rel="prefetch" href="/assets/js/5.899c2ebf.js"><link rel="prefetch" href="/assets/js/50.3c8a9011.js"><link rel="prefetch" href="/assets/js/51.30f0429e.js"><link rel="prefetch" href="/assets/js/52.4d5b5582.js"><link rel="prefetch" href="/assets/js/53.553b1f42.js"><link rel="prefetch" href="/assets/js/54.39c781cd.js"><link rel="prefetch" href="/assets/js/55.dc5cc4c3.js"><link rel="prefetch" href="/assets/js/56.107a1be5.js"><link rel="prefetch" href="/assets/js/57.739995c4.js"><link rel="prefetch" href="/assets/js/58.7bb19fe1.js"><link rel="prefetch" href="/assets/js/59.d7c13ae9.js"><link rel="prefetch" href="/assets/js/6.41d8e581.js"><link rel="prefetch" href="/assets/js/60.dc54e6ca.js"><link rel="prefetch" href="/assets/js/61.1fcaa212.js"><link rel="prefetch" href="/assets/js/62.9b9cd2b0.js"><link rel="prefetch" href="/assets/js/63.658465ff.js"><link rel="prefetch" href="/assets/js/64.2298e1b5.js"><link rel="prefetch" href="/assets/js/65.49904e03.js"><link rel="prefetch" href="/assets/js/67.555838e5.js"><link rel="prefetch" href="/assets/js/68.7a4f68e2.js"><link rel="prefetch" href="/assets/js/69.c82901c0.js"><link rel="prefetch" href="/assets/js/7.fafe71d6.js"><link rel="prefetch" href="/assets/js/70.49c51f86.js"><link rel="prefetch" href="/assets/js/71.2b9d0b92.js"><link rel="prefetch" href="/assets/js/72.0eeeea1e.js"><link rel="prefetch" href="/assets/js/73.c3f3b41c.js"><link rel="prefetch" href="/assets/js/74.8c248c25.js"><link rel="prefetch" href="/assets/js/75.a7176969.js"><link rel="prefetch" href="/assets/js/76.13f4003f.js"><link rel="prefetch" href="/assets/js/77.b8253305.js"><link rel="prefetch" href="/assets/js/78.c44b2cfb.js"><link rel="prefetch" href="/assets/js/79.630a29b6.js"><link rel="prefetch" href="/assets/js/8.5ba1a544.js"><link rel="prefetch" href="/assets/js/80.8eb14479.js"><link rel="prefetch" href="/assets/js/81.3329c4ab.js"><link rel="prefetch" href="/assets/js/82.01725451.js"><link rel="prefetch" href="/assets/js/83.69c350b2.js"><link rel="prefetch" href="/assets/js/84.77515121.js"><link rel="prefetch" href="/assets/js/85.f14f041b.js"><link rel="prefetch" href="/assets/js/86.f4a52367.js"><link rel="prefetch" href="/assets/js/87.5257ee16.js"><link rel="prefetch" href="/assets/js/88.39417064.js"><link rel="prefetch" href="/assets/js/89.2a4e761d.js"><link rel="prefetch" href="/assets/js/9.1b88acc2.js"><link rel="prefetch" href="/assets/js/90.03545ab7.js"><link rel="prefetch" href="/assets/js/91.c7a9c2a1.js"><link rel="prefetch" href="/assets/js/92.d467060e.js"><link rel="prefetch" href="/assets/js/93.9a718b4d.js"><link rel="prefetch" href="/assets/js/94.b59c0ce5.js"><link rel="prefetch" href="/assets/js/95.c506ff9a.js"><link rel="prefetch" href="/assets/js/96.3d015acc.js"><link rel="prefetch" href="/assets/js/97.ddfc6d29.js"><link rel="prefetch" href="/assets/js/98.7dc27d73.js"><link rel="prefetch" href="/assets/js/99.6643cb5d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e2aafa94.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_circle.png" alt="Vino's Blog" class="logo"> <span class="site-name can-hide">Vino's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/Blog/" class="nav-link router-link-active">
+  进阶·博文
+</a></div><div class="nav-item"><a href="/FrontEnd/" class="nav-link">
+  爬坑·总结
+</a></div><div class="nav-item"><a href="/Life/" class="nav-link">
+  Music·生活
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Contact" class="dropdown-title"><span class="title">Contact</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://weibo.com/neikeda/profile" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Weibo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第1期：this全面解析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第2期：原型 Prototype</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第3期：高阶函数</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第4期：节流防抖</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第5期：作用域闭包</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>第6期：深浅拷贝原理</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>第7期：调用堆栈</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Blog/7.1.html" class="active sidebar-link">理解JavaScript 中的执行上下文和执行栈</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/7.1.html#执行上下文的类型" class="sidebar-link">执行上下文的类型</a></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#执行栈" class="sidebar-link">执行栈</a></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#执行上下文的创建" class="sidebar-link">执行上下文的创建</a></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#创建阶段" class="sidebar-link">创建阶段</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Blog/7.1.html#this-binding" class="sidebar-link">This Binding</a></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#词法环境（lexical-environment）" class="sidebar-link">词法环境（Lexical Environment）</a></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#变量环境" class="sidebar-link">变量环境</a></li></ul></li><li class="sidebar-sub-header"><a href="/Blog/7.1.html#执行阶段" class="sidebar-link">执行阶段</a></li></ul></li><li><a href="/Blog/7.2.html" class="sidebar-link">JavaScript深入之执行上下文栈和变量对象</a></li><li><a href="/Blog/7.3.html" class="sidebar-link">JavaScript深入之内存空间详细图解</a></li><li><a href="/Blog/7.4.html" class="sidebar-link">JavaScript深入之带你走进内存机制</a></li><li><a href="/Blog/7.5.html" class="sidebar-link">JavaScript深入之4类常见内存泄漏及如何避免</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="理解javascript-中的执行上下文和执行栈"><a href="#理解javascript-中的执行上下文和执行栈" class="header-anchor">#</a> 理解JavaScript 中的执行上下文和执行栈</h1> <p>执行上下文是当前 JavaScript 代码被解析和执行时所在环境的抽象概念。</p> <h2 id="执行上下文的类型"><a href="#执行上下文的类型" class="header-anchor">#</a> 执行上下文的类型</h2> <p>执行上下文总共有三种类型</p> <ul><li><strong>全局执行上下文</strong>：只有一个，浏览器中的全局对象就是 window 对象，<code>this</code> 指向这个全局对象。</li> <li><strong>函数执行上下文</strong>：存在无数个，只有在函数被调用的时候才会被创建，每次调用函数都会创建一个新的执行上下文。</li> <li><strong>Eval 函数执行上下文</strong>： 指的是运行在 <code>eval</code> 函数中的代码，很少用而且不建议使用。</li></ul> <h2 id="执行栈"><a href="#执行栈" class="header-anchor">#</a> 执行栈</h2> <p>执行栈，也叫调用栈，具有 LIFO（后进先出）结构，用于存储在代码执行期间创建的所有执行上下文。</p> <p>首次运行JS代码时，会创建一个<strong>全局</strong>执行上下文并Push到当前的执行栈中。每当发生函数调用，引擎都会为该函数创建一个<strong>新的函数</strong>执行上下文并Push到当前执行栈的栈顶。</p> <p>根据执行栈LIFO规则，当栈顶函数运行完成后，其对应的<strong>函数</strong>执行上下文将会从执行栈中Pop出，上下文控制权将移到当前执行栈的下一个执行上下文。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">'Hello World!'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Inside first function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  <span class="token function">second</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Again inside first function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">second</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Inside second function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+
+<span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Inside Global Execution Context'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Inside first function</span>
+<span class="token comment">// Inside second function</span>
+<span class="token comment">// Again inside first function</span>
+<span class="token comment">// Inside Global Execution Context</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-53512">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var a = 'Hello World!';
+
+function first() {  
+  console.log('Inside first function');  
+  second();  
+  console.log('Again inside first function');  
+}
+
+function second() {  
+  console.log('Inside second function');  
+}
+
+first();  
+console.log('Inside Global Execution Context');
+
+// Inside first function
+// Inside second function
+// Again inside first function
+// Inside Global Execution Context
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-53512" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-31774">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="var a = 'Hello World!';
+
+function first() {  
+  console.log('Inside first function');  
+  second();  
+  console.log('Again inside first function');  
+}
+
+function second() {  
+  console.log('Inside second function');  
+}
+
+first();  
+console.log('Inside Global Execution Context');
+
+// Inside first function
+// Inside second function
+// Again inside first function
+// Inside Global Execution Context
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-31774" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><div class="img-box"><img src="/img/7.1-1.webp" alt="7.1-1"> <!----></div> <h2 id="执行上下文的创建"><a href="#执行上下文的创建" class="header-anchor">#</a> 执行上下文的创建</h2> <p>执行上下文分两个阶段创建：<strong>1）创建阶段； 2）执行阶段</strong></p> <h2 id="创建阶段"><a href="#创建阶段" class="header-anchor">#</a> 创建阶段</h2> <ul><li>1、确定 this 的值，也被称为 This Binding。</li> <li>2、LexicalEnvironment（词法环境） 组件被创建。</li> <li>3、VariableEnvironment（变量环境） 组件被创建。</li></ul> <p>直接看伪代码可能更加直观</p> <div class="language-js extra-class"><pre class="language-js"><code>ExecutionContext <span class="token operator">=</span> <span class="token punctuation">{</span>  
+  ThisBinding <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token keyword">this</span> value<span class="token operator">&gt;</span><span class="token punctuation">,</span>     <span class="token comment">// 确定this </span>
+  LexicalEnvironment <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>   <span class="token comment">// 词法环境</span>
+  VariableEnvironment <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token comment">// 变量环境</span>
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-81352">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="ExecutionContext = {  
+  ThisBinding = &lt;this value&gt;,     // 确定this 
+  LexicalEnvironment = { ... },   // 词法环境
+  VariableEnvironment = { ... },  // 变量环境
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-81352" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-10776">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="ExecutionContext = {  
+  ThisBinding = &lt;this value&gt;,     // 确定this 
+  LexicalEnvironment = { ... },   // 词法环境
+  VariableEnvironment = { ... },  // 变量环境
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-10776" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="this-binding"><a href="#this-binding" class="header-anchor">#</a> This Binding</h3> <ul><li><strong>全局</strong>执行上下文中，<code>this</code> 的值指向全局对象，在浏览器中<code>this</code> 的值指向 <code>window</code>对象，而在<code>nodejs</code>中指向这个文件的<code>module</code>对象。</li> <li><strong>函数</strong>执行上下文中，<code>this</code> 的值取决于函数的调用方式。具体有：默认绑定、隐式绑定、显式绑定（硬绑定）、<code>new</code>绑定、箭头函数，具体内容会在【this全面解析】部分详解。</li></ul> <h3 id="词法环境（lexical-environment）"><a href="#词法环境（lexical-environment）" class="header-anchor">#</a> 词法环境（Lexical Environment）</h3> <p>词法环境有两个<strong>组成部分</strong></p> <ul><li>1、环境记录：存储变量和函数声明的实际位置</li> <li>2、对外部环境的引用：可以访问其外部词法环境</li></ul> <p>词法环境有两种<strong>类型</strong></p> <ul><li>1、<strong>全局环境</strong>：是一个没有外部环境的词法环境，其外部环境引用为 <code>null</code>。拥有一个全局对象（<code>window</code> 对象）及其关联的方法和属性（例如数组方法）以及任何用户自定义的全局变量，<code>this</code> 的值指向这个全局对象。</li> <li>2、<strong>函数环境</strong>：用户在函数中定义的变量被存储在<strong>环境记录</strong>中，包含了<code>arguments</code> 对象。对外部环境的引用可以是全局环境，也可以是包含内部函数的外部函数环境。</li></ul> <p>直接看伪代码可能更加直观</p> <div class="language-js extra-class"><pre class="language-js"><code>GlobalExectionContext <span class="token operator">=</span> <span class="token punctuation">{</span>  <span class="token comment">// 全局执行上下文</span>
+  LexicalEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>    	  <span class="token comment">// 词法环境</span>
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>   		<span class="token comment">// 环境记录</span>
+      Type<span class="token operator">:</span> <span class="token string">&quot;Object&quot;</span><span class="token punctuation">,</span>      		   <span class="token comment">// 全局环境</span>
+      <span class="token comment">// 标识符绑定在这里 </span>
+      outer<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token keyword">null</span><span class="token operator">&gt;</span>  	   		   <span class="token comment">// 对外部环境的引用</span>
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+
+FunctionExectionContext <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">// 函数执行上下文</span>
+  LexicalEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>  	  <span class="token comment">// 词法环境</span>
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>  		<span class="token comment">// 环境记录</span>
+      Type<span class="token operator">:</span> <span class="token string">&quot;Declarative&quot;</span><span class="token punctuation">,</span>  	   <span class="token comment">// 函数环境</span>
+      <span class="token comment">// 标识符绑定在这里 			  // 对外部环境的引用</span>
+      outer<span class="token operator">:</span> <span class="token operator">&lt;</span>Global or outer <span class="token keyword">function</span> environment reference<span class="token operator">&gt;</span>  
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-57018">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="GlobalExectionContext = {  // 全局执行上下文
+  LexicalEnvironment: {    	  // 词法环境
+    EnvironmentRecord: {   		// 环境记录
+      Type: &quot;Object&quot;,      		   // 全局环境
+      // 标识符绑定在这里 
+      outer: &lt;null&gt;  	   		   // 对外部环境的引用
+  }  
+}
+
+FunctionExectionContext = { // 函数执行上下文
+  LexicalEnvironment: {  	  // 词法环境
+    EnvironmentRecord: {  		// 环境记录
+      Type: &quot;Declarative&quot;,  	   // 函数环境
+      // 标识符绑定在这里 			  // 对外部环境的引用
+      outer: &lt;Global or outer function environment reference&gt;  
+  }  
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-57018" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-81334">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="GlobalExectionContext = {  // 全局执行上下文
+  LexicalEnvironment: {    	  // 词法环境
+    EnvironmentRecord: {   		// 环境记录
+      Type: &quot;Object&quot;,      		   // 全局环境
+      // 标识符绑定在这里 
+      outer: &lt;null&gt;  	   		   // 对外部环境的引用
+  }  
+}
+
+FunctionExectionContext = { // 函数执行上下文
+  LexicalEnvironment: {  	  // 词法环境
+    EnvironmentRecord: {  		// 环境记录
+      Type: &quot;Declarative&quot;,  	   // 函数环境
+      // 标识符绑定在这里 			  // 对外部环境的引用
+      outer: &lt;Global or outer function environment reference&gt;  
+  }  
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-81334" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><h3 id="变量环境"><a href="#变量环境" class="header-anchor">#</a> 变量环境</h3> <p>变量环境也是一个词法环境，因此它具有上面定义的词法环境的所有属性。</p> <p>在 ES6 中，<code>词法</code> 环境和 <code>变量</code> 环境的区别在于前者用于存储**函数声明和变量（ let 和 const ）绑定，而后者仅用于存储变量（ var ）**绑定。</p> <p>使用例子进行介绍</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>  
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>  
+<span class="token keyword">var</span> c<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> f</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+ <span class="token keyword">var</span> g <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>  
+ <span class="token keyword">return</span> e <span class="token operator">*</span> f <span class="token operator">*</span> g<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+
+c <span class="token operator">=</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-83738">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="let a = 20;  
+const b = 30;  
+var c;
+
+function multiply(e, f) {  
+ var g = 20;  
+ return e * f * g;  
+}
+
+c = multiply(20, 30);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-83738" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715854-22546">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="let a = 20;  
+const b = 30;  
+var c;
+
+function multiply(e, f) {  
+ var g = 20;  
+ return e * f * g;  
+}
+
+c = multiply(20, 30);
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715854-22546" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p>执行上下文如下所示</p> <div class="language-js extra-class"><pre class="language-js"><code>GlobalExectionContext <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  ThisBinding<span class="token operator">:</span> <span class="token operator">&lt;</span>Global Object<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+
+  LexicalEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>  
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>  
+      Type<span class="token operator">:</span> <span class="token string">&quot;Object&quot;</span><span class="token punctuation">,</span>  
+      <span class="token comment">// 标识符绑定在这里  </span>
+      a<span class="token operator">:</span> <span class="token operator">&lt;</span> uninitialized <span class="token operator">&gt;</span><span class="token punctuation">,</span>  
+      b<span class="token operator">:</span> <span class="token operator">&lt;</span> uninitialized <span class="token operator">&gt;</span><span class="token punctuation">,</span>  
+      multiply<span class="token operator">:</span> <span class="token operator">&lt;</span> func <span class="token operator">&gt;</span>  
+    <span class="token punctuation">}</span>  
+    outer<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token keyword">null</span><span class="token operator">&gt;</span>  
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  VariableEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>  
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>  
+      Type<span class="token operator">:</span> <span class="token string">&quot;Object&quot;</span><span class="token punctuation">,</span>  
+      <span class="token comment">// 标识符绑定在这里  </span>
+      c<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>  
+    <span class="token punctuation">}</span>  
+    outer<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token keyword">null</span><span class="token operator">&gt;</span>  
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+
+FunctionExectionContext <span class="token operator">=</span> <span class="token punctuation">{</span>  
+   
+  ThisBinding<span class="token operator">:</span> <span class="token operator">&lt;</span>Global Object<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+
+  LexicalEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>  
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>  
+      Type<span class="token operator">:</span> <span class="token string">&quot;Declarative&quot;</span><span class="token punctuation">,</span>  
+      <span class="token comment">// 标识符绑定在这里  </span>
+      Arguments<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> length<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>  
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>  
+    outer<span class="token operator">:</span> <span class="token operator">&lt;</span>GlobalLexicalEnvironment<span class="token operator">&gt;</span>  
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  VariableEnvironment<span class="token operator">:</span> <span class="token punctuation">{</span>  
+    EnvironmentRecord<span class="token operator">:</span> <span class="token punctuation">{</span>  
+      Type<span class="token operator">:</span> <span class="token string">&quot;Declarative&quot;</span><span class="token punctuation">,</span>  
+      <span class="token comment">// 标识符绑定在这里  </span>
+      g<span class="token operator">:</span> <span class="token keyword">undefined</span>  
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>  
+    outer<span class="token operator">:</span> <span class="token operator">&lt;</span>GlobalLexicalEnvironment<span class="token operator">&gt;</span>  
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715855-33634">copy success</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="GlobalExectionContext = {
+
+  ThisBinding: &lt;Global Object&gt;,
+
+  LexicalEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Object&quot;,  
+      // 标识符绑定在这里  
+      a: &lt; uninitialized &gt;,  
+      b: &lt; uninitialized &gt;,  
+      multiply: &lt; func &gt;  
+    }  
+    outer: &lt;null&gt;  
+  },
+
+  VariableEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Object&quot;,  
+      // 标识符绑定在这里  
+      c: undefined,  
+    }  
+    outer: &lt;null&gt;  
+  }  
+}
+
+FunctionExectionContext = {  
+   
+  ThisBinding: &lt;Global Object&gt;,
+
+  LexicalEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Declarative&quot;,  
+      // 标识符绑定在这里  
+      Arguments: {0: 20, 1: 30, length: 2},  
+    },  
+    outer: &lt;GlobalLexicalEnvironment&gt;  
+  },
+
+  VariableEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Declarative&quot;,  
+      // 标识符绑定在这里  
+      g: undefined  
+    },  
+    outer: &lt;GlobalLexicalEnvironment&gt;  
+  }  
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715855-33634" data-mdic-notify-delay="2000" data-mdic-copy-fail-text="copy fail" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">copy</button></div><div class="m-mdic-copy-wrapper"><div class="u-mdic-copy-notify" id="j-notify-1589775715855-7868">Copy successed</div><button class="u-mdic-copy-btn j-mdic-copy-btn" data-mdic-content="GlobalExectionContext = {
+
+  ThisBinding: &lt;Global Object&gt;,
+
+  LexicalEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Object&quot;,  
+      // 标识符绑定在这里  
+      a: &lt; uninitialized &gt;,  
+      b: &lt; uninitialized &gt;,  
+      multiply: &lt; func &gt;  
+    }  
+    outer: &lt;null&gt;  
+  },
+
+  VariableEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Object&quot;,  
+      // 标识符绑定在这里  
+      c: undefined,  
+    }  
+    outer: &lt;null&gt;  
+  }  
+}
+
+FunctionExectionContext = {  
+   
+  ThisBinding: &lt;Global Object&gt;,
+
+  LexicalEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Declarative&quot;,  
+      // 标识符绑定在这里  
+      Arguments: {0: 20, 1: 30, length: 2},  
+    },  
+    outer: &lt;GlobalLexicalEnvironment&gt;  
+  },
+
+  VariableEnvironment: {  
+    EnvironmentRecord: {  
+      Type: &quot;Declarative&quot;,  
+      // 标识符绑定在这里  
+      g: undefined  
+    },  
+    outer: &lt;GlobalLexicalEnvironment&gt;  
+  }  
+}
+" data-mdic-attach-content="" data-mdic-notify-id="j-notify-1589775715855-7868" data-mdic-notify-delay="1000" data-mdic-copy-fail-text="Copy failed" onclick="!function(t){const e={copy:(t='',e='')=&gt;new Promise((c,o)=&gt;{const n=document.createElement('textarea'),d=e?`\n\n${e}`:e;n.value=`${t}${d}`,document.body.appendChild(n),n.select();try{const t=document.execCommand('copy');document.body.removeChild(n),t?c():o()}catch(t){document.body.removeChild(n),o()}}),btnClick(t){const c=t&amp;&amp;t.dataset?t.dataset:{},o=c.mdicNotifyId,n=document.getElementById(o),d=c.mdicNotifyDelay,i=c.mdicCopyFailText;e.copy(c.mdicContent,c.mdicAttachContent).then(()=&gt;{n.style.display='block',setTimeout(()=&gt;{n.style.display='none'},d)}).catch(()=&gt;{alert(i)})}};e.btnClick(t)}(this);">Copy</button></div></pre></div><p><strong>变量提升</strong>的原因：在创建阶段，函数声明存储在环境中，而变量会被设置为 <code>undefined</code>（在 <code>var</code> 的情况下）或保持未初始化（在 <code>let</code> 和 <code>const</code> 的情况下）。所以这就是为什么可以在声明之前访问 <code>var</code> 定义的变量（尽管是 <code>undefined</code> ），但如果在声明之前访问 <code>let</code> 和 <code>const</code> 定义的变量就会提示引用错误的原因。这就是所谓的变量提升。</p> <h2 id="执行阶段"><a href="#执行阶段" class="header-anchor">#</a> 执行阶段</h2> <p>此阶段，完成对所有变量的分配，最后执行代码。</p> <p>如果 Javascript 引擎在源代码中声明的实际位置找不到 <code>let</code> 变量的值，那么将为其分配 <code>undefined</code> 值。</p> <h3 id="点个star支持我一下"><a href="#点个star支持我一下" aria-hidden="true" class="header-anchor">#</a> 点个<a href="https://github.com/augustVino/augustVino.github.io" target="_blank" rel="noopener noreferrer">Star<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>支持我一下 ~</h3> <div class="gitalk-container"><div id="gitalk-container"></div></div> <svg data-v-7ad861b1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284" class="go-to-top" style="display:none;" data-v-44049f78><g data-v-7ad861b1 transform="translate(-229 -126.358)" data-v-44049f78><rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)" data-v-44049f78></rect> <rect data-v-7ad861b1 fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)" data-v-44049f78></rect></g></svg></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Blog/6.4.html" class="prev">
+        Lodash是如何实现深拷贝的
+      </a></span> <span class="next"><a href="/Blog/7.2.html">
+        JavaScript深入之执行上下文栈和变量对象
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6a883236.js" defer></script><script src="/assets/js/2.9374ea52.js" defer></script><script src="/assets/js/66.99608c3b.js" defer></script><script src="/assets/js/37.c1852146.js" defer></script><script src="/assets/js/40.c8e1b6f3.js" defer></script><script src="/assets/js/11.c968a7c6.js" defer></script><script src="/assets/js/10.832e2843.js" defer></script>
+  </body>
+</html>
